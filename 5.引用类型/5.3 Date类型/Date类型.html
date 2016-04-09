@@ -1,0 +1,69 @@
+<!--
+    UTC:国际协调时间
+    Date类型使用来自UTC1970年1月1日午夜（0时）开始经过的毫秒数来保存日期
+    继承的方法：没什么用，不过valueOf返回毫秒数
+    日期格式化方法
+    日期/时间组件方法
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // Date 构造函数
+    var now = new Date(1087056000000); //在不传参的情况下，新创建的对象自动获得当前时间,等于 Date() 传参(只能传毫秒数（表日期的其他的自动调用Date.parse()转换）)就是参数的时间
+    console.log(now);
+    //Date.parse方法：接受一个表日期的参数(1/1/2000,2000-05-05T00:00:00),返回毫秒数
+    var now1 = Date.parse("6/5/2005");
+    console.log(now1);
+    //Date.UTC方法：接受（年，月-1，日，时，分，秒），返回毫秒数
+    var now2 =Date.UTC(2005,5,5);   //月份从0开始 根据本地时区（+8）开始
+    console.log(now2);
+    //Date.now方法：返回时间戳
+    console.log(Date.now());
+    //3种方法返回时间戳：
+    console.log(Date.parse(new Date()));  //末尾3尾为000
+    console.log(Date.now());
+    console.log(new Date().valueOf());   //(继承的方法)
+    //日期格式化方法：
+    console.log(new Date().toString());   //Wed Mar 30 2016 23:35:26 GMT+0800 (继承的方法)
+    console.log(new Date().toDateString());   //Wed Mar 30 2016
+    console.log(new Date().toTimeString());   //23:24:15 GMT+0800
+    console.log(new Date().toTimeString());   //23:24:15 GMT+0800
+    console.log(new Date().toLocaleString());   //2016/3/30 下午11:34:33 (继承的方法)
+    console.log(new Date().toLocaleDateString());   //2016/3/30
+    console.log(new Date().toLocaleTimeString());   //下午11:33:45
+    console.log(new Date().toUTCString());   //Wed, 30 Mar 2016 15:36:53 GMT     (+8)
+    //日期/时间组件方法
+    //返回类
+    console.log(new Date().getTime());   //1459353136787
+    console.log(new Date().getFullYear());   //2016
+    console.log(new Date().getUTCFullYear());   //2016
+    console.log(new Date().getMonth());   //2
+    console.log(new Date().getUTCMonth());   //2
+    console.log(new Date().getDate());   //30
+    console.log(new Date().getUTCDate());   //30
+    console.log(new Date().getDay());   //3
+    console.log(new Date().getUTCDay());   //3
+    console.log(new Date().getHours());   //23
+    console.log(new Date().getUTCHours());   //15
+    console.log(new Date().getMinutes());   //54
+    console.log(new Date().getUTCMinutes());   //54
+    console.log(new Date().getSeconds());   //22
+    console.log(new Date().getUTCSeconds());   //22
+    console.log(new Date().getMilliseconds());   //433
+    console.log(new Date().getUTCMilliseconds());   //433
+    console.log(new Date().getTimezoneOffset());   //-480  相差分数数
+    //设置类  省略类似的 太多了不想写了。。想睡觉。。。。20160331 00:06
+    var now5 = new Date();
+    var now6 = new Date();
+    now5.setTime(1000000000000);
+    console.log(now5);  //Sun Sep 09 2001 09:46:40 GMT+0800
+    now6.setDate(5);  //超过最大值就进位
+    console.log(now6);  //Sat Mar 05 2016 00:01:18 GMT+0800
+</script>
+</body>
+</html>

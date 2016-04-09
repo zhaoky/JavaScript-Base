@@ -1,0 +1,100 @@
+<!--
+    为了便于操作基本类型值，ECMAScript还提供了3个特殊的引用类型：Boolean Number String。
+    引用类型与基本包装类型的主要区别就是对象的生存期，自动创建的基本包装类型的对象，则值存在于一行代码的执行瞬间，然后立即被销毁。
+    可以显式的调用Boolean、Number、String来创建基本包装类型的对象，在一般情况下不要做！
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //Object构造函数
+    var obj1 = new Object("zky");  //创建了一个String实例
+    console.log(typeof(obj1));  //obj
+    console.log(obj1 instanceof String); //true
+    var obj2 = new Object(123);
+    console.log(typeof(obj2));  //obj
+    console.log(obj2 instanceof Number); //true
+    var obj3 = new Object(true);
+    console.log(typeof(obj3));  //obj
+    console.log(obj3 instanceof Boolean);//true
+    //Boolean 类型
+    var boolean =new Boolean(true); //不建议
+    console.log(boolean); //Boolean {[[PrimitiveValue]]: true}   //是对象
+    console.log(typeof boolean);
+    console.log(Boolean(boolean)); //转换成true
+    //Number 类型
+    var number = new Number(123);   //不建议
+    console.log(number); //Number {[[PrimitiveValue]]: 123} //是对象
+    console.log(typeof number); //obj
+    console.log(Number(number)); //转换成123
+       //number类型
+     // toFixed()方法
+    var num =123.235;
+    console.log(num.toFixed(2));  //123.23
+     // toExponential()方法
+    console.log(num.toExponential(2)); //1.23e+2;
+    console.log(num.toExponential(1)); //1.2e+2
+    // toPrecision()方法
+    console.log(num.toPrecision(2)); //1.2e+2;
+    console.log(num.toPrecision(1)); //1e+2
+    //String 类型
+    var str = new String("zky");
+    console.log(str);  //String {0: "z", 1: "k", 2: "y", length: 3, [[PrimitiveValue]]: "zky"}
+    //length属性
+    console.log(str.length);
+    //字符方法  charAt()  charCodeAt() 接受一个参数：索引值位置 返回单字符charAt()或字符编码（charCodeAt()）
+    console.log(str.charAt(1)); //  k
+    console.log(str[1]);  // k     []法
+    ///字符串操作方法
+    // concat()方法 可多个参数拼接得到新字符串   等价于：“+”
+    console.log(str.concat("qxq","!!")); //zkyqxq!!
+    console.log(str+"qxq"+"!!"); //zkyqxq!!
+    console.log(str);  //String {0: "z", 1: "k", 2: "y", length: 3, [[PrimitiveValue]]: "zky"}
+    // slice()方法 substr()方法 substring()方法
+    // 得到新字符串 第一个参数：开始的位置索引(包含该位置) 第二个参数（可选，不选就到末尾）： 结束位置的索引（不包含该位置） substr()是个数
+    // 如果参数是负数：slice会加上字符串长度；substr第一个参数加字符串长度，第二个参数转换为0，substring都转换成0
+    var str1 = "iLoveQxq";
+    console.log(str1.slice(2,5)); //ove
+    console.log(str1.substring(2,5)); //ove
+    console.log(str1.substr(2,5)); //oveqx
+    //字符串位置方法  indexOf()  lastIndexOf()  第一个参数：目标子字符串，第二个参数（可选）：从某个位置开始搜索。返回子字符串第一次出现的位置索引,没找到返回-1。
+    console.log(str1.indexOf("q",6)); //7
+    console.log(str1.lastIndexOf("q",6)); //5
+    //删空格方法： trim()  trimLeft()  trimRight() 返回新字符串
+    var str2 = "  zky  qin  ";
+    console.log(str2);  //  zky  qin
+    console.log(str2.trim()); //zky  qin
+    console.log(str2.trimLeft()); //zky  qin
+    //大小写转换方法 ：
+    console.log(str1.toLocaleLowerCase()); //iloveqxq
+    console.log(str1.toLocaleUpperCase()); //ILOVEQXQ
+    console.log(str1.toLowerCase()); //iloveqxq
+    console.log(str1.toUpperCase()); //ILOVEQXQ
+    //模式匹配方法：
+    //match()方法
+    var text = "caT,bat,sat,fat";
+    var pattern = /.at/;
+    console.log(text.match(pattern));  //得到的值和 exec()方法 得到的结果一样
+    //字符串查找方法
+    //search()  一个参数：目标字符串或正则表达式 返回第一次出现的位置
+    console.log(text.search("at"));  //5
+    console.log(text.search(/at/));  //5
+    //字符串替换方法 第一个参数：目标字符串或正则表达式  第二个参数：替换字符串或函数
+    console.log(text.replace("at","hhh")); //caT,bhhh,sat,fat
+    console.log(text.replace(/at/g,"hhh")); //caT,bhhh,shhh,fhhh
+    //字符串分割方法
+    //split() 第一个参数：分隔字符串或RegExp对象 第二个参数：返回的数组的最大长度 。  返回分割后的数组。
+    console.log(text.split(",")); //["caT","bat","sat","fat"]
+    console.log(text.split(",",2)); //["caT","bat"]
+    //字符串字母顺序比较法 一个参数：目标字符串。若原字符串应该的字母顺序应该比目标大，返回1，反之返回-1 相等返回0
+    console.log(text.localeCompare("brick"));//1
+    //String构造函数的方法：编码转字符方法：（charCodeAt()逆方法）
+    console.log(String.fromCharCode(104,101,108,108,111)); //hello
+    //HTML方法 不推荐
+</script>
+</body>
+</html>

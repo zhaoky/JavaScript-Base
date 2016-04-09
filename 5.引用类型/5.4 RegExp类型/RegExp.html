@@ -1,0 +1,50 @@
+<!--
+    ECMAScript通过RegExp类型来支持正则表达式
+        var expression = /pattern/ flags;    g(全局模式) i（不区分大小写） m（多行模式）
+    元字符： ( [ { \ ^ $ ? * + . } ] )
+        模式中中的元字符匹配要转义。 /[bc]a/i   =>    /\[bc\]a/i
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //字面量形式
+    var p1 = /\?at/g;    //要转义
+    console.log(p1.test("?atqwe"));
+    //RegExp构造函数
+    var p2 = RegExp("\\?at","g");  //双重转义  第二个参数可选
+    console.log(p2.test("?atqwe"));
+    var re =null,i;
+    for(i=0;i<10;i++){
+        re1 = /cat/g;
+        var r1 = re1.test("catast");
+        console.log(i,r1);
+    }
+    var re2 = null,j;   //ES5明确规定，字面量必须像RegExp构造函数一样，每次都创建新实例。
+    for(j=0;j<10;j++){
+        re2 = new RegExp("cat","g");
+        var r2 = re2.test("catast");
+        console.log(i,r2);
+    }
+    var re3 = new RegExp("\\?at","g");
+    console.log(re3.global);   //true
+    console.log(re3.ignoreCase);  //false
+    console.log(re3.lastIndex);   //0
+    console.log(re3.multiline);   //false
+    console.log(re3.source);     //\?at   //按照字面量形式返回
+    console.log(re3.toLocaleString());     //       /\?at/g  返回字面量形式的字符串
+    console.log(re3.toString());     //     /\?at/g   返回字面量形式的字符串
+    console.log(re3.valueOf());     //      /\?at/g 返回正则表达式本身
+   //RegExp实例方法 exec() 接受一个参数：目标字符串
+    var re4 = new RegExp("At","g");
+    console.log(re4.exec("At12ctAtatAT"));
+    //RegExp实例方法 test() 接受一个参数：目标字符串 模式与参数匹配为true
+    //eg
+    //RegExp构造函数属性 略
+</script>
+</body>
+</html>

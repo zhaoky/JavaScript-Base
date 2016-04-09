@@ -1,0 +1,47 @@
+<!--
+    引用类型时一种数据结构，用于将数据和功能组织在一起。
+        对象 是引用类型的一个实例，也是他的值。
+        引用类型描述的是一类对象所具有的属性和方法。
+        新对象是使用new操作符后跟一个构造函数来创建的。
+    Object类型
+        创建Object实例两种方法
+        访问对象属性两种方法
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var person = new Object();   // 新对象person 是使用 new +  一个构造函数 创建的， ECMAScript提供很多原生引用类型（Object）等。
+    console.log(person);
+    //创建Object实例有两种方式：
+    var person = new Object();    // 等价于 var person = {};
+    person.name = "zky";
+    person.age = 24;
+    //或 对象字面量
+    var person1 = {
+        name :"zky",  //属性名：属性值
+        age : 24
+    };
+    console.log(person1);
+    console.log(1,person1.toLocaleString());
+    console.log(1,person1.toString());
+    console.log(1,person1.valueOf());
+    //属性名也可以使用字符串：
+    var person2 = {
+        "name" :"zky",
+        "age" : 24,
+        1 : "aa"       //数字自动转换为字符串
+    };
+    //访问对象属性两种方法：
+    //点表示法(推荐)
+    console.log(person.name);
+    //方括号表示法:用来变量访问属性上
+    var a= "age";
+    console.log(person[a]);
+</script>
+</body>
+</html>

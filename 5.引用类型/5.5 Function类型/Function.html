@@ -1,0 +1,166 @@
+<!--
+    每个函数都是Function类型的实例，函数是对象，函数名实际上是指向函数对象的指针,不会与某个函数绑定。
+    没有重载，函数名因为是指针，会直接覆盖。
+    解析器优先读取函数声明，并使其在执行任何代码之前可用；函数表达式只能等到解析器执行到该行才能读取。
+    可以 return 函数。
+    函数名不带()为函数名，带了就是执行。
+    函数内部有两个特殊对象： arguments,this.外加caller属性
+    每个函数都包含两个属性：length prototype
+    每个函数都包含两个方法：call() apply()
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    console.log(a);   //函数声明
+    console.log(b);   //函数表达式
+    //函数声明
+    function a(n1, n2) {
+        console.log(arguments);  //函数内部对象
+        return n1 + n2;
+    }       //无分号
+    //函数表达式
+    var b = function (n1, n2) {
+        return n1 - n2;
+    };     //有分号
+    //Function 构造函数  接受任意个参数，最后一个始终是函数体。  //不推荐
+    var c = new Function("n1", "n2", "return n1*n2");
+    //函数名是指针
+    console.log(a(5, 10)); //15
+    var d = a;
+    a = null;
+    //    console.log(a(5,10));  //报错
+    console.log(d(5, 10));  //15
+    //return函数
+    function call(func, arg) {
+        return func(arg);
+    }
+    function add(num) {
+        return num + 10;
+    }
+    var t1 = call(add, 5);  //15
+    console.log(t1);
+    function name(name) {
+        return name + "hello!";
+    }
+    var t2 = call(name, "zky");
+    console.log(t2);
+    //从一个函数返回另一个函数
+    function compare(proName) {
+        console.log("proName:",proName);
+        return function (obj1, obj2) {
+            console.log("obj1, obj2",obj1, obj2);
+            var value1 = obj1[proName];
+            var value2 = obj2[proName];
+            console.log(value1 - value2);
+            return value1 - value2;
+        }
+    }
+    var data = [
+        {
+            name: "zky",
+            age: "24"
+        },
+        {
+            name: "qxq",
+            age: "22"
+        },
+        {
+            name: "tr",
+            age: "23"
+        },
+        {
+            name: "lr",
+            age: "103"
+        }
+    ];
+    console.log(data.sort(compare("age")));
+    //函数内部对象： arguments  this  caller
+
+    //arguments 是数组，保存函数参数。arguments还有一个callee的属性，是指针，指向保存这个arguments对象的函数。
+    //经典阶乘：
+    function factorial(num){
+        if(num<=1){
+            return 1;
+        }else{
+            return num*factorial(num-1);  //函数执行与函数名紧紧耦合在一起。
+        }
+    }
+    console.log(factorial(10));
+    //改良版
+    function NewFactorial(num){
+        if(num<=1){
+            return 1;
+        }else{
+            return num*arguments.callee(num-1);  //即使函数名变了也可以用
+        }
+    }
+    console.log(NewFactorial(10));
+    //this 引用的是函数执行的环境对象(this指的是，调用函数的那个对象)（网页的全局作用域中时，this引用的就是window）
+    var color = "red";
+    console.log(window.color);
+    var o = {color:"blue"};
+    function sayColor(a,b){
+        console.log(this.color);
+        function zky(){
+            console.log(33,zky.caller); //caller
+        }
+        zky();
+    }
+    sayColor();   //red;
+    o.say = sayColor;    //麻烦
+    console.info(o);
+    o.say();    //blue
+    //caller 保存着调用当前函数的函数的引用，如果是全局作用域调用该函数，该值为null
+    function outer(){
+        inner();
+    }
+    function inner(){
+        console.log(inner.caller);
+    }
+    outer();
+    //length : 表示函数想接受的参数个数
+    //prototype  保存他们所有实例方法的真正所在。
+    //apply() call() 作用：在特定的作用域中调用函数（设置函数体的this值）
+
+    //apply()方法接受两个参数：目标作用域，参数数组
+    function sum(n1,n2){
+        return n1+n2;
+    }
+    function c1(num1,num2){
+//        this.t1=88;
+        console.log(this);    //这里的this就是window
+        return sum.apply(this,arguments);
+//        return sum.apply(this,[num1,num2]);
+    }
+    console.log(c1(5,10));
+    //call() 方法跟apply()一样，不过参数全部都列出来了
+    function c2(num1,num2){
+        return sum.call(this,num1,num2);
+    }
+    console.log(c1(15,10));
+    //apply() call() 功能：扩充作用域
+    window.apply = "red";
+    var qin = {apply:"blue"};
+    function changeColor(){
+        console.log(this.apply);
+    }
+    changeColor();   //red
+    changeColor(this); //red
+    changeColor(window);   //red
+    var apply1 =changeColor.apply(qin); //blue
+    console.log(apply1); //undefined
+    //bind():会创建一个实例
+    var bind1 = changeColor.bind(qin);   //undefined   因为创建了一个changeColor函数的实例：bind1,并把qin作为作用域
+    bind1();
+    console.log(changeColor);
+    console.log(changeColor.toLocaleString());
+    console.log(changeColor.toString());
+    console.log(changeColor.valueOf());
+</script>
+</body>
+</html>
