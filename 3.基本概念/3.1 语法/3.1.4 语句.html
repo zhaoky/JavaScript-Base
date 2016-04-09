@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = {
+        name:"zky",
+        age:24,
+        sex:"nan"
+    };
+//    var b = null;
+    //if语句   条件会自动调用Boolean()转换为布尔值
+    //do-while语句  常用于循环体代码至少会被执行一次
+    //while语句  前测试循环语句
+    //for语句    ECMAScript中不存在块级作用域
+    //for-in语句  精准迭代语句 用来枚举对象的属性
+    for(var item in a){
+//        console.log(item);
+        console.log(item);
+    }
+    //label语句  加标签的语句一般要与for语句等循环语句配合使用
+    //break和continue语句
+    //break：立即退出循环，强制继续执行循环后面的语句
+    //continue：立即退出循环，退出后从循环的顶部继续执行
+    var num = 0;
+    out:
+        for(var i =0 ;i<10 ; i++){
+            for(var j=0;j<10;j++){
+                if(i==3&&j==6){
+                    break out;
+                }
+                ++num;
+            }
+        }
+    console.log(num);
+    //with语句  不推荐，性能下降 将代码的作用域设置到一个特定的对象
+    with(a){
+        var name = "zky";
+        var age = 24;
+        var sex = "nan"
+    }
+    console.log(a.age, a);
+    //switch语句   如果表达式等于这个值，则执行后面的语句   ,比较使用全等操作符。
+    switch(i){
+        case 5: alert(5); break;
+        case 10:alert(10);break;
+        case 15:alert(15);break;
+        case 20:alert(20);break;
+        default :alert("other");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!--
+    1.区分大小写
+    2.标识符：指变量、函数、属性的名字，或者函数的参数。第一个字符必须是字母，_ ，$ 。采用驼峰命名法。
+                不能把关键字，保留字，true ，false ，null 用作标识符。
+    3.注释： 块级：/* */   单行：//
+    4.严格模式： "use strict"
+    5.语句：以分号结尾 ，在控制语句中使用代码块。
+    6.关键字和保留字：。。。。
+    7.变量：弱类型--可以用来保存任何类型的数据
+-->
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = "hello world!";   //初始化一个变量
+    var b ;    //声明一个变量，未初始化
+    console.log(a);
+    console.log(b);   //undefined
+//    console.log(c);     //报错并且后面的不执行
+    //var操作符定义的变量将成为定义该变量的作用域中的局部变量。
+    function test(){
+        var zky ="11";
+    }
+    test();
+//    console.log(11,zky); //报错
+    //省略var操作符定义全局变量。
+    function test1(){
+        sky = "22";
+    }
+    test1();
+    console.log(11,sky);
+</script>
+</body>
+</html>

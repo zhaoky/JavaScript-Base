@@ -1,0 +1,111 @@
+<!--
+    ECMA中有5种简单数据类型（基本数据类型）：undefined，null，boolean，number，string。1种复杂类型：object：由一组无序的名值对组成。
+    ECMA不支持自定义数据类型。
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //typeof操作符：检测给定变量的数据类型 得： undefined boolean string number object function
+    function a(){
+        //
+    }
+    var b=[1,2,3];
+    var c={"zky":123};
+    console.log(typeof 11); //number
+    console.log(typeof 0); //number
+    console.log(typeof "zky");  //string
+    console.log(typeof "");  //string
+    console.log(typeof {});  //object
+    console.log(typeof null);  //object!!!!
+    console.log(typeof true);  //boolean
+    console.log(typeof undefined); //undefined
+    console.log(typeof d); //undefined
+    console.log(typeof a);    //function
+    console.log(typeof b);   //object
+    console.log(typeof c);   //object
+    //************ undefined 类型
+    var zky;   //不需要显式设为undefined ,这种未初始化的变量就是undefined， undefined类型主要用来比较空对象指针（null）和未初始化的变量。
+    console.log(zky == undefined); //true
+    console.log(typeof zky); //undefined 对于已声明还未初始化的变量为：undefined
+    console.log(typeof sky); //undefined 对于未声明的变量只能执行一项操作，用typeof检测数据类型
+//    console.log(sky == undefined); //报错尚未定义(声明)的变量报错
+//    console.log(sky); //报错尚未定义（声明）的变量报错。
+    //************ null 类型
+    //null表示一个空对象指针，typeof返回object
+    //一个变量准备保存对象的话，初始化为 null!!
+    console.log(null == undefined); //true
+    //************ Boolean 类型
+    // true false
+    //转型函数： Boolean()    或者使用!!代替!!!!
+    //流控制语句自动执行相应的boolean转换非常重要
+    console.log(Boolean("qin")); //true
+    console.log(Boolean(1)); //true
+    console.log(Boolean(0)); //false
+    console.log(Boolean("")); //false
+    console.log(Boolean(null)); //false
+    console.log(Boolean(undefined)); //false
+    //************ number 类型
+    var num1 = 071 ,num2 = 0x1f ,num3 = 3.1e6 ,num4 =0.1+0.2 ,num5 = 0.15+0.25;
+    console.log(num1,num2,num3,num4 ,num5); //浮点误差问题！
+    // NaN  NaN与任何值都不相等，包括NaN本身
+    //判断函数：isNaN()
+    console.log(isNaN("aaa")); //true   不能转换为数值
+    console.log(isNaN(0));   //false   能转换为数值
+    console.log(isNaN(true));   //false
+    console.log(isNaN(c));   //false
+    //转换函数：Number(); 将任何数据类型转换成数值  或者用 “+”（一元加操作符） 代替
+    console.log(Number(true));  // 1
+    console.log(Number("11"));  // 11
+    console.log(Number(a));  // NaN
+    console.log(Number(null),Number(undefined));  // 0 , NaN
+    console.log(Number(11));  // 11
+    console.log(Number(c));  // NaN
+    console.log(Number("abc"));  // NaN
+    //转换函数：parseInt() parseFloat() 把字符串转换成整数或浮点数
+    console.log(parseInt("1234abc")); //1234
+    console.log(parseInt("abc1234")); //NaN
+    console.log(parseInt("true")); //NaN
+    console.log(parseInt(true)); //NaN
+    console.log(parseInt(null)); //NaN
+    console.log(parseInt("10",2)); // 2 后面的参数是几进制
+    console.log(parseFloat("1234abc")); // 1234
+    console.log(parseFloat("1234.23")); // 1234.23
+    //************ string类型
+    //由 "" '' 表示  转义序列： \n \t \b \r \f \\ \' \" \x41 \u03a3
+    console.log("my name is \n zky");
+    console.log("java"+"Script");
+    //转换函数：toString() 数值，布尔值，对象，字符串都有这个方法 装换为字符串  可用 str + "" 代替！！！
+    var num = 11, str ="11";
+    console.log(num.toString());
+    console.log(num.toString(2)); //为数值时 可带参数为进制
+    console.log(str.toString());
+    console.log(true.toString());  //true
+    console.log(c.toString());    //【object】
+    console.info(b.toString());
+//    console.log(null.toString());  //报错
+//    console.log(undefined.toString());  //报错
+    //转换函数：String() 将任何类型的值转换为字符串
+    // 原理 对有toString()方法的直接调用，null和undefined返回本身
+    console.log(String(null));  //null
+    console.log(String(undefined));  //undefined
+    //************ object类型
+    //对象就是一组数据和功能的集合 object类型时所有它的实例的基础。object类型所具有的方法和属性也同样存在于更具体的对象中！！！！
+    var o = new Object();
+    o = {age:12};
+    console.log(o.__proto__);
+    console.log(o.hasOwnProperty("name"));  //判断某属性是否在当前对象实例中
+    console.log(o.hasOwnProperty("age"));  //判断某属性是否在当前对象实例中
+    console.log(o.constructor());  //保存用于创建当前对象的构造函数
+    console.log(o.toLocaleString());  //
+    console.log(o.toString());  //
+    console.log(o.valueOf());  //返回对象的字符串、数值、布尔值的表示
+    console.log(o.isPrototypeOf(o));  //
+    new Date();
+</script>
+</body>
+</html>

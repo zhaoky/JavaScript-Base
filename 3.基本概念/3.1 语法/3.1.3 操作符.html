@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = 1;
+    var b = "123abc";
+    var c = {
+        valueOf: function () {
+            return 1;
+        }
+    };
+    var d = 1.1;
+    var e = undefined;
+    var f = null;
+    //一元操作符  前置型(变量的值在语句被求值以前改变的) 后置型（包含他们的语句求值之后执行） 与执行语句的优先级相等
+    console.log(++a);
+    console.log(a++);
+    console.log(++b);  //NaN
+    console.log(++c);  //对象就调用valueOf方法
+    console.log(++d);  //
+    console.log(++e);  //NaN
+    console.log(++f);  //1
+    //一元加、减操作符  一元加相当于转型函数：Number()!!!!
+    console.log(+"01");  //1
+    console.log(+false);  //0
+    console.log(+null);  //0
+    console.log(+undefined);  //NaN
+    console.log(+"asd");  //NaN
+    console.log(+c);    //对象就调用valueOf方法
+    //位操作符
+    console.log(~25);  //按位非
+    console.log(25 & 3); //按位与
+    console.log(25 | 3); //按位或
+    console.log(25 ^ 3); //按位异或
+    console.log(2 << 5); //左移
+    console.log(2 >> 5); //有符号的右移
+    console.log(2 >>> 5); //无符号的右移
+    //布尔操作符
+    // ! 逻辑非  !! 等价于 Boolean() 函数
+    console.log(!false);  //true
+    console.log(!null);  //true
+    console.log(!undefined);  //true
+    console.log(!'');  //true
+    // && 逻辑与 短路操作符 遇 false短路为false 其中一项为null undefined NaN 就为它
+    var obj1 = {name: "zky"};
+    var obj2 = {name: "qxq"};
+    console.log(obj1 && obj2);   //都是对象 就返回第二个
+    console.log(true && obj2);  //返回 obj2
+    console.log(obj2 && true);  //返回 true
+    // || 逻辑或 短路操作符 遇 true短路为true  其中两项都为null undefined NaN 就为它
+    console.log(obj2 || true);   //第一个是对象就返回第一个
+    console.log(false || null);   //第一个是false 返回第二个操作数
+    //乘性操作符 调用Number()自动转换为数值计算 乘法：*  除法： / 求模： %
+    //加法操作符
+    console.log(5+5);
+    console.log("love"+"Qin");
+    console.log("love"+3);
+    console.log("love"+false);  //对象，数值，布尔值自动调用 toString()
+    console.log("love"+null);  //undefined null自动调用 String()
+    console.log("love"+obj1);  //自动调用 toString()
+    //减法操作符
+    console.log(5-b);       //字符串，布尔值，null，undefined自动调用Number()
+    console.log(5-obj1);   //对象自动调用valueOf() 没valueOf()调用toString()
+    //关系操作符 任何操作数与NaN进行比较都是false
+    console.log("as">"Ba"); // 都是字符串，比较字符编码值
+    console.log("as">3); // 一个是数值，另一个操作数转换为数值比较（NaN）
+    console.log(obj1>3); //对象自动调用valueOf() 没valueOf()调用toString()
+    //相等操作符  相等和不相等---先转换再比较 全等和不全等---直接比较  == !=
+    console.log("5"==5);   //  一个是数值，另一个操作数转换为数值比较
+    console.log(obj1==5);   //  一个是数值，另一个操作数是对象调用valueOf()比较
+    console.log(null==0);   //  false
+    console.log(undefined==0);   //  false
+    console.log(undefined==null);   //  true
+    console.log(NaN==NaN);   //  false
+    //全等操作符 === !==
+    console.log("5"===5);  //false
+    console.log(undefined===null);  //false
+    //条件操作符
+    function num(num1,num2){
+        return num1>num2?num1:num2;
+    }
+    console.log(num(23,133));
+    //赋值操作符 复合赋值 += -= *= /= %=  简化操作，但不能带来性能提升
+    var number = 10;
+    //逗号操作符
+    var num1= 1,num2 =2 ,num3 =3; //声明多个变量
+    var num4 = (1,2,3,4,5);  console.log(num4);//赋值取最后一个
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //函数 任何函数在任何时候都可以通过return语句后跟要返回的值来实现返回值
+    var a = function(){
+        console.log(33);
+    };
+    console.log(a());
+    //理解参数 函数的参数在内部都是以一个数组表示的
+    function zky(){
+        console.log(arguments);   //arguments对象
+        arguments[2]=88;
+        console.log(arguments[2]);
+        console.log(arguments.callee);   //引用函数自身
+    }
+    zky(1,2);
+    //ECMAScript中的所有参数传递的都是值
+    //因为ECMAScript没有函数签名，所有没有重载
+    function c(obj){
+        obj = {};
+        obj.name = "zky";
+    }
+    var qin = {
+        name:"qxq"
+    };
+    temp  = qin;
+    temp= {};
+//    c(qin);
+    console.log(qin);
+    console.log(temp);
+    var tr = {};
+    var Str = [];
+    for(var i = 0 ;i<5 ; i++){
+            tr.name = i;
+            Str.push(tr.name);
+
+    }
+    console.log(Str);
+</script>
+</body>
+</html>
