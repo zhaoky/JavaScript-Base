@@ -1,0 +1,34 @@
+<!--
+    <script>属性：
+        async: 异步脚本：只对外部脚本有效，立即下载脚本，并不按先后顺序执行
+        defer：延迟脚本：只对外部脚本有效，脚本立即下载，页面解析完毕后，先于DOMContentLoad事件，按顺序执行（现实并不会）
+        src：包含执行代码的外部文件，依次解析。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码会被忽略。
+            与解析嵌入式JavaScript代码一样，在解析外部JavaScript文件（包含下载该文件）时。页面的处理也会暂停停止。
+            嵌入式代码若需要包含“</script>”，则需要转义：“<\/script>”
+    现代web应用程序一般把全部JavaScript引用放在<body>元素页面内容的后面。
+    在XHTML中：用CData片段来包含JavaScript代码,就避免转换字符，不支持XHTML可以直接注射掉。
+            <script>
+                //<![CDATA[
+                function a(a,b){
+                    if(a<b){
+                        alert(a);
+                    }
+                }
+                //]]>
+            </script>
+    外部script文件好处：1.可维护性；2.可缓存性；3.适应未来
+    文档模式：html5: <!DOCTYPE html>
+    <noscript>这句话只有在浏览器不支持脚本或被禁用下显示</noscript>
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script async="async" charset="GB2312" defer="defer" src="" type="text/javascript"></script>
+
+</head>
+<body>
+
+</body>
+</html>
