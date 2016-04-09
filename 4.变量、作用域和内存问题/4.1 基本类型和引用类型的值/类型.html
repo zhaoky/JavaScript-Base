@@ -1,0 +1,106 @@
+<!--
+    ECMAScript变量包含两种不同类型的值: 基本类型值 和 引用类型值.
+        基本类型值:简单的数据段 ,5种:undefined ,null ,boolean ,number ,string. 按值访问，可以操作保存在变量中的实际的值。
+                   ---保存在栈内存中。
+        引用类型值:多个值构成的对象（保存在内存中）  JavaScript不允许直接访问内存中的位置（不允许直接操作对象的内存空间），操作对象实际上在操作对象的引用而不是实际的对象。
+                   ---保存在堆内存中。
+        复制变量值：
+                基本类型 会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。
+                引用类型 将存储在变量对象中的值复制一份放到新变量分配的空间中。这个值的副本实际上是一个指针，指向存储在堆中的一个对象。复制完成时，两个变量将引用同一个对象。
+        传递参数
+                函数的参数按值传递。 把函数外部的值复制给函数内部的参数，就和把值从一个变量***复制***到另一个变量一样（基本 +  引用）。
+                可以把ECMAScript函数的参数想象成局部变量。
+                **** 但在函数内部重写obj时，这个变量引用的就是一个局部对象了。这个局部对象会在函数执行完毕后立即被销毁。
+        检测类型
+                typeof 对引用类型用处不大
+                instanceof 检测是否是某引用类型
+        执行环境及作用域
+                每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个对象中
+                在web浏览器中，全局执行环境被认为是windows对象。
+                每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。
+        作用域链
+                当代码在一个环境中执行时，回创建变量对象的一个作用域链。
+                用途：保证对执行环境有权访问的所有变量和函数的有序访问。
+                前端：当前执行的代码所在环境的变量对象（函数为arguments对象）
+                末端：全局执行环境的变量对象
+                标识符解析时沿着作用域链一级一级的搜索标识符的过程。
+                内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。
+        延长作用域链
+                try-catch语句的catch块
+                with语句
+        没有块级作用域
+                使用var声明的变量回自动被添加到最接近的环境中。
+                没有使用var声明，该变量会自动添加到全局环境。
+                查询搜索标识符：从作用域的前端开始，向上逐级查询，如果没在局部变量中找到，将一直追溯到全局环境的变量对象。
+                如果在局部环境存在同名标识符，则停止不管父环境的标识符。
+        垃圾收集
+                JavaScript具有自动垃圾收集机制，垃圾收集器回按照固定的时间间隔，找出哪些不再继续使用的变量，然后释放其占用的内存。
+                标记清除
+                引用计数（放弃） 循环引用会引起内存泄漏。 最好的方法就是不用的时候手工断开连接  ==null
+        性能问题
+                以临界值来触发垃圾收集器，为了不让它频繁运行，触发垃圾收集的变量分配、字面量和（或）数组元素的临界值被调整为动态修正。
+        管理内存
+                分配给web浏览器的可用内存数量通常比分配给桌面应用程序的少。
+                确保用最少的内存可以让页面获得更好的性能。
+                解除引用：一旦数据不再有用，通过将其值设置为null来释放其引用，以便垃圾收集器下次运行时将其回收。
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = {name:"zky"};
+    var b = a;
+    var d = [1,2,3];
+    b.name = "qxq";
+    console.log(a); //对象变量是指针
+    var func = function(obj){
+        obj.name = "tr";
+        obj = {}; //重写obj
+        obj.name = "zzz";  //成了局部变量 函数结束时销毁
+    };
+    func(a);
+    console.log(a);
+    console.log(a instanceof Object);   //true
+    console.log(a instanceof Array);   //false
+    console.log(d instanceof Array);   //true
+    var color = "red";
+    function color1(){   //作用域链，向上查找
+        var colorAn = "blue";
+        function color2(){
+            var colorTemp = colorAn;
+            colorAn = color;
+            color = colorTemp;
+            console.log(color,colorAn,colorTemp);
+        }
+        color2();
+//        console.log(color,colorAn,colorTemp); //不能读取colorTemp
+    }
+    color1();
+//    console.log(color,colorAn,colorTemp);  //不能读取colorAn，colorTemp
+    //延长作用域链
+    function buildUrl(){
+        var s = "aaa";
+        with(location){
+            var url = href + s;
+        }
+        return url;
+    }
+    console.log(buildUrl()); // location对象被添加到了作用域链的前端，当引用href时，可在当前执行环境的变量对象中找到。
+    //搜索标识符
+    var book = "JS";
+    function someBooks(){
+        var book = "angularJs";
+        console.log(111,book);
+        console.log(111,window.book);
+        console.log(111,window);
+        return  book;
+    }
+    console.log(someBooks());
+    console.log(book);
+</script>
+</body>
+</html>
