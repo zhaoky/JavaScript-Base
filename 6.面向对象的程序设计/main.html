@@ -1,6 +1,18 @@
 <!--
     面向对象的程序设计
         对象：无序属性的集合，其属性可以包含基本值，对象或者函数。
+        对象字面量---创建对象的首选模式。
+        ECMAScript中有两种属性：数据属性和访问器属性。
+            数据属性：
+                [[Configurable]] true
+                [[Enumerable]]   true
+                [[Writable]]   true
+                [[Value]]    值
+            访问器属性：
+                [[Configurable]]  true
+                [[Enumerable]]  true
+                [[Get]]
+                [[Set]]
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +21,74 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    //对象字面量
+    var person = {
+        name:"zky",
+        age:24,
+        job:"FE.D",
+        sayName : function(){
+            console.log(this.name);
+        }
+    };
+    var people = {};
+    //数据属性：包含一个数据值的位置
+    Object.defineProperty(people,"name",{   //调用后，如果不指定，configurable enumerable writable 默认值是false
+        value:"qxq"
+    });
+    console.log(people.name);   //qxq
+    delete  people.name;
+    console.log(people.name);    //qxq
+    people.name = "aaa";
+    console.log(people.name);    //qxq
+    //访问器属性
+    var book = {
+        _year:2014,
+        edition:1
+    };
+    Object.defineProperty(book,"name",{
+//        get:function(){
+//            return 0;
+//        },
+        set:function(value){
+            if(value>2010){
+                this._year = value;
+            }
+        }
+    });
+    book.name = 2015;
+    console.log(book.name);
+    console.log(book._year);
+    //定义多个属性
+    var color = {};
+    Object.defineProperties(color,{  //定义出来的都是内部的属性
+        _year:{
+            value:2000,
+            writable:true
+        },
+        age:{
+            value:24,
+            writable:true
+        },
+        name:{
+            get:function(){
+                return this._year;
+            },
+            set:function(value){
+                if(value>2000){
+                    this._year = value;
+                    this.age =value-2004;
+                }
+            }
+        }
+    });
+    console.log(color);
+    color.job = "aaa";
+    color.name = 2010;
+    console.log(color);
+    //读取属性的特性
+    console.log(Object.getOwnPropertyDescriptor(color,"_year"));   //返回数据属性的特性
+    console.log(Object.getOwnPropertyDescriptor(color,"name"));    //返回访问器属性的特性
+</script>
 </body>
 </html>
