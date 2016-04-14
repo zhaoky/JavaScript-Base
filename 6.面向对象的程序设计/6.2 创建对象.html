@@ -1,6 +1,7 @@
 <!--
 	创建对象：
 		工厂模式
+		构造函数模式
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,8 @@
 </head>
 <body>
 <script>
-	//工厂模式  不能判定对象类型
+	//*********工厂模式********
+	// 不能判定对象类型 造出来的都是object
 	//对象类型包括：内置对象类型，普通对象类型，自定义对象类型
 	function create(name,age,job){
 		var o =new Object();
@@ -23,6 +25,27 @@
 	var b = create("qxq",22,"UI");
 	console.log(a,b);
 	console.log(b instanceof Object);
+	//*******构造函数模式**********
+	//可以创建特定类型的对象
+	//构造函数以一个大写字母开头
+	//构造函数胜过工厂模式因为它的实例就可以标志为一种特定的类型，而不是object
+	function Person(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.sayName = function(){
+			console.log(this.name);
+		}
+	}
+	var p1 = new Person("zky",24,"FE"); //必须用new操作符  //!!!! 任何函数 只要通过new操作符来调用，那它就可以作为构造函数
+	var p2 = new Person("qxq",22,"UI");
+	console.log(p1,p2);
+	console.log(p1 instanceof Object); //true
+	console.log(p1 instanceof Person); //true
+	//构造函数的问题：每个方法都要在每个实例上重新创建一遍，会导致不同的作用域链和标识符解析
+	//如果把方法提到外面去，每个实例都引用它，就一样了，然而有很多方法的话就会定义很多的全局函数，不好，没有封装性可言
+	console.log(p1.sayName===p2.sayName); //false
+	console.log(p1.age===p2.age); //false
 </script>
 </body>
 </html>
