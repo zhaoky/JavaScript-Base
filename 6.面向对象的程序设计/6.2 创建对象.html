@@ -1,0 +1,28 @@
+<!--
+	创建对象：
+		工厂模式
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	//工厂模式  不能判定对象类型
+	//对象类型包括：内置对象类型，普通对象类型，自定义对象类型
+	function create(name,age,job){
+		var o =new Object();
+		o.name = name;
+		o.age = age;
+		o.job = job;
+		return o;
+	}
+	var a = create("zky",24,"FE");
+	var b = create("qxq",22,"UI");
+	console.log(a,b);
+	console.log(b instanceof Object);
+</script>
+</body>
+</html>
