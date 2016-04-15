@@ -11,7 +11,9 @@
 </head>
 <body>
 <script>
+
 	//*********工厂模式********
+
 	// 不能判定对象类型 造出来的都是object
 	//对象类型包括：内置对象类型，普通对象类型，自定义对象类型
 	function create(name,age,job){
@@ -25,7 +27,9 @@
 	var b = create("qxq",22,"UI");
 	console.log(a,b);
 	console.log(b instanceof Object);
+
 	//*******构造函数模式**********
+
 	//可以创建特定类型的对象
 	//构造函数以一个大写字母开头
 	//构造函数胜过工厂模式因为它的实例就可以标志为一种特定的类型，而不是object
@@ -36,6 +40,8 @@
 		this.sayName = function(){
 			console.log(this.name);
 		}
+		//等价于
+//		this.sayName = new Function (console.log(this.name))
 	}
 	var p1 = new Person("zky",24,"FE"); //必须用new操作符  //!!!! 任何函数 只要通过new操作符来调用，那它就可以作为构造函数
 	var p2 = new Person("qxq",22,"UI");
@@ -46,6 +52,124 @@
 	//如果把方法提到外面去，每个实例都引用它，就一样了，然而有很多方法的话就会定义很多的全局函数，不好，没有封装性可言
 	console.log(p1.sayName===p2.sayName); //false
 	console.log(p1.age===p2.age); //false
+
+	//*******原型模式*******
+
+	console.log(Person.prototype);
+	function Func(){
+
+	}
+	console.log(Func.prototype);
+	Func.prototype.name = "zky";
+	Func.prototype.age = 24;
+	Func.prototype.job = "FE";
+	Func.prototype.sayName = function(){
+		console.log(this.name);
+	};
+	var f1 = new Func();
+	console.info(f1.__proto__);
+//	f1.name = "tr";
+	console.log(f1.name);
+	var f2 = new Func();
+	console.log(f1.sayName === f2.sayName); //true
+	f2.sayName= function(){
+		console.log(this.name);
+	};
+	console.log(f1.sayName === f2.sayName); //false
+	console.log(f1,f2);
+
+	//*** 1.理解原型对象
+
+	// 创建一个函数，就会为函数创建一个prototype属性，他是个指针，指向这个函数的原型对象。
+	// 原型对象含有一个constructor（构造函数）属性，指向prototype属性所在的那个函数（即“创建的那个函数”）。
+	console.log(Func);
+	console.log(Func.prototype);//自定义的构造函数的原型对象
+	console.info(Func.prototype.constructor);
+	console.info(f1.constructor);
+	console.log(Func === Func.prototype.constructor); //true
+	//创建自定义的构造函数，其原型对象只有默认的constructor属性，其他方法属性都从Object继承过来
+	//调用构造函数创建实例（f1）后，f1有个内部属性：[[Prototype]],指向构造函数的原型对象,在浏览器中用__proto__访问。
+	//!!!这个连接存在与实例（f1）与原型对象之间，而不是f1与构造函数之间。
+	//用isPrototypeOf来判定实例对象和原型对象是否有关系
+	console.log(Func.prototype.isPrototypeOf(f1)); //true
+	console.log(Func.prototype.isPrototypeOf(f2));  //true
+	console.log(Func.prototype.isPrototypeOf(p1));  //false
+	//返回实例[[Prototype]]的值,即构造函数的原型对象
+	console.log(Object.getPrototypeOf(f1));
+	console.log(Object.getPrototypeOf(f1) === Func.prototype); //true
+	//多个对象实例共享原型属性方法的原理：先搜索实例本身，没有就搜索他的原型对象。
+	console.log(f1.name);   //zky
+	f1.name = "lr";
+	console.log(f1.name);  //lr
+	f1.name = null;
+	console.log(f1.name);   //null
+	delete  f1.name;  //只有删除才会重新读取原型中的值
+	console.log(f1.name);  //zky
+	//检测一个属性是否在实例还是原型  实例返回true
+	console.log(f1.hasOwnProperty("name")); //false
+	f1.name = null;
+	console.log(f1.hasOwnProperty("name")); //false
+	console.log(Object.getOwnPropertyDescriptor(f1,"name"));
+	console.log(Object.getOwnPropertyDescriptor(f1.__proto__,"name"));
+
+	//*** 2.原型与 in 操作符
+	function Book(){
+
+	}
+	Book.prototype.name = "zky";
+	Book.prototype.age = 24;
+	Book.prototype.job = "FE";
+	Book.prototype.sayName = function(){
+		console.log(this.name);
+	};
+	var b1 = new Book();
+	var b2 = new Book();
+	console.info(Book.prototype);
+	console.log(b1.hasOwnProperty("name"));  //false  在原型 返回false
+	console.log("name" in b1);   //true    无论在哪 有这属性就返回true
+	b1.name = "zzz";
+	console.log(b1.hasOwnProperty("name"));  //true  在实例 返回true
+	console.log("name" in b1);   //true    无论在哪 有这属性就返回true
+	//！！！判定一个属性在原型还是在实例
+	function a(obj,name){
+		return (name in obj) && !obj.hasOwnProperty(name);
+	}
+	//for-in循环中，返回所有能通过对象访问，可枚举的属性。包括实例和原型。   被打上了值为 false 的[[Enumerable]]标记就不能枚举了，很多内部属性都被打上了。
+	for (var x in b1){
+		console.log(x);   // name age job sayName
+	}
+	//返回所有通过对象访问，可枚举的只是实例的属性：
+	console.log(Object.keys(b2));  // []
+	b1.age = 22;
+	console.log(Object.keys(b1));  // ["name", "age"]
+	console.log(Object.keys(Book.prototype));  //["name", "age", "job", "sayName"]
+	console.log(Object.keys(b1.__proto__));  //["name", "age", "job", "sayName"]
+	//返回所有通过对象访问，所有实例属性：
+	console.log(Object.getOwnPropertyNames(b2));  // []
+	console.log(Object.getOwnPropertyNames(b1));  // ["name", "age"]
+	console.log(Object.getOwnPropertyNames(Book.prototype));  // ["constructor", "name", "age", "job", "sayName"]
+
+	//*** 3.更简单的原型语法
+	//对象字面量重写原型对象
+	function Color(){
+
+	}
+	Color.prototype = {
+//		constructor:Color,      //用来强行还原，不过这样就让他可枚举了 ，[[Enumerable]]特性被设置为 true。 用Object.defineProperty()设回来。
+		name :"zky",
+		age : 24,
+		job : "FE",
+		sayName : function(){
+			console.log(this.name);
+		}
+	};
+	var C1 = new Color();
+	console.log(Color.prototype);
+	//上面重写了prototype对象,就没了constructor属性  其他都一样
+	console.log(C1 instanceof Object);  //true
+	console.log(C1 instanceof Color);   //true
+	console.log(Color.prototype.constructor === Color); //false
+	console.log(Object.prototype.toString.apply(C1)); //[object Object]
 </script>
 </body>
 </html>
