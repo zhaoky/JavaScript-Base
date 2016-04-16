@@ -150,6 +150,7 @@
 	console.log(Object.getOwnPropertyNames(Book.prototype));  // ["constructor", "name", "age", "job", "sayName"]
 
 	//*** 3.更简单的原型语法
+
 	//对象字面量重写原型对象
 	function Color(){
 
@@ -170,6 +171,74 @@
 	console.log(C1 instanceof Color);   //true
 	console.log(Color.prototype.constructor === Color); //false
 	console.log(Object.prototype.toString.apply(C1)); //[object Object]
+
+	//****** 4.原型的动态性
+	//对原型对象所做的任何修改都能够立即从实例上反映过来。
+	function Arr(){
+
+	}
+	var a1 = new Arr();
+//	Arr.prototype.say = function(){
+//		console.log(this);
+//	};
+	Arr.prototype = {
+		constructor:Arr,
+		say : function(){
+			console.log(this);
+		}
+	};
+	var a2 = new Arr();
+	//a1 先实例化 链接的那个原型被重写 所有不是后来的这个
+	console.log(a1.say);  //undefined
+	//a2 后实例化 重新连接后的
+	console.log(a2.say);	//function(){...}
+
+	//******* 5.原生对象的原型
+
+	//原生的引用类型（Object,Array,String等）也是原型模式创建的
+	console.log(Array.prototype); //里面有所有的方法
+	var str="hello!";
+	String.prototype.aa = function(text){
+		console.log(text,123);
+	};
+//	String.prototype = {
+//		aa:function(text){
+//			console.log(text,123);
+//		}
+//	};
+	console.log(str);
+	str.aa(str);
+	//!!不推荐在产品化的程序中修改原生对象的原型，容易冲突
+
+	//******* 6.原型对象的问题
+
+	//由共享引起的引用类型的问题
+	function Kic(){
+
+	}
+	Kic.prototype = {
+		constructor:Kic,
+		name:"zky",
+		age:24,
+		job:["FE","SEO"],
+		sayName:function(){
+			alert(this.name);
+		}
+	};
+	var k1 = new Kic();
+	var k2 = new Kic();
+	k1.job.push("RD");  //加入
+//	k1.job = ["asd"];   重写
+	k1.name = "lr";
+	console.log(k1.job); //["FE", "SEO", "RD"]
+	console.log(k2.job); //["FE", "SEO", "RD"] 给K1push了 k2也有了
+	console.log(k1.job === k2.job);  //true
+	console.log(k1.name); // lr
+	console.log(k2.name); //  zky   基本类型不会受影响
+	console.log(k1,k2);
+
+	//*******组合使用构造函数模式和原型模式*******
+
 </script>
 </body>
 </html>
