@@ -239,6 +239,30 @@
 
 	//*******组合使用构造函数模式和原型模式*******
 
+	//最常见的方式，构造函数模式用于定义实例属性方法，原型模式定义共享属性方法
+	function Doc(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.friend = ["tr","lr"];
+	}
+	Doc.prototype = {
+		constructor:Doc,
+		sayName:function(){
+			console.log(this.name);
+		}
+	};
+	var d1 =new Doc("zky",24,"FE");
+	var d2 =new Doc("qxq",22,"UI");
+	var d3 = Doc("aaa",100,"DDD"); //undefined
+	console.log(d1,d2,d3);
+	d1.friend.push("lbb");     //这样就不冲突了
+	console.log(d1,d2);
+	console.log(d1.sayName === d2.sayName); //true
+
+	//动态原型模式
+
+
 </script>
 </body>
 </html>
