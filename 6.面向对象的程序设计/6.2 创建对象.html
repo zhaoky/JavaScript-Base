@@ -39,13 +39,13 @@
 		this.job = job;
 		this.sayName = function(){
 			console.log(this.name);
-		}
+		};
 		//等价于
 //		this.sayName = new Function (console.log(this.name))
 	}
 	var p1 = new Person("zky",24,"FE"); //必须用new操作符  //!!!! 任何函数 只要通过new操作符来调用，那它就可以作为构造函数
 	var p2 = new Person("qxq",22,"UI");
-	console.log(p1,p2);
+	console.log(1,p1,p2);
 	console.log(p1 instanceof Object); //true
 	console.log(p1 instanceof Person); //true
 	//构造函数的问题：每个方法都要在每个实例上重新创建一遍，会导致不同的作用域链和标识符解析
@@ -262,7 +262,46 @@
 
 	//动态原型模式
 
+	//所有信息封装在构造函数中，在构造函数中选择性的初始化原型
 
+	function Sex(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.friend = ["tr","lr"];
+		Sex.prototype = {
+			constructor: Sex,
+			sayName : function(){
+				console.log(this.name);
+			}
+		};
+//		if(typeof this.sayName != "function"){   //在sayName不存在的情况下，才添加到原型中
+//			Sex.prototype.sayName = function(){
+//				console.log(this.name);
+//			}
+//		}
+	}
+	var s1 = new Sex("zky",24,"FE");   //没有sayName  因为它指向的是最初的原型
+	console.log(s1);
+	console.log(Sex.prototype);
+
+	//寄生构造函数模式
+	function Tec(a,b,c){
+		var o = new Object();
+		o.name = a;
+		o.age = b;
+		o.job = c;
+		o.sayName = function(){
+			console.log(this.name);
+		};
+		Tec.prototype.aa = "aa";
+		return o;
+	}
+	var t1 = new Tec();
+	var t2 = Tec("zky",30,"Fe");
+	console.log(t1);
+	console.log(t2);
+	console.log(Tec.prototype);
 </script>
 </body>
 </html>
