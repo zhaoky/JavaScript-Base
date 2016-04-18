@@ -286,6 +286,9 @@
 	console.log(Sex.prototype);
 
 	//寄生构造函数模式
+	//寄生构造函数专门用来为js原生的构造函数定义新的方法
+	//像上面的例子中，SpecialArray()返回了一个对象values，这个values与Array“唯一”的区别就是比Array多了一个自定义的方法。。如果直接在Array中定义新的方法，会污染其它的数组对象甚至造成不必要的麻烦。
+	//https://segmentfault.com/q/1010000004596650
 	function Tec(a,b,c){
 		var o = new Object();
 		o.name = a;
@@ -299,9 +302,47 @@
 	}
 	var t1 = new Tec();
 	var t2 = Tec("zky",30,"Fe");
-	console.log(t1);
+	console.log(t1.__proto__);
 	console.log(t2);
 	console.log(Tec.prototype);
+	//稳妥构造函数模式
+	//稳妥对象：没有公共属性，其方法也不引用this的对象。适合安全环境。
+	function Per(name,age,job){
+		var o = new Object();
+		o.sayName = function(){
+			console.log(name);
+		};
+		return o;
+	}
+	var pp1 = Per("zky",29,"FE");
+	console.log(pp1);
+
+	function Pers(name, age, job) {
+		var o = new Object();
+
+		// private members
+		var nameUC = name.toUpperCase();
+
+		// public members
+		o.sayName = function() {
+			alert(name);
+		};
+		o.sayNameUC = function() {
+			alert(nameUC);
+		};
+
+		return o;
+	}
+
+	var person = Pers("Nicholas", 32, "software Engineer");
+
+	person.sayName(); // "Nicholas"
+	person.sayNameUC(); // "NICHOLAS"
+
+	alert(person.name);  // undefined
+	alert(person.nameUC);  // undefined
+	//凡是想设为 private 的成员都不要挂到 Person 返回的对象 o 的属性上面，挂上了就是 public 的了。
+
 </script>
 </body>
 </html>
