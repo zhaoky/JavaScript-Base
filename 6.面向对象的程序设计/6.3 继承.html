@@ -1,0 +1,32 @@
+<!--
+	OO语言支持两种继承方式：接口继承和实现继承（原型链）。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function Abs(){
+		this.name = "zky";
+	}
+	Abs.prototype.getName = function(){
+		return this.name;
+	};
+	function Bee(){
+		this.age = 24;
+	}
+	Bee.prototype = new Abs();
+	Bee.prototype.getAge = function(){
+		return this.age;
+	};
+	var c = new Bee();
+	console.log(c.getName());
+	console.log(Abs.prototype);
+	console.log(Bee.prototype);
+	console.log(c);
+</script>
+</body>
+</html>
