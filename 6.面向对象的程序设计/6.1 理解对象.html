@@ -22,6 +22,10 @@
 </head>
 <body>
 <script>
+    var pp = new Object();
+    pp.name = "aa";
+    pp.age = 22;
+    console.log(pp.__proto__);
     //对象字面量
     var person = {
         name:"zky",
@@ -31,6 +35,7 @@
             console.log(this.name);
         }
     };
+    console.log(person);
     var people = {};
     //数据属性：包含一个数据值的位置
     Object.defineProperty(people,"name",{   //调用后，如果不指定，configurable enumerable writable 默认值是false
@@ -47,21 +52,21 @@
         edition:1
     };
     Object.defineProperty(book,"name",{
-//        get:function(){
-//            return 0;
-//        },
+        get:function(){
+            return 0;
+        },
         set:function(value){
             if(value>2010){
                 this._year = value;
             }
         }
     });
-    book.name = 2015;
-    console.log(book.name);
+//    book.name = 2015;
+    console.info(book.name);
     console.log(book._year);
     //定义多个属性
     var color = {};
-    Object.defineProperties(color,{  //定义出来的都是内部的属性
+    Object.defineProperties(color,{  //定义出来的都是内部的属性 //调用后，如果不指定，configurable enumerable writable 默认值是false
         _year:{
             value:2000,
             writable:true
@@ -83,6 +88,9 @@
         }
     });
     console.log(color);
+    console.info(color._year);
+    color._year=1111;
+    console.info(color._year);
     color.job = "aaa";
     color.name = 2010;
     console.log(color);
