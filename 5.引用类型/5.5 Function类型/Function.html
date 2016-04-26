@@ -20,7 +20,7 @@
     console.log(b);   //函数表达式
     //函数声明
     function a(n1, n2) {
-        console.log(arguments);  //函数内部对象
+        console.info(arguments);  //函数内部对象
         return n1 + n2;
     }       //无分号
     //函数表达式
@@ -30,7 +30,7 @@
     //Function 构造函数  接受任意个参数，最后一个始终是函数体。  //不推荐
     var c = new Function("n1", "n2", "return n1*n2");
     //函数名是指针
-    console.log(a(5, 10)); //15
+    console.log(a(5, 10,12)); //15
     var d = a;
     a = null;
     //    console.log(a(5,10));  //报错
@@ -120,7 +120,7 @@
         inner();
     }
     function inner(){
-        console.log(inner.caller);
+        console.info(inner.caller);
     }
     outer();
     //length : 表示函数想接受的参数个数

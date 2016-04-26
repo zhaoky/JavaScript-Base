@@ -11,6 +11,9 @@
 </head>
 <body>
 <script>
+//__proto__
+//1.所有构造器/函数的__proto__都指向Function.prototype，它是一个空函数（Empty function）
+//2.所有对象的__proto__都指向其构造器的prototype
 
 	//*********工厂模式********
 
@@ -30,22 +33,27 @@
 
 	//*******构造函数模式**********
 
+
 	//可以创建特定类型的对象
 	//构造函数以一个大写字母开头
 	//构造函数胜过工厂模式因为它的实例就可以标志为一种特定的类型，而不是object
 	function Person(name,age,job){
-		this.name = name;
+		console.log(this,arguments);
+		this.name = name;   //作为构造函数调用this，这个this指代该实例对象
 		this.age = age;
 		this.job = job;
 		this.sayName = function(){
-			console.log(this.name);
+			console.log(this);
 		};
 		//等价于
 //		this.sayName = new Function (console.log(this.name))
 	}
 	var p1 = new Person("zky",24,"FE"); //必须用new操作符  //!!!! 任何函数 只要通过new操作符来调用，那它就可以作为构造函数
 	var p2 = new Person("qxq",22,"UI");
-	console.log(1,p1,p2);
+//	var p3 =  Person("tr",20,"AI");   //普通调用 ，this为window sayName为全局函数
+	console.log(11,Person);
+	console.log(p1,p2);
+	p2.sayName();
 	console.log(p1 instanceof Object); //true
 	console.log(p1 instanceof Person); //true
 	//构造函数的问题：每个方法都要在每个实例上重新创建一遍，会导致不同的作用域链和标识符解析
@@ -54,7 +62,7 @@
 	console.log(p1.age===p2.age); //false
 
 	//*******原型模式*******
-
+	//每一个函数都有一个prototype属性，指向它的原型对象 都有一个__proto__ 都指向Function.prototype，它是一个空函数
 	console.log(Person.prototype);
 	function Func(){
 
@@ -67,6 +75,7 @@
 		console.log(this.name);
 	};
 	var f1 = new Func();
+	console.log(f1);
 	console.log(f1.__proto__);
 //	f1.name = "tr";
 	console.log(f1.name);
@@ -76,7 +85,7 @@
 		console.log(this.name);
 	};
 	console.log(f1.sayName === f2.sayName); //false
-	console.log(f1,f2);
+	console.info(f1,f2);
 
 	//*** 1.理解原型对象
 
@@ -93,9 +102,10 @@
 	//用isPrototypeOf来判定实例对象和原型对象是否有关系
 	console.log(Func.prototype.isPrototypeOf(f1)); //true
 	console.log(Func.prototype.isPrototypeOf(f2));  //true
+	console.log(Object.prototype.isPrototypeOf(f2));  //true
 	console.log(Func.prototype.isPrototypeOf(p1));  //false
 	//返回实例[[Prototype]]的值,即构造函数的原型对象
-	console.log(Object.getPrototypeOf(f1));
+	console.info(Object.getPrototypeOf(f1));
 	console.log(Object.getPrototypeOf(f1) === Func.prototype); //true
 	//多个对象实例共享原型属性方法的原理：先搜索实例本身，没有就搜索他的原型对象。
 	console.log(f1.name);   //zky
@@ -283,7 +293,7 @@
 //		}
 	}
 	var s1 = new Sex("zky",24,"FE");   //没有sayName  因为它指向的是最初的原型
-	console.info(s1);
+	console.log(s1);
 	console.log(Sex.prototype);
 
 	//寄生构造函数模式
