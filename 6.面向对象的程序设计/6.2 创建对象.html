@@ -85,7 +85,7 @@
 		console.log(this.name);
 	};
 	console.log(f1.sayName === f2.sayName); //false
-	console.info(f1,f2);
+	console.log(f1,f2);
 
 	//*** 1.理解原型对象
 
@@ -105,7 +105,7 @@
 	console.log(Object.prototype.isPrototypeOf(f2));  //true
 	console.log(Func.prototype.isPrototypeOf(p1));  //false
 	//返回实例[[Prototype]]的值,即构造函数的原型对象
-	console.info(Object.getPrototypeOf(f1));
+	console.log(Object.getPrototypeOf(f1));
 	console.log(Object.getPrototypeOf(f1) === Func.prototype); //true
 	//多个对象实例共享原型属性方法的原理：先搜索实例本身，没有就搜索他的原型对象。
 	console.log(f1.name);   //zky
@@ -165,8 +165,9 @@
 	function Color(){
 
 	}
+	var C1 = new Color();
 	Color.prototype = {
-//		constructor:Color,      //用来强行还原，不过这样就让他可枚举了 ，[[Enumerable]]特性被设置为 true。 用Object.defineProperty()设回来。
+		constructor:Color,      //用来强行还原，不过这样就让他可枚举了 ，[[Enumerable]]特性被设置为 true。 用Object.defineProperty()设回来。
 		name :"zky",
 		age : 24,
 		job : "FE",
@@ -174,15 +175,19 @@
 			console.log(this.name);
 		}
 	};
-	var C1 = new Color();
+	var C2 = new Color();
 	console.log(Color.prototype);
 	//上面重写了prototype对象,就没了constructor属性  其他都一样
 	console.log(C1 instanceof Object);  //true
 	console.log(C1 instanceof Color);   //true
 	console.log(Color.prototype.constructor === Color); //false
-	console.log(Object.prototype.toString.apply(C1)); //[object Object]
+	console.log(C1.__proto__); //undefined
+	console.log(C2.__proto__); //有
+	console.info(Object.prototype.toString.apply(C1)); //[object Object]
+	console.info(Object.prototype.toString.apply(C2)); //[object Object]
 
 	//****** 4.原型的动态性
+
 	//对原型对象所做的任何修改都能够立即从实例上反映过来。
 	function Arr(){
 
@@ -238,7 +243,7 @@
 	var k1 = new Kic();
 	var k2 = new Kic();
 	k1.job.push("RD");  //加入
-//	k1.job = ["asd"];   重写
+//	k1.job = ["asd"];   //重写就不会
 	k1.name = "lr";
 	console.log(k1.job); //["FE", "SEO", "RD"]
 	console.log(k2.job); //["FE", "SEO", "RD"] 给K1push了 k2也有了
@@ -270,7 +275,7 @@
 	console.log(d1,d2);
 	console.log(d1.sayName === d2.sayName); //true
 
-	//动态原型模式
+	//动态原型模式  !!!该模式不能使用对象字面量重写原型
 
 	//所有信息封装在构造函数中，在构造函数中选择性的初始化原型
 
@@ -308,16 +313,17 @@
 		o.sayName = function(){
 			console.log(this.name);
 		};
-		Tec.prototype.aa = "aa";
 		return o;
 	}
+	Tec.prototype.aa = "aa";
+	console.log(Tec.prototype);
 	var t1 = new Tec();
 	var t2 = Tec("zky",30,"Fe");
-	console.log(t1.__proto__);
+	console.info(t1);
 	console.log(t2);
 	console.log(Tec.prototype);
 	//稳妥构造函数模式
-	//稳妥对象：没有公共属性，其方法也不引用this的对象。适合安全环境。
+	//稳妥对象：没有公共属性，其方法也不引用this的对象。适合安全环境。 不使用new调用构造函数。
 	function Per(name,age,job){
 		var o = new Object();
 		o.sayName = function(){

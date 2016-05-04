@@ -12,21 +12,130 @@
 	function Abs(){
 		this.name = "zky";
 	}
-	Abs.prototype.getName = function(){
-		return this.name;
+//	Abs.prototype.getName = function(){
+//		return this.name;
+//	};
+	Abs.prototype = {    //Abs.prototype对象的__proto__指向它构造函数（Object）的prototype    ，这就是一个object的实例
+		getName: function(){
+			return this.name;
+		}
 	};
+	console.log(Abs.prototype.__proto__ === Object.prototype);
 	function Bee(){
 		this.age = 24;
 	}
-	Bee.prototype = new Abs();
-	Bee.prototype.getAge = function(){
+	Bee.prototype = new Abs();   //Bee.prototype对象的__proto__指向它构造函数（Abs）的prototype   ***所有函数的默认原型都是Object的实例***
+	Bee.prototype.getAge = function(){      //这个写在前面会被重写
 		return this.age;
 	};
 	var c = new Bee();
 	console.log(c.getName());
 	console.log(Abs.prototype);
 	console.log(Bee.prototype);
-	console.log(c);
+	console.log(c.constructor);
+	//上面Bee的原型对象是Abs
+	//*** 利用原型让一个引用类型继承另一个引用类型的属性和方法，实现的本质是重写原型对象，代之以一个新类型的实例。
+
+	//确定原型和实例的关系
+	// instanceof()  --> instanceof的左值一般是一个对象，右值一般是一个构造函数，用来判断左值是否是右值的实例
+	console.log(c instanceof Bee); //true
+	console.log(c instanceof Abs);//true
+	console.log(c instanceof Object);//true
+	// isPrototypeOf()  只要是原型链中出现过的原型，都可以说是该原型链派生出来的实例的原型。
+	console.log(Object.prototype.isPrototypeOf(c));//true
+	console.log(Abs.prototype.isPrototypeOf(c));//true
+	console.log(Bee.prototype.isPrototypeOf(c));//true
+
+	//谨慎定义方法    给原型添加方法的代码一定要放在替换原型的语句之后
+	function C(){
+		this.c = true;
+	}
+	C.prototype.getC = function(){
+		return this.c;
+	};
+	function D(){
+		this.d = false;
+	}
+	D.prototype = new C();
+	D.prototype.getD = function(){
+		return this.d;
+	}
+	D.prototype.getC = function(){
+		return false;
+	}
+	var d = new D();
+	var c = new C();
+	console.log(d.getC());  //false
+	console.log(c.getC());  //true
+	console.log(C.prototype);
+	console.log(D.prototype);
+	//!*** 通过原型链实现继承时，不能使用对象字面量创建原型方法，这样会重写原型链
+
+	//原型链的问题：1.引用类型,2.不能传参
+	function E(){
+		this.num = [1,2,3,4,5];
+	}
+	function F(){
+	}
+	F.prototype = new E();   //不能传参，传参就不符合面对对象编程思维了
+	var f0 = new F();
+	var f1 = new F();
+	f1.num.push(6);
+	var f2 = new F();
+	var f3 = new F();
+	f3.num = [1,2];
+	console.log(f0.num,f1.num,f2.num,f3);
+
+	//借用构造函数
+	function G(){
+		this.num = [1,2,3];
+	}
+	function H(){
+		G.call(this);
+	}
+	var h1 = new H();
+	h1.num.push(4);  //[1,2,3,4]
+	var h2 = new H();
+	console.log(h1,h2); //[1,2,3]
+	//1.可以传递参数
+	function I(name){
+		this.name = name;
+	}
+	function J(){
+		I.call(this,"zky");  //继承I并传参
+		this.age = 24; //实例属性
+	}
+	var j = new J();
+	console.log(j);
+	//2.借用构造函数的问题： 无法复用
+
+	//组合继承
+	//思想：使用原型链对原型属性和方法的继承，借用构造函数来实现对实例属性的继承。
+	function K(name){
+		this.name = name;
+		this.num = [1,2,3];
+	}
+	K.prototype.sayName = function(){
+		console.log(this.name);
+	};
+	function L(name,age){
+		K.call(this,name);
+		this.age = age;
+	}
+	L.prototype= new K();  //不允许传参
+	L.prototype.constructor = L;
+	L.prototype.sayAge = function(){
+		console.log(this.age);
+	};
+	var l1 = new L("zky",24);
+	l1.num.push(4);
+	var l2 = new L("xq",20);
+	console.log(l1,l2);
+	console.log(l1.sayAge===l2.sayAge);
+
+	//原型式继承
+
+
 </script>
 </body>
 </html>
