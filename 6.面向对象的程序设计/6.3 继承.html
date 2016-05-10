@@ -1,5 +1,12 @@
 <!--
 	OO语言支持两种继承方式：接口继承和实现继承（原型链）。
+
+	创建对象的方式：
+		1.工厂模式
+		2.构造函数模式
+		3.原型模式
+	JavaScript主要通过原型链实现继承。原型链的构建是通过将一个类型的实例赋值给另一个构造函数的原型实现的。
+		还可以通过借用构造函数继承，原型式继承，寄生式继承，寄生组合式继承。
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -133,8 +140,96 @@
 	console.log(l1,l2);
 	console.log(l1.sayAge===l2.sayAge);
 
-	//原型式继承
-
+	//原型式继承   不创建构造函数   浅复制 共享引用类型的值。
+	//以一个对象作为另一个对象的基础
+	function object(o){
+		function F(){}
+		F.prototype = o;
+		return new F();
+	}
+	var o ={
+		name : "zky",
+		friend : [1,2,3]
+	};
+	o.__proto__.age = 24;
+	var o1 = object(o);
+	o1.name = "xq";
+	o1.friend.push(4);
+	var o2 = object(o);
+	o2.name = "tr";
+	o2.friend.push(5);
+	console.log(o,o1,o2);
+	//Object.create()  第一个参数：参数对象 作为原型。  第二个参数：定义格外属性的对象 同Object.defineProperties()方法的第二个参数
+	var o3 = Object.create(o);
+	o3.name = "lr";
+	o3.friend.push(6);
+	var o4 = Object.create(o);
+	o4.name = "sx";
+	o4.friend.push(7);
+	console.log(o3,o4);
+	var o5 = Object.create(o,{
+		name:{
+			value:"zzz"
+		}
+	});
+	console.log(o5);
+	//寄生式继承
+	//创建一个仅仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，再返回对象。
+	function createM(o){
+		var clone = object(o);
+		clone.say = function(){
+			console.log(777);
+		};
+		return clone;
+	}
+	var m = createM(o);
+	console.log(m);
+	//寄生组合式继承   最优
+	//先看组合继承的例子
+	function Q(name){
+		this.name = name;
+		this.num = [1,2,3];
+	}
+	Q.prototype.say= function(){
+		console.log(this.name);
+	};
+	function P(name){
+		Q.call(this,name);   //第二次调用Q
+		this.age = 24;
+	}
+	P.prototype = new Q();   //第一次调用Q   而且不能传参
+	P.prototype.constructor = P;
+	P.prototype.sayAge = function(){
+		console.log(this.age);
+	};
+	var p1 = new P("zky");
+	var p2 = new P("tr");
+	console.log(p1,p2); //在实例和prototype都有相同的属性
+	//寄生组合式继承的例子
+	function inh(sub,pare){    //参数：子类型和超类型的构造函数
+		var a = object(pare.prototype);  //创建超类型的原型的一个副本  a实际就是pare的实例，仅仅只拥有了原型，没有拥有构造函数
+		a.constructor = sub;
+		sub.prototype = a;  //sub的原型就是a
+	}
+	function X(name){
+		this.name = name;
+		this.num = [1,2,3];
+	}
+	X.prototype.say = function(){
+		console.log(this.name);
+	};
+	function Y(name,age){
+		X.call(this,name);
+		this.age= age;
+	}
+	inh(Y,X); //给子类型（Y）添加原型---X的实例（构造函数为空，原型为X的原型）
+		Y.prototype.sayAge = function(){
+		console.log(this.age);
+	};
+	var x = new X("zky");
+	var y = new Y("xq",22);   //这样不但可以传参 而且可以只继承原型方法 不继承构造函数属性
+	console.log(x);
+	console.log(y);
 
 </script>
 </body>
