@@ -1,0 +1,50 @@
+<!--
+    定义函数有两种方式：函数声明 函数表达式
+    判定：
+        1.不声明函数名称，它肯定是表达式
+        2.ECMAScript是通过上下文来区分的，如果function foo(){}是作为赋值表达式的一部分的话，那它就是一个函数表达式，如果function foo(){}被包含在一个函数体内，或者位于程序的最顶部的话，那它就是一个函数声明。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //函数声明
+    function fn(a,b,c){
+
+    }
+    //   name属性
+    console.log(fn.name); //fn
+    //   函数声明提升
+    say();  //先用 后声明
+    function say(){
+        console.log(123);
+    }
+    //函数表达式   ****  匿名函数/拉姆达函数  因为function 后面没有标识符（可选）
+    //特性：函数表达式中，如果出现标识符（函数名），那么这个函数名仅在这个函数体中可见。
+    var fn2 = function aaa(a,b,c){
+
+    };
+//    console.log(aaa.name);  // ""
+    //把函数当成值来使用的情况下，都可以使用匿名函数。
+    function a(p){
+        return function(o1,o2){
+            var v1 = o1[p];
+            var v2 = o2[p];
+            return v2-v1;
+        }
+    }
+    //命名函数表达式
+    var fn3 = function cc(){
+        console.log(cc);
+    };
+    fn3();
+    console.log(fn3);
+//    console.log(cc.name);    //报错 未定义
+</script>
+</html>

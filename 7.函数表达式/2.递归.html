@@ -1,0 +1,45 @@
+<!--
+    递归：递归函数是在一个函数通过名字调用自身的情况下构成的。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //经典阶乘函数
+    function a(num) {
+        if (num <= 1) {
+            return 1;
+        } else {
+            return num * a(num - 1);
+        }
+    }
+    //改进版  不依赖函数名    但在严格模式下报错
+    function b(num){
+        if(num <=1) {
+            return 1;
+        }else{
+            return num* arguments.callee(num-1);
+        }
+    }
+    var c = b;
+    b =null;
+    console.log(c(5)); //120
+    //改进加强版   () 分组操作符  里面一定是表达式
+    var func = (function f(num){
+        if(num<=1){
+            return 1;
+        }else{
+            return num*f(num-1);
+        }
+    });
+    var funa = func;
+    func = null;
+    console.log(funa(5));
+</script>
+</html>
