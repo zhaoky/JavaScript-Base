@@ -1,0 +1,94 @@
+<!--
+    闭包：有权访问另一个函数作用域中的变量的函数。
+    创建闭包的常见方式：在一个函数内部创建另一个函数
+    作用域链的本质是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。
+    当函数执行完毕后，局部变量就会被销毁，内存中仅保存全局作用域（全局执行环境的变量对象）。
+    在一个函数内部定义的函数会将包含函数（即外部函数）的活动对象添加到他的作用域链中
+
+    闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function a(prop) {
+        return function (o1, o2) {
+            var v1 = o1[prop];
+            var v2 = o2[prop];
+            return v2 - v1;
+        }
+    }
+    var compare = a("name");          //这个函数compare就是闭包
+    var result = compare({name: "zky"}, {name: "qxq"});
+    console.log(result);
+    compare = null; //解除引用
+    //闭包与变量： 闭包只能取得包含函数中任何变量的的最后一个值！！！
+    function b() {
+        var r = [];
+        for (var i = 0; i < 10; i++) {
+            r[i] = function () {
+                return i;
+            }
+        }
+        return r;
+    }
+    var b1 = b();
+    console.log(b1[1]());  //10
+    //正确方法
+    function c() {
+        var r = [];
+        for (var i = 0; i < 10; i++) {
+            r[i] = (function (i) {    //函数参数按值传递
+                return i;
+            })(i);
+        }
+        return r;
+    }
+    var c1 = c();
+    console.log(c1);
+    //关于this对象
+    //this对象是在运行时基于函数的执行环境绑定的。
+    //匿名函数的执行环境具有全局性，因此其this对象通常指向window
+    var name = "aaa";
+    var d = {
+        name: "zky",
+        getName: function () {
+            return function () {
+                return this.name;
+            };
+        }
+    };
+    d1 = d.getName();
+    console.log(d1());  //aaa 全局的
+    console.log(d.getName()());  //aaa 全局的
+    var e = {
+        name :"tr",
+        getName:function(){
+            var that = this;
+            return function(){
+                return that.name;
+            }
+        }
+    };
+    var f = {name:"qxq"};
+    d2 = e.getName();
+    console.log(d2());  //tr  局部的
+    console.log(e.getName()());  //tr
+    console.log((e.getName)()());  //tr
+    console.log((e.getName())());  //tr
+    console.log((e.getName=e.getName)()());  //aaa   赋值表达式的值是函数本身，不带其他的，独独的函数
+    console.log((f.getName=e.getName)()());  //aaa
+    console.log(f.getName()()); //qxq
+    console.log(e.getName.apply(f)()); //qxq
+    //内存泄漏
+
+
+
+</script>
+</html>
