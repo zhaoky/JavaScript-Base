@@ -87,7 +87,7 @@
     console.log(f.getName()()); //qxq
     console.log(e.getName.apply(f)()); //qxq
     //内存泄漏
-
+    //在IE中，如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。
 
 
 </script>
