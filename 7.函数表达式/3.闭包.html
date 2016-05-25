@@ -14,7 +14,7 @@
     <title>Title</title>
 </head>
 <body>
-
+    <button id ="aa">点我</button>
 </body>
 <script>
     function a(prop) {
@@ -88,7 +88,22 @@
     console.log(e.getName.apply(f)()); //qxq
     //内存泄漏
     //在IE中，如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。
-
+//    !function handler(){
+//        var e= document.getElementById("aa");
+//        e.onclick = function(){   //闭包
+//            console.log(e.id);
+//        }
+//    }();
+    //上面：闭包创建一个循环引用，只要匿名函数存在，就永远无法减少e的引用数（至少是1），它所占用的内存永不回收。
+    //改：
+    !function handlerd(){
+        var e= document.getElementById("aa");
+        var id = e.id;
+        e.onclick = function(){   //闭包
+            console.log(id);
+        };
+        e = null;
+    }();
 
 </script>
 </html>
