@@ -14,7 +14,8 @@
     <title>Title</title>
 </head>
 <body>
-    <button id ="aa">点我</button>
+<button id="aa">点我</button>
+<button id="bb">点我</button>
 </body>
 <script>
     function a(prop) {
@@ -68,42 +69,140 @@
     console.log(d1());  //aaa 全局的
     console.log(d.getName()());  //aaa 全局的
     var e = {
-        name :"tr",
-        getName:function(){
+        name: "tr",
+        getName: function () {
             var that = this;
-            return function(){
+            return function () {
                 return that.name;
             }
         }
     };
-    var f = {name:"qxq"};
+    var f = {name: "qxq"};
     d2 = e.getName();
     console.log(d2());  //tr  局部的
     console.log(e.getName()());  //tr
     console.log((e.getName)()());  //tr
     console.log((e.getName())());  //tr
-    console.log((e.getName=e.getName)()());  //aaa   赋值表达式的值是函数本身，不带其他的，独独的函数
-    console.log((f.getName=e.getName)()());  //aaa
+    console.log((e.getName = e.getName)()());  //aaa   赋值表达式的值是函数本身，不带其他的，独独的函数
+    console.log((f.getName = e.getName)()());  //aaa
     console.log(f.getName()()); //qxq
     console.log(e.getName.apply(f)()); //qxq
     //内存泄漏
     //在IE中，如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。
-//    !function handler(){
-//        var e= document.getElementById("aa");
-//        e.onclick = function(){   //闭包
-//            console.log(e.id);
-//        }
-//    }();
+    //    !function handler(){
+    //        var e= document.getElementById("aa");
+    //        e.onclick = function(){   //闭包
+    //            console.log(e.id);
+    //        };
+    //        e = null;   //就不能绑定事件了
+    //    }();
     //上面：闭包创建一个循环引用，只要匿名函数存在，就永远无法减少e的引用数（至少是1），它所占用的内存永不回收。
+    //当声明了一个变量并将一个引用类型赋值给该变量的时候这个值的引用次数就加1,
+    //如果该变量的值变成了另外一个，则这个值得引用次数减1，
+    //当这个值的引用次数变为0的时候，说明没有变量在使用，这个值没法被访问了，因此可以将其占用的空间回收，这样垃圾回收器会在运行的时候清理掉引用次数为0的值占用的空间。
     //改：
-    !function handlerd(){
-        var e= document.getElementById("aa");
+    !function handlerd() {
+        var e = document.getElementById("aa");
         var id = e.id;
-        e.onclick = function(){   //闭包
+        e.onclick = function () {   //闭包
             console.log(id);
         };
-        e = null;
+        e = null;//闭包会引用包含函数的整个活动对象，包含e。即使闭包不直接引用e，包含函数的活动对象中也仍然会保存一个引用，所以要设置为null
     }();
-
+    var bb = document.getElementById("bb");
+    bb.onclick = function () {
+        console.log(333);
+    };
+    bb = null;
+    //模仿块级作用域，该技术用来限制向全局作用域中添加过多的变量和函数。
+    !function g() {
+        for (var i = 0; i < 5; i++) {
+            console.log(i);
+        }
+        console.log(i);   //5
+        var i; //多个声明会无视
+        console.log(i);
+    }();
+    //块级作用域的语法：声明并立即调用了一个匿名函数：即函数表达式
+    (function () {
+        //块级作用域
+    })();
+    //    function(){}();  出错， JavaScript将function关键字当作一个函数声明的开始，而函数声明不能后面带括号。所以加一对圆括号转换成函数表达式。
+    //私有变量:任何在函数中定义的变量，都可以认为是私有变量。
+    //特权方法：把有权访问私有变量和私有函数的公有方法称为特权方法。
+    //创建特权方法的两种方式：
+    //1.构造函数中定义：
+    function H(name) {
+        this.getName = function () {
+            return name;
+        };
+        this.setName = function (value) {
+            name = value;
+        }
+    }
+    var h = new H("zky");
+    console.log(h.getName());
+    h.setName("qxq");
+    console.log(h.getName());
+    //上面两个方法作为闭包通过作用域链访问到了name
+    //2.在私有作用域定义私有变量和函数，同样也可以创建特权方法。
+    (function () {
+        var name = "";
+        P = function (value) {
+            name = value;    //name变成一个静态的，由所有实例共享的属性-----静态私有变量
+        };
+        P.prototype.getName = function () {
+            return name;
+        };
+        P.prototype.setName = function (value) {
+            name = value;
+        }
+    })();
+    var p1 = new P("zky");
+    console.log(p1.getName());  //zky
+    p1.setName("qxq");
+    console.log(p1.getName());  //qxq
+    var p2 = new P("lr");
+    console.log(p2.getName()); //lr
+    console.log(p1.getName()); //lr
+    //模块模式：为单例（一个实例对象）创建私有变量和特权方法
+    var app = function () {
+        //私有
+        var a = [];
+        //初始化
+        a.push(new P());
+        //公共
+        return {        //返回一个对象
+            getLen: function () {     //特权方法
+                return a.length;
+            },
+            re: function (obj) {    //特权方法
+                if (typeof obj == "object") {
+                    a.push(obj);
+                }
+            }
+        }
+    }();
+    //以上：如果必须创建一个对象并以某些数据对其进行初始化，同时还要公开一些能够访问这些私有数据的方法，那么就可以用模块模式。
+    //增强的模块模式：在返回对象之前加入对其增强的代码，适合那些单列必须是某种类型的实例，同时还必须添加某些属性和方法对其加以增强的情况。
+    var app2 = function () {
+        //私有
+        var a = [];
+        //初始化
+        a.push(new P());
+        //增强
+        var app = new P();
+        //公共
+        app.getLen = function () {     //特权方法
+            return a.length;
+        };
+        app.re = function (obj) {    //特权方法
+            if (typeof obj == "object") {
+                a.push(obj);
+            }
+        };
+        //返回
+        return app;
+    }();
 </script>
 </html>
