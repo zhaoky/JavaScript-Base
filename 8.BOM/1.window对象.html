@@ -49,7 +49,21 @@
 
     //导航和打开窗口
     //var a= window.open() 4参数：1.url 2.窗口目标(target) 3.特性字符串(width,height,top,left,location...) 4.布尔值（是否取代当前页）
-    //a.close() 关闭该窗口（只针对于弹出窗口）
+    //a.opener  保存打开它的窗口的对象
+    //a.close() 关闭该窗口（只针对于弹出窗口） 关闭后窗口引用还在，不过只有a.closed属性
+
+    //间歇调用和超时调用
+    //javascript是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。
+    //超时调用：setTimeout() 2参数：1.要执行的语句（最好是函数，高性能） 2.毫秒数（在多少毫秒后把代码添加到任务队列中。）
+    // var a = setTimeout.....  这个a就是超时调用标识符  使用 clearTimeout(a)取消调用
+    //间歇调用：setInterval() (最好不用，因为下一次调用可能在上一次调用之前结束。最好用setTimeout模拟)
+
+    //系统对话框 alert()  confirm() prompt()    外观由操作系统或浏览器设置决定  find() print()
+    //这3个方法打开对话框都是同步和模态，显示这些对话框时代码停止运行。
+    alert("aa");
+    //confirm 方法返回布尔值
+    if(confirm("asd?")){console.log("是");}else{console.log("否")}
+    //prompt() 两个参数：显示 和默认值  返回输入的值
 </script>
 </body>
 </html>

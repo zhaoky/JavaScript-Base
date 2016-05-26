@@ -1,0 +1,31 @@
+<!--
+    location对象：提供与当前窗口中加载的文档有关的信息，还提供一些导航功能。
+    window.location === document.location
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //location对象 "http://www.baidu.com:8888/123/index.html#con?q=444"
+    //hash:  con?q=444
+    //host:  www.baidu.com:8888
+    //hostName: www.baidu.com
+    //href:   "http://www.baidu.com:8888/123/index.html#con?q=444"
+    //pathname /123/
+    //port    "8888"
+    //portocol   "http:"
+    //search    "?q=444"
+    //***以上属性可读可写 写的话会生成一条历史记录。
+    //***除hash以外，其他的修改会导致页面重新加载
+
+    //location.assign("http://www.baidu.com");  location.href和window.location实际都调用的这个方法。
+    //location.replace("http://www.baidu.com")  该方法就不会生成历史记录
+
+    //location.reload():重新加载当前显示的页面  location.reload(true)强制从服务器加载
+</script>
+</body>
+</html>
