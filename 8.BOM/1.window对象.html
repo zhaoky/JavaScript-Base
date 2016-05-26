@@ -9,6 +9,47 @@
     <title>Title</title>
 </head>
 <body>
+<div style="border:1px solid #000;background-color: black;width: 100px;height: 100px;margin-top: 100px;margin-left: 100px;"></div>
+<script>
 
+    //全局作用域
+    var age =24;   //自动归于window对象下
+    function sayAge(){
+        console.log(this.age);
+    }
+    console.log(window.age);
+    sayAge();   //自动归于window对象下
+    window.sayAge();
+    //定义在window对象上的属性和定义全局变量的差别：delete
+    var name = "zky";
+    window.color = "red";
+    delete window.name;
+    delete window.color;
+    console.log(window.name);  //undefined   IE9报错
+    console.log(window.color); //undefined
+    //还有一点区别：尝试访问未声明的变量会抛出错误
+//    var newValue = oldValue;   //报错未定义
+    var newValue = window.oldValue;   //不报错
+
+    //窗口关系和框架  <frameset>标签   （html5已废弃,用<iframe>）
+    //如果页面中包含框架，则每个框架都拥有自己的window对象，并保存在frames中（见附页）
+
+    //窗口位置
+    //window.screenLeft/window.screenX 浏览器窗口距屏幕左边缘的位置
+    //window.screenTop/window.screenY 浏览器窗口距屏幕左边缘的位置
+    //window.moveBy(200,200) 移动200像素   (除IE都被禁用了)
+    //window.moveTo(200,200) 移动到200的位置(除IE都被禁用了)
+
+    //窗口大小
+    //window.innerHeight/innerWidth ||| document.documentElement.clientHeight/clientWidth 浏览器里视口大小
+    //window.outerHeight/outerWidth 浏览器整个窗口大小
+    //调整窗口大小
+//    window.resizeTo(100,100);(除IE都被禁用了)
+//    window.resizeBy(100,100);(除IE都被禁用了)
+
+    //导航和打开窗口
+    //var a= window.open() 4参数：1.url 2.窗口目标(target) 3.特性字符串(width,height,top,left,location...) 4.布尔值（是否取代当前页）
+    //a.close() 关闭该窗口（只针对于弹出窗口）
+</script>
 </body>
 </html>
