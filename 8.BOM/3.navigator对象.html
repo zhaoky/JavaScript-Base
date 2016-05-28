@@ -1,5 +1,6 @@
 <!--
-    navigator对象
+    navigator对象:识别客户端浏览器.
+    window.navigator === window.clientInformation
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +9,33 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    console.log(window.navigator);
+    //appCodeName:"Mozilla"                  浏览器的名称
+    //appName:"Netscape"               完整的浏览器名称
+    //appVersion:"5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"   浏览器的版本。一般不与实际的浏览器
+    //cookieEnabled:true
+    //doNotTrack:null
+    //geolocation:Geolocation
+    //hardwareConcurrency:4
+    //language:"zh-CN"    浏览器的主语言
+    //languages:Array[2]
+    //maxTouchPoints:0
+    //mediaDevices:MediaDevices
+    //mimeTypes:MimeTypeArray
+    //onLine:true           表示浏览器是否连接到了因特网
+    //permissions:Permissions
+    //platform:"Win32"        浏览器所在的系统平台
+    //plugins:PluginArray     //插件数组：description:""，filename:"mhjfbmdgcfjbbpaeojofohoefgiehjai"，length :1，name:"Chrome PDF Viewer"，MimeType:{description:"",enabledPlugin:Plugin,suffixes:"",type:"application/pdf"}
+    //presentation:Presentation
+    //product:"Gecko"           产品名称
+    //productSub:"20030107"     关于产品的次要信息（如Gecko的版本）
+    //serviceWorker:ServiceWorkerContainer
+    //userAgent:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36"   浏览器的用户代理字符串
+    //vendor:"Google Inc."              浏览器的品牌
+    //vendorSub:  ""          有关供应商的次要信息
 
+    //注册处理程序 registerContentHandler()    registerProtocolHandler()
+</script>
 </body>
 </html>

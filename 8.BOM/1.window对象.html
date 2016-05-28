@@ -12,7 +12,8 @@
 <div style="border:1px solid #000;background-color: black;width: 100px;height: 100px;margin-top: 100px;margin-left: 100px;"></div>
 <script>
 
-    //全局作用域
+    //1.全局作用域
+
     var age =24;   //自动归于window对象下
     function sayAge(){
         console.log(this.age);
@@ -31,34 +32,39 @@
 //    var newValue = oldValue;   //报错未定义
     var newValue = window.oldValue;   //不报错
 
-    //窗口关系和框架  <frameset>标签   （html5已废弃,用<iframe>）
+    //2.窗口关系和框架  <frameset>标签   （html5已废弃,用<iframe>）
+
     //如果页面中包含框架，则每个框架都拥有自己的window对象，并保存在frames中（见附页）
 
-    //窗口位置
+    //3.窗口位置
+
     //window.screenLeft/window.screenX 浏览器窗口距屏幕左边缘的位置
     //window.screenTop/window.screenY 浏览器窗口距屏幕左边缘的位置
     //window.moveBy(200,200) 移动200像素   (除IE都被禁用了)
     //window.moveTo(200,200) 移动到200的位置(除IE都被禁用了)
 
-    //窗口大小
+    //4.窗口大小
     //window.innerHeight/innerWidth ||| document.documentElement.clientHeight/clientWidth 浏览器里视口大小
     //window.outerHeight/outerWidth 浏览器整个窗口大小
     //调整窗口大小
 //    window.resizeTo(100,100);(除IE都被禁用了)
 //    window.resizeBy(100,100);(除IE都被禁用了)
 
-    //导航和打开窗口
+    //5.导航和打开窗口
+
     //var a= window.open() 4参数：1.url 2.窗口目标(target) 3.特性字符串(width,height,top,left,location...) 4.布尔值（是否取代当前页）
     //a.opener  保存打开它的窗口的对象
     //a.close() 关闭该窗口（只针对于弹出窗口） 关闭后窗口引用还在，不过只有a.closed属性
 
-    //间歇调用和超时调用
+    //6.间歇调用和超时调用
+
     //javascript是单线程语言，但它允许通过设置超时值和间歇时间值来调度代码在特定的时刻执行。
     //超时调用：setTimeout() 2参数：1.要执行的语句（最好是函数，高性能） 2.毫秒数（在多少毫秒后把代码添加到任务队列中。）
     // var a = setTimeout.....  这个a就是超时调用标识符  使用 clearTimeout(a)取消调用
     //间歇调用：setInterval() (最好不用，因为下一次调用可能在上一次调用之前结束。最好用setTimeout模拟)
 
-    //系统对话框 alert()  confirm() prompt()    外观由操作系统或浏览器设置决定  find() print()
+    //7.系统对话框 alert()  confirm() prompt()    外观由操作系统或浏览器设置决定  find() print()
+
     //这3个方法打开对话框都是同步和模态，显示这些对话框时代码停止运行。
     alert("aa");
     //confirm 方法返回布尔值

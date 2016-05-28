@@ -1,0 +1,37 @@
+<!--
+    客户端检测：先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。
+           1.能力检测
+           2.怪癖检测
+           3.用户代理检测
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //能力检测：能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。采用这种方式不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。
+    //先检测达成目的的最常用的特性。
+    //必须测试实际要用到的特性
+    function getElement(id){
+        if (document.getElementById){
+            return document.getElementById(id);
+        } else if (document.all){
+            return document.all[id];
+        } else {
+            throw new Error("No way to retrieve element!");
+        }
+    }
+    //尽量使用 typeof 进行能力检测
+    function isSortable(object){
+//        return !!object.sort;    错误  万一sort是某个对象属性
+        return typeof object.sort == "function";
+    }
+    //根据浏览器不同将能力组合起来是更可取的方式。如果你知道自己的应用程序需要使用某些特定的浏览器特性，那么最好是一次性检测所有相关特性，而不要分别检测。
+    //确定浏览器是否具有 DOM1 级规定的能力
+    var hasDOM1 = !!(document.getElementById && document.createElement && document.getElementsByTagName);
+</script>
+</body>
+</html>
