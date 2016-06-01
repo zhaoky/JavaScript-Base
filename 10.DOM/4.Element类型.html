@@ -1,0 +1,53 @@
+<!--
+    Element类型用于表现XML和HTML元素，提供对元素标签名、子节点及特性的访问。
+    节点类型： Node.ELEMENT_NODE(1) nodeType==1 nodeName=="标签名"
+    Element节点的子节点有Text,Element,ProcessingInstruction Comment CDATASection,EntityReference类型
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id ='a' title="222" class="adc" data-aaa="ccc" style="color: red" onclick="alert(123);">123</div>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    //属性：nodeName/tagName  访问元素标签名
+    console.log(document.getElementById("a").tagName); //DIV (注意是大写)
+    console.log(document.getElementById("a").nodeName); //DIV (注意是大写)
+    //1.HTML元素  由HTMLElement类型表示，而HTMLElement类型直接继承自Element并添加了一些属性。
+    //特性:id title lang dir className   (可读可写)
+    var div = document.getElementById("a");
+    console.log(div.id);
+    console.log(div.title);
+    console.log(div.lang);
+    console.log(div.dir);
+    console.log(div.className);
+    console.log(1,div.style); //返回对象
+    console.log(1,div.onclick); //返回对象
+    //2.取得特性 操作DOM属性的3个方法
+    //方法： getAttribute() (可以取得不是HTML的属性)
+    console.log(div.getAttribute("id"));
+    console.log(div.getAttribute("data-aaa"));
+    console.log(div.getAttribute("style")); //color: red
+    console.log(div.getAttribute("onclick")); //color: red
+    //3.设置属性 （不区分大小写）   setAttribute() 不能添加自定义属性
+    //4.删除属性  removeAttribute()    不仅删除值，连特性一块儿删除
+    //5.attributes属性   拥有： getNamedItem(name) removeNamedItem(name)  setNamedItem(node)  item(pos)
+    console.log(2,div.attributes["id"]);//等价于下面这个
+    console.log(2,div.attributes.getNamedItem("id"));
+    console.log(2,div.attributes.removeNamedItem("class"));
+    console.log(2,div.attributes);
+    console.log(2,div.attributes.item(2));
+    //6.创建元素 document.createElement()  一个参数：标签名  创建好了通过appendChild()/insertBefore/replaceChild()添加到节点树中。
+    //7.元素的子节点
+    var ul = document.getElementById("ul");
+    console.log(ul.childNodes.length); //IE是3 普通是7
+</script>
+</body>
+</html>

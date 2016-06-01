@@ -8,7 +8,28 @@
 <script>
     //javaScript通过Document类型表示文档 document对象是HTMLDocument的一个实例，表示整个HTML页面。
     //document对象是window对象的一个属性
-    //节点类型： Node.DOCUMENT_NODE(9) nodeType==9 nodeName==#document
+    //节点类型： Node.DOCUMENT_NODE(9) nodeType==9 nodeName=="#document"
+
+    //1.文档的子节点
+    //Document节点的子节点有DocumentType,Element,ProcessingInstruction Comment类型
+    //属性：document.documentElement  -> html          document.body ->body   document.doctype ->doctype
+    console.log(document.documentElement);
+    console.log(document.body);
+    console.log(document.doctype);
+    //2.文档信息 document对象还有一些标准Document对象没有的属性
+    //属性 document.title   document.URL(只读)   document.domain（有特点）   document.referrer（只读）
+    console.log(document.title);
+    console.log(document.URL);
+    console.log(document.domain);
+    console.log(document.referrer);
+    //3.查找元素 取得元素的操作
+    //方法：document.getElementById()返回该元素  document.getElementsByTagName()返回HTMLCollection  document.getElementByName()返回HTMLCollection
+    //4.特殊集合
+    //元素集合： document.anchors   带name属性的<a>   document.forms  <form>   document.images <img>  document.links  带href属性的<a>
+    //5.DOM一致性检测
+    //document.implementation.hasFeature("css2","2.0") 返回 true 则浏览器支持
+    //6.文档写入
+    // document.write() document.writeln() open() close()
 </script>
 </body>
 </html>

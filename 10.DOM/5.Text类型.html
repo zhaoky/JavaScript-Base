@@ -1,0 +1,37 @@
+<!--
+    文本节点包含纯文字内容，不能包含html代码。
+    节点类型： Node.TEXT_NODE(3) nodeType==3 nodeName=="#text" nodeValue:节点包含的文本
+    parentNode是一个Element 没有子节点
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p">你好</p>
+<script>
+    //通过nodeValue属性或data属性访问文本。 文本节点有一个属性：length
+    var txt  =document.getElementById("p").childNodes[0]; //或firstChild
+    var p  =document.getElementById("p"); //或firstChild
+    console.log(txt.nodeValue);  //你好
+    console.log(txt.data);          //你好
+    //操作节点 appendData(text) deleteData(begin,num) insertData(begin,text) replaceData(begin,num,text) splitText(begin) substringData(begin,num)
+    txt.appendData("123");  // 你好123
+    txt.deleteData(2,1);    //你好23
+    txt.insertData(2,"12");    //你好1223
+    txt.replaceData(2,4,"12");    //你好12
+    txt.splitText(2);    //你好12
+    var a =txt.substringData(1,1);    //你好12
+    console.log(a); //好
+    console.log(txt);
+    txt.nodeValue = "<我笑了/>";
+    //创建文本节点： document.createTextNode()
+    var newt = document.createTextNode("<i>aaa</i>");
+    p.appendChild(newt);
+    //规范化文本节点  合并相邻文本节点： normalize()  在需要合并的一堆节点的父节点上调用此方法
+    //分割文本节点 splitText() 一个参数：位置 原节点变前半部分，返回后半部分新文本节点
+</script>
+</body>
+</html>
