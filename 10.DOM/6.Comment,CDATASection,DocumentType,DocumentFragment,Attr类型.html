@@ -1,0 +1,27 @@
+<!--
+    Comment类型:注释
+    CDATASection类型:XML中的CDATA区域
+    DocumentType类型：<!DOCTYPE html>
+    DocumentFragment类型：文档中没有对应的标记。
+    Attr类型：元素的特性
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Comment类型：nodeType为8 nodeName:"#comment" nodeValue:注释的内容 无子节点 与Text()同基类，除了splitText()方法 ，其他都有
+    //CDATASection类型：nodeType为4 nodeName:"#cdata-section" nodeValue:CDATA区域内的内容 无子节点 同上。在XML文档中用document.createCDataSection()创建CDATA区域
+    //DocumentType类型：nodeType为10 nodeName:doctype的名称 nodeValue:null 无子节点 对象保存在document.doctype
+    //DocumentFragment类型: nodeType为11 nodeName:"document-fragment" nodeValue:null
+    //Attr类型:nodeType为2 nodeName:特性的名称 nodeValue:特性的值 HTML中无子节点 XML可以是Text或EntityReference
+    //尽管Attr也是节点，但特性不是DOM文档树中的一部分。 一般都是用getAttribute(),setAttribute(),removeAttribute()方法，不会直接引用特性节点。
+    //Attr有3个属性：name value specified
+    //用document.createAttribute()创建特性， 然后用元素的setAttributeNode(xxx)添加特性。
+    //访问特性：attributes属性 getAttributeNode() getAttribute()   前两个返回特性节点，最后一个返回特性的值。
+</script>
+</body>
+</html>
