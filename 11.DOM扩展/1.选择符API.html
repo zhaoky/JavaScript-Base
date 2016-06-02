@@ -1,0 +1,64 @@
+<!--
+    对DOM的两个主要扩展是选择符API和HTML5.
+    选择符API思路：根据CSS选择符选择与某个模式匹配的DOM元素
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a b c" id="d" data-zky="qxq">123</div>
+<script>
+    //选择符querySelector() 和 querySelectorAll()，可以通过Document及Element类型的实例访问他们。
+    //当通过Document类型调这两个方法，会在文档范围搜索，通过Element类型调用时，在该元素后代搜索
+
+    //querySelector() 参数：css选择符，返回第一个匹配的元素，没找到返null
+    //querySelectorAll() 同上，返回NodeList实例 访问NodeList实例：item()或【】
+
+    //（不支持）matchesSelector() 同上，如果调用的和该选择符一样，就返回true，否则false。
+
+    //元素遍历 添加了5个DOM属性，无视元素的空白文本节点
+    //childElementCount (返回个数) firstElementChild lastElementChild previousElementSibling nextElementSibling
+
+    //HTML5
+    //getElementsByClassName() 参数：一个或多个类名的字符串（空格分割），返回NodeList
+    var a =document.querySelector("#d");
+    var b =document.querySelectorAll(".a");
+    var c =document.getElementsByClassName("a");
+    console.log(a.className);
+    console.log(b);
+    //classList属性  他是类型DOMTokenList的实例  有add() contains() remove() toggle()方法
+    console.log(a.classList);
+    console.log(a.classList instanceof Array);  //false
+    var arr = Array.prototype.slice.call(a.classList);  //类数组转换成数组
+    console.log(arr);
+    a.classList.remove("b");
+    console.log(a.classList); // a  c
+    console.log(a.classList.contains("c")); //判定是否包含
+    console.log(a.classList.contains("g")); //有该类就删，没就加
+
+    //焦点管理
+    //document.activeElement属性：该属性始终引用DOM中当前获得了焦点的元素。
+    //用户获得焦点的方式：页面加载，用户输入，代码中调用focus()方法
+    //document.hasFocus()方法
+
+    //HTMLDocument的变化
+    //1.document.readyState 属性 两个值：loading:正在加载文档 complete：已经加载完文档
+    //2.兼容模式 document.compatMode 属性 两个值：CSS1Compat :标准模式 BackCompat:混杂模式
+    //3.document.head 属性 :引用文档的<head>元素
+
+    //字符集属性 document.charset  可读可写   document.defaultCharset 当前文档默认的字符集
+
+    //自定义数据属性  可读 可设置已有的
+    //必须添加前缀data- 通过元素的 dataset 属性来访问自定义属性的值 。dataset 属性的值是 DOMStringMap 的一个实例
+    var zky = a.dataset.zky;
+    var datas = a.dataset;
+    console.log(datas);  //DOMStringMap {zky: "qxq"}
+    console.log(zky); //qxq
+    a.dataset.zky = "xq";
+    console.log(a.dataset); //xq
+</script>
+</body>
+</html>
