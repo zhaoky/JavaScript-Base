@@ -1,0 +1,70 @@
+<!--
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a b c" id="d" data-zky="qxq">123</div>
+<div id="f">
+    <p>
+        <span>你好</span>
+    </p>
+</div>
+<script>
+    //HTML5
+    //getElementsByClassName() 参数：一个或多个类名的字符串（空格分割），返回NodeList
+    var a =document.querySelector("#d");
+    var b =document.querySelectorAll(".a");
+    var c =document.getElementsByClassName("a");
+    console.log(a.className);
+    console.log(b);
+    //classList属性  他是类型DOMTokenList的实例  有add() contains() remove() toggle()方法
+    console.log(a.classList);
+    console.log(a.classList instanceof Array);  //false
+    var arr = Array.prototype.slice.call(a.classList);  //类数组转换成数组
+    console.log(arr);
+    a.classList.remove("b");
+    console.log(a.classList); // a  c
+    console.log(a.classList.contains("c")); //判定是否包含
+    console.log(a.classList.contains("g")); //有该类就删，没就加
+
+    //焦点管理
+    //document.activeElement属性：该属性始终引用DOM中当前获得了焦点的元素。
+    //用户获得焦点的方式：页面加载，用户输入，代码中调用focus()方法
+    //document.hasFocus()方法
+
+    //HTMLDocument的变化
+    //1.document.readyState 属性 两个值：loading:正在加载文档 complete：已经加载完文档
+    //2.兼容模式 document.compatMode 属性 两个值：CSS1Compat :标准模式 BackCompat:混杂模式
+    //3.document.head 属性 :引用文档的<head>元素
+
+    //字符集属性 document.charset  可读可写   document.defaultCharset 当前文档默认的字符集
+
+    //自定义数据属性  可读 可设置已有的
+    //必须添加前缀data- 通过元素的 dataset 属性来访问自定义属性的值 。dataset 属性的值是 DOMStringMap 的一个实例
+    var zky = a.dataset.zky;
+    var datas = a.dataset;
+    console.log(datas);  //DOMStringMap {zky: "qxq"}
+    console.log(zky); //qxq
+    a.dataset.zky = "xq";
+    console.log(a.dataset); //xq
+
+    //插入标记
+    //1.innerHTML属性     可读可写 读返回调用元素所有子节点对应的HTML标记 写 用指定的值创建新DOM树替换原先该元素所有的节点
+    var f = document.querySelector("#f");
+    f.innerHTML = "<script src='1.js'><\/script>";
+    //2.outerHTML属性     可读可写 读返回调用元素及所有子节点对应的HTML标记 写 用指定的值创建新DOM树替换原先该元素及所有的节点
+
+    //3.插入文本 insertAdjacentHTML() 两个参数：1.beforebegin,afterbegin,beforeend,afterend ,2.要插入的html代码
+    a.insertAdjacentHTML("afterend","<p>额额</p>");
+
+    //内存与性能问题
+
+    //scrollIntoView() 控制页面滚动
+</script>
+</body>
+</html>

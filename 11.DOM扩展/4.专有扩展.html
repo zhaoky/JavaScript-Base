@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //专有扩展
+    //1.文档模式     <meta http-equiv="X-UA-Compatible" content="IE=edge">  IE=edge告诉IE使用最新的引擎渲染网页
+    //2.children属性 该属性是HTMLCollection的实例 与childNodes没区别
+    //3.contains() 一个参数：要检测的后代节点 用来检测该节点是不是后代节点 同compareDocumentPosition()
+    console.log(document.documentElement.contains(document.body)); //true
+    //插入文本(这两个没有被纳入规范) innerText outerText 用原来的文本替换元素的所有内容
+
+    //滚动 scrollIntoViewIfNeeded()   scrollByLines() scrollByPages()
+</script>
+</body>
+</html>
