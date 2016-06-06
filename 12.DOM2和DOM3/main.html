@@ -1,0 +1,72 @@
+<!--
+    DOM1级主要定义HTML和XML文档的底层结构。
+    DOM2和DOM3引入了更多的交互能力，支持更高级的XML特性。所以分成了很多模块，分别描述了DOM的某个子集。包括：
+        DOM2级核心
+        DOM2级视图
+        DOM2级事件
+        DOM2级样式
+        DOM2级遍历和范围
+        DOM2级HTML
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //DOM2级和3级目的在于扩展DOM API，以满足操作XML的所有需求，同时提供更好的错误处理及特性检测能力。--对命名空间的支持。
+    //用document.implementation.hasFeature方法判定浏览器是否支持某模块
+
+    //1.DOM变化
+        //1.针对XML命名空间的变化
+
+            //1.Node类型的变化
+            //2.Document类型的变化
+            //3.Element类型的变化
+            //4.NameNodeMap类型的变化
+
+        //2.其他方面的变化
+
+            //1.DocumentType类型的变化
+            //2.Document类型的变化
+            //3.Node类型的变化
+            //4.框架的变化
+
+    //2. 样式
+        //1.访问元素的样式 style对象中对应的属性名
+            //1. DOM样式属性和方法
+            //2. 计算的样式
+        //2.操作样式表
+            //1. CSS规则
+            //2. 创建规则
+            //3. 删除规则
+        //3.元素大小
+            //1. 偏移量  offset
+            //2. 客户区大小 client
+            //3. 滚动大小  scroll
+            //4. 确定元素大小 getBoundingClientRect()
+    //3. 遍历
+            //1.NodeIterator
+            //2.TreeWalker
+    //4. 范围
+            //1.DOM中的范围
+                //1. 用 DOM范围实现简单选择
+                //2. 用 DOM范围实现复杂选择
+                //3. 操作 DOM范围中的内容
+                //4. 插入 DOM范围中的内容
+                //5. 折叠 DOM范围
+                //6. 比较 DOM范围
+                //7. 复制 DOM范围
+                //8. 清理 DOM范围
+            //2.IE8及更早版本中的范围
+                //1. 用 IE范围实现简单的选择
+                //2. 使用 IE范围实现复杂的选择
+                //3. 操作 IE范围中的内容
+                //4. 折叠 IE范围
+                //5. 比较 IE范围
+                //6. 复制 IE范围
+</script>
+</body>
+</html>
