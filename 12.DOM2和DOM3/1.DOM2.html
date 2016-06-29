@@ -13,8 +13,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        div{
+            font-size:23px;
+        }
+    </style>
 </head>
 <body>
+<div style="color:red;background-color: #eee">a</div>
 <script>
     //DOM2级和3级目的在于扩展DOM API，以满足操作XML的所有需求，同时提供更好的错误处理及特性检测能力。--对命名空间的支持。
     //用document.implementation.hasFeature方法判定浏览器是否支持某模块
@@ -35,7 +41,62 @@
 
 
     //样式
-    //1.访问元素的样式 style对象中对应的属性名
+    //1.访问元素的样式
+    // HTML元素在JavaScript中都有一个对应的style属性,这个属性是CSSStyleDeclaration 的实例，他包含所有样式信息（不包括外部样式表和嵌入样式表）
+    //style对象中的对应css属性 backgroundImage  cssFloat
+    // 访问元素的样式 style对象中对应的属性名
+    var a = document.querySelector("div");
+    console.log(a);
+    console.log(a.style.color);  //red
+    console.log(a.style.fontSize); //""
+    //   DOM样式属性和方法
+    //style对象的一些属性： cssText length parentRule getPropertyPriority() getPropertyValue() item(index)或[] removeProperty() setProperty()
+    console.log(a.style.cssText);
+    a.style.cssText = "";  //可读可写 cssText重写整个style特性的值
+    a.style.setProperty("width","20px","important");
+    //   计算的样式  计算出最终的样式  只读
+    var b=document.defaultView.getComputedStyle(a);
+    //IE中是 a.currentStyle
+    console.log(b);
+
+    //2.操作样式表
+    //CSSStyleSheet类型表示的是样式表，包括通过link元素包含的样式表和在style元素中定义的样式表
+    console.log(document.styleSheets);
+    //   CSS规则
+    console.log(document.styleSheets[0].rules[0]);
+    //   创建规则
+    document.styleSheets[0].insertRule("body:{background-color:red}",0); //0为层叠最上面   那坨绿的是cssText
+    //IE中是document.styleSheets[0].addRule("body","background-color:red",0);
+    //   删除规则
+    document.styleSheets[0].deleteRule(0); //一个参数：要删除的规则的位置
+    //IE中是document.styleSheets[0].removeRule[0];
+
+    //3.元素大小
+    //偏移量（只读） offsetHeight(含边框的元素大小) offsetWidth offsetLeft（外边距） offsetTop
+    //客户区大小（只读） clientWidth(不含边框的元素大小) clientHeight
+    //滚动大小  scrollHeight（只读）(总高度) scrollWidth（只读） scrollLeft(可写)（隐藏在左侧的长度） scrollTop(可写)（隐藏在上面的长度）
+    //确定元素大小 getBoundingClientRect()
+
+    //遍历 （对DOM执行深度优先的遍历）
+        //1.NodeIterator
+        //2.TreeWalker
+    //范围
+        //1.DOM中的范围 document.createRange()
+            //1.用DOM范围实现简单选择
+            //2.用DOM范围实现复杂选择
+            //3.操作DOM范围中的内容
+            //4.插入DOM范围中的内容
+            //5.折叠DOM的范围
+            //6.比较DOM范围
+            //7.负责DOM范围
+            //8.清理DOM范围
+        //2.IE8及更早版本中的范围
+            //1.用IE范围实现简单的选择
+            //2.使用IE范围实现复杂的选择
+            //3.操作IE范围中的内容
+            //4.折叠IE范围
+            //5.比较IE范围
+            //6.复制IE范围
 </script>
 </body>
 </html>
