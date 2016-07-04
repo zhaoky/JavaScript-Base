@@ -1,0 +1,23 @@
+<!--
+   在触发DOM上的某个事件时，会产生一个事件对象event
+    1.DOM中的事件对象 属性：bubbles cancelable currentTarget defaultPrevented detail eventPhase preventDefault stopImmediatePropagation() stopPropagation() target trusted type view
+    2.IE中的事件对象 属性： cancelBubble returnValue serElement type
+    3.跨浏览器的事件对象
+    一旦事件处理程序执行完成，event对象就会被销魂。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>事件对象</button>
+</body>
+<script>
+    var evt = document.querySelector("button");
+    evt.onclick = function(event){
+        console.log(event);
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!--
+    事件类型：
+        UI事件： load unload abort error select resize scroll
+        焦点事件： blur focus focusin focusout
+        鼠标和滚轮事件：click dblclick mousedown mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup
+                1.客户区坐标位置：clientX clientY
+                2.页面坐标位置： pageX pageY
+                3.屏幕坐标位置：screenX screenY
+                4.修改键：在event对象里有shiftKey ctrlKey altKey metaKey四个属性 触发事件的同时若按下了其中哪个键，就会为true
+                5.相关元素：event对象里有relateTarget属性，只有mouseover，mouseout事件才有值。
+                6.鼠标按钮：event对象里有button属性，只有mousedown，mouseup事件才有值。 1:左键 2：滚轮键 3：右键
+                7.更多事件信息：event对象里有detail属性，记录单击次数。IE中有altLeft，ctrlLeft，offsetX offsetY shiftLeft
+                8.鼠标滚轮事件：event对象里有wheelDelta属性，用来判定向上滚（为正）还是向下。仅在mousewheel事件中。
+                9.触摸设备：不支持dblclick事件，轻击可单击屏幕会触发mousemove事件，mousemove事件也会触发mouseover事件和mouseout事件
+                10.无障碍性问题：使用click事件，不使用onmouseover和dblclick事件。
+        文本事件：textInput
+        键盘事件：keydown（按下任意键触发，不松一直触发） keypress（同keydown，只是字符键） keyup（松手触发）
+                event对象里有:
+                    1.键码：event中keyCode属性
+                    2.字符编码：event中charCode属性
+                    3.DOM3级变化：event中key和char属性
+                    4.textInput事件：event中的data属性和inputMethod属性
+                    5.设备中的键盘事件
+        复合事件：用于IME的输入序列 compositionstart compositionupdate compositionend  有data属性
+        变动事件：在DOM结构中发生任何变化时触发。用于XML
+        HTML5事件：
+            1.contextmenu事件：单击右键调用上下文菜单属性
+            2.beforeunload事件 在浏览器卸载页面之前触发
+            3.DOMContentLoaded事件 形成完整的DOM树就触发
+            4.readystatechange事件
+            5.pageshow和pagehide事件 浏览器加载/卸载页面时触发
+            6.hashchange事件  添加给window对象。监听url中#号后面发生变化   event有oldURL和newURL属性
+        设备事件：
+            1.orientationchange事件
+            2.MozOrientation事件
+            3.deviceorientation事件
+            4.devicemotion事件
+        触摸与手势事件：
+            1.触摸事件：
+                touchstart
+                touchmove
+                touchend
+                touchcancel
+                    在event对象里有touches targetTouchs changeTouches 属性
+            2.手势事件：
+                ios中：gesturestart事件 gesturechange事件 gestureend事件
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="background-color: red;width:100px;height: 100px">
+    <button>点我</button>
+</div>
+<input type="text">
+<script>
+    var but = document.querySelector("button");
+    var input = document.querySelector("input");
+    but.addEventListener("contextmenu",function(event){
+        console.log(event);
+        event.preventDefault();
+    });
+    window.addEventListener("beforeunload",function(event){
+        return "a???";
+    });
+//    提示用户是否离开此页面（关闭、刷新或者点击后退等）
+
+</script>
+</body>
+</html>

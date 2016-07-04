@@ -1,0 +1,61 @@
+<!--
+    JavaScript与HTML之间的交互是通过事件实现的。
+    事件冒泡
+        IE的事件流叫做事件冒泡，从节点到文档。
+    事件捕获
+        Netscape的事件流叫做事件捕获，从文档到节点。
+    DOM事件流
+        事件流包括3阶段：事件捕获阶段，处于目标阶段，事件冒泡阶段。
+    默认情况下，事件使用冒泡事件流，不使用捕获事件流。
+
+    事件处理程序
+        响应某个事件的函数就叫做事件处理程序(事件侦听器)，事件处理程序的名字以on开头。
+        1.HTML事件处理程序
+            缺点：1.时差问题 2.扩展事件处理程序的作用域链在不同浏览器中会导致不同结果。 3.HTML和JS代码紧密耦合。
+        2.DOM0级事件处理程序
+            将一个函数赋值给一个事件处理程序属性。每个元素都有自己的事件处理程序属性。
+            DOM0级指定的事件处理程序被认为是元素的方法，方法中的this引用该元素。
+        3.DOM2级事件处理程序
+            addEventListener()  removeEventListener()  三个参数：事件名，作用事件处理的函数，布尔值（为true捕获，默认false冒泡）
+            绑定多个函数时，顺序执行。
+            通过addEventListener()添加的匿名函数将无法移除。
+        4.IE事件处理程序
+            attachEvent()    detachEvent() 事件名称（带on），作用事件处理的函数   只支持冒泡
+            attachEvent()与使用DOM0级方法的主要区别在于事件处理程序的作用域。 attachEvent在全局作用域运行。DOM0级在所属元素中运行。
+            绑定多个函数时，倒序执行。
+            通过attachEvent()添加的匿名函数将无法移除。
+        5.跨浏览器的事件处理程序
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--HTML事件处理程序--> <!--扩展作用域-->
+    <button onclick="alert(event.type);" id="b">HTML事件处理程序</button>
+    <button onclick="console.log(this.className);" id="c" class="c-c" title="zz">HTML事件处理程序</button>  <!--this等于事件的目标元素-->
+<!--DOM0级事件处理程序-->
+    <button id="dom0">DOM0级事件处理程序</button>
+<!--DOM2级事件处理程序-->
+    <button id="dom2">DOM2级事件处理程序</button>
+</body>
+<script>
+//    <!--DOM0级事件处理程序-->
+    var dom0 = document.getElementById("dom0");
+    var i = 11;
+    dom0.onclick = function(ev){
+        console.log(this,ev);
+    };
+    //删除事件
+    dom0.onclick = null;
+//  <!--DOM2级事件处理程序-->
+    var dom2 = document.getElementById("dom2");
+    var onf =function(){
+        console.log(this,event);
+    };
+    dom2.addEventListener("click",onf,false);
+    dom2.removeEventListener("click",onf,false); //如果是匿名函数就GG了
+</script>
+</html>
