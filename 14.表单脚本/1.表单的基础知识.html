@@ -1,0 +1,88 @@
+<!--
+    表单基础知识：
+        form的属性：acceptCharset action elements length method name reset() submit() target
+    提交表单
+        1.单击提交按钮或图像按钮，就会提交表单。  (会触发submit事件)
+            <input type="submit">    <button type="submit"></button> <input type="image" src="1.png">
+        2.form.submit();   (不会触发submit事件)
+    重置表单
+        1.点击重置按钮，表单会重置。 (会触发reset事件)
+            <input type="reset">  <button type="reset"></button>
+        2.form.reset();  (也会触发reset事件)
+    表单字段
+        form有elements属性，是所有表单元素（字段）的集合。
+        1.共有的表单字段属性：disabled form name readOnly tabIndex type value(文件字段只读，包含着文件的路径)
+        2.共有的表单字段方法： focus()    blur()
+        3.共有的表单字段事件： blur change focus
+    文本框脚本
+        input textarea  将用户输入的内容保存在value属性。  可以直接设置value值，不用DOM方法。
+        1.选择文本
+            select()方法
+            1.select事件
+            2.取得选择的文本  selectionStart  selectionEnd
+            3.选择部分文本    setSelectionRange()
+        2.过滤输入
+            1.屏蔽字符
+            2.操作剪贴板 beforecopy  copy    beforecut   cut beforepaste paste
+        3.自动切换焦点
+        4.HTML5约束验证API
+            1.必填字段  required
+            2.其他输入类型 email url
+            3.数值范围  number range datetime 。。。。 /支持不友好
+            4.输入模式 pattern="\d+"  正则表达式
+            5.检测有效性 checkValidity()  validity
+            6.禁用验证  novalidate formnovalidate
+    选择框脚本
+        属性和方法：add() multiple options remove() selectedIndex size
+        1.选择选项
+            访问选中项：selectedIndex 或 selected
+        2.添加选项
+            1.用DOM方法 2.用Option构造函数创建新选项 3.add()
+        3.移除选项
+            1.用DOM方法 2.用选择框的remove()方法 3.将相应选项设置为null
+        4.移动和重排选项
+            最好使用DOM方法。
+    表单序列化
+    富文本编辑
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="1.表单的基础知识.html" name="zky">
+    <input type="text" name="txt">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <input type="number" id="a" name="a">
+    <input type="radio" name="color" value="1" disabled>
+    <input type="radio" name="color" value="2" checked>
+    <input type="radio" name="color" value="3">
+    <select name="ss" id="select" multiple>
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+    </select>
+</form>
+</body>
+<script>
+    var form = document.forms[0];
+    var txt = document.forms[0].elements["txt"];
+    txt.select();
+    var op = document.forms[0].elements["ss"];
+
+    console.log(form.elements);  //[input,textarea]
+    console.log(form.elements["a"]);  //<input type="number" id="a" name="a">
+    console.log(form.elements["color"]);  //<input type="number" id="a" name="a">
+    form.addEventListener("change",function(){
+        console.log(111,form.elements[0].value);
+        var txt = document.forms[0].elements["txt"];
+        txt.select();
+        console.log(op.options);
+        console.log(op.options[0].value); //这方法就对，不推荐DOM节点方法
+    });
+
+</script>
+</html>
