@@ -43,7 +43,13 @@
         4.移动和重排选项
             最好使用DOM方法。
     表单序列化
+
     富文本编辑
+        页面中嵌入一个包含空HTML页面的iframe，通过设置frame的document.designMode属性变可编辑
+        1.使用element 的contenteditable属性 为ture直接编辑
+        2.操作富文本：使用document.execCommand()方法
+        3.富文本选区：使用iframe的getSelection（）方法
+        4.表单与富文本：通常添加一个隐藏的字段，让他的值等于从iframe中提取的HTML。
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +72,8 @@
         <option value="d">d</option>
     </select>
 </form>
+<iframe src="a.html" frameborder="0" style="width: 200px; height: 200px" name="i"></iframe>
+<div style="background-color: #eee" contenteditable="true">123123</div>
 </body>
 <script>
     var form = document.forms[0];
@@ -83,6 +91,8 @@
         console.log(op.options);
         console.log(op.options[0].value); //这方法就对，不推荐DOM节点方法
     });
-
+    window.addEventListener("load",function(){
+        frames["i"].document.designMode = "on";
+    });
 </script>
 </html>

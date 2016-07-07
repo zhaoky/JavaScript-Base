@@ -1,0 +1,39 @@
+<!--
+    canvas
+        2D上下文
+            1.填充和描边
+            2.绘制矩形
+            3.绘制路径
+            4.绘制文本
+            5.变换
+            6.绘制图像
+            7.阴影
+            8.渐变
+            9.模式
+            10.使用图像数据
+            11.合成
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas width="200" height="200" id="can">不支持</canvas>
+</body>
+<script>
+    var can  = document.querySelector("#can");
+    var context = can.getContext("2d");
+    context.fillStyle = "red";      //填充色
+    context.strokeStyle = "#0000ff";    //描边色
+    context.strokeRect(10,10,100,100);  //绘制边
+    context.fillRect(10,10,100,100);  //绘制矩形
+    context.clearRect(200,200,30,30);  //清除该区域
+    console.log(context);
+    var url = can.toDataURL("image/png");
+    var img = document.createElement("img");
+    img.src=url;
+    document.body.appendChild(img);
+</script>
+</html>
