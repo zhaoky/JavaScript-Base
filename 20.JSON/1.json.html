@@ -1,0 +1,47 @@
+<!--
+    json是一种数据格式。可以表示简单值，对象，数组。
+    json是JavaScript的子集。
+    json字符串必须使用双引号。
+    json与对象字面量的两点不同：1.末尾没有分号。2.对象的属性必须双引号。
+    序列化：
+    JSON对象有两个方法：stringify() parse()
+        用stringify（）会自动忽略函数及原型。
+        stringify() 第二个参数可以为数组或函数（过滤函数），过滤结果。 第三个参数为数值或其他，缩进。
+        对象的toJSON()方法
+    解析选项：
+        parse()  第二个参数是函数(还原函数)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = {
+        name:"zky",
+        age:"12",
+        score:95,
+        book:[1,2,3],
+        time:new Date()
+    };
+    var b = JSON.stringify(a,function(key,value){
+        if(key == "age"){
+            return "21";
+        }else{
+            return value;
+        }
+    },4);  //转换为JSON字符串
+    console.log(b);
+    var c = JSON.parse(b,function(key,value){
+        if(key == "time"){
+            return new Date();
+        }else{
+            return value;
+        }
+    }); //转换为js对象
+    console.log(c);
+</script>
+</body>
+</html>
