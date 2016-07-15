@@ -9,11 +9,30 @@
 
     XMLHttpRequest2级:
         FormData
+            new FormData()  可以传参document.forms[0]
+            然后 xhr.send(new FormData(form))
         超时设定
+            IE8有个xhr.timeout =1000; chr.ontimeout=function(){xxx};//请求1秒后，请求终止，并执行。
         overrideMimeType()方法
+            改变MIME类型
     进度事件：
+        loadstart progress error abort load loadendv
+        load事件代替readystatechange事件 简化
+        progress事件：在浏览器接收新数据期间周期性触发。
     跨域资源共享：
+        通过XHR实现AJAX通信的主要障碍：来源于跨域安全策略。
+            1.IE对CORS的实现
+            2.其他浏览器对CORS的实现
+            3.Preflighted Requests 验证机制
+            4.带凭据的请求
+            5.跨浏览器的CORS  withCredentials属性
     其他跨域技术
+        图像PING
+        JSONP
+        comet
+        服务器发送事件
+        web sockets
+        SSE与web sockets
     安全
 -->
 <!DOCTYPE html>
@@ -44,12 +63,17 @@
                 document.querySelector("#head").innerHTML = xhr.getAllResponseHeaders();  //得到包含所有响应头部信息
             }
         };
-        xhr.open("post","get.txt",true);  //3参数，请求类型，请求URL，是否异步（默认true） open不会发出请求
+//        xhr.open("post","get.txt",true);  //3参数，请求类型，请求URL，是否异步（默认true） open不会发出请求
+        xhr.open("get","http://www.flqin.com/get.txt?name=zky&age=12&score=98",true);  //  用&连接
         xhr.setRequestHeader("aaa","bbb"); //自定义头信息  //请求头
-        xhr.send("offset=1"); //post请求中 里面才有参数
+        xhr.overrideMimeType("text/plain");   //改变MIME类型
+        xhr.send("offset=1"); //post请求中 里面才有参数  //Content-Type:text/plain;charset=UTF-8
+//        xhr.send(data); //post请求中 里面才有参数   //Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryT2Q2zeAs40zpjfDi
         //在得到响应之前可以取消请求：xhr.abort();
     }
-
+    var data = new FormData();  //
+    data.append("name","zky");
+    console.log(data);
 </script>
 </body>
 </html>
