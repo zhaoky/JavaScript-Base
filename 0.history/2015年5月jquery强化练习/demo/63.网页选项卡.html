@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+body{
+	font-size:10px;
+}
+ul,li{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+ul{
+	float:left;
+}
+li{
+	float:left;
+	padding:3px 5px;
+	border:1px solid #555;
+	border-bottom-width:0;
+	margin-right:5px;
+}
+.con div{
+	clear:both;
+	border:1px solid #555;
+	height:100px;
+	width:200px;
+	display:none;
+}
+.hover{
+	background:#DFDFDF;	
+	color:#000;
+}
+.selected{
+	background:#6D84B4;
+	color:#fff;
+}
+</style>
+<script>
+$(function(){
+	$(".con div").eq(0).show();
+	$("li").click(function(){
+		var index=$("li").index(this);
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$(".con div").eq(index).show().siblings().hide();
+		}).hover(function(){
+			$(this).addClass("hover");
+			},function(){
+			$(this).removeClass("hover");	
+			});
+})
+</script>
+</head>
+<body>
+	<div>
+    	<div class="tab">
+        	<ul>
+            	<li id="a" class="selected">设计</li>
+                <li id="b">前端</li>
+                <li id="c">后端</li>
+            </ul>
+        </div>
+        <div class="con">
+        	<div>设计师</div>
+        	<div>web前端工程师</div>
+        	<div>web后端工程师</div>
+    	</div>
+    </div>
+</body>
+</html>

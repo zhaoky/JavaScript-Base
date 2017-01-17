@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#pic{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+</style>
+<script>
+window.onload=function a(){
+	var aa=document.getElementById("aa");
+	aa.style.position="absolute";
+	var width=document.getElementById("pic").offsetWidth;
+	var list=document.getElementById("list");
+	var link=list.getElementsByTagName("a");
+	for(var i=0;i<link.length;i++){
+		(function(i){
+			link[i].onmouseover=function(){
+			move("aa",-width*(i+1),0,10);
+			};
+			})(i);
+		(function(i){
+			link[i].onclick=function(){
+			return false;	
+			};
+			})(i);
+	}
+}
+function move(ID,x,y,time){
+	if(!document.getElementById) return false;
+	if(!document.getElementById(ID)) return false;
+	var a=document.getElementById(ID);
+	if(!a.style.left) a.style.left="0px";
+	if(!a.style.top) a.style.top="0px";
+	//以上是安全检查	
+	ax=parseInt(a.style.left);
+	ay=parseInt(a.style.top);
+	if(a.move) clearTimeout(a.move);
+	if(ay==y&&ax==x) return false;
+	if(ax<x) ax+=Math.ceil((x-ax)/10);
+	if(ax>x) ax-=Math.ceil((ax-x)/10);
+	if(ay<y) ay+=Math.ceil((y-ay)/10);
+	if(ay>y) ay-=Math.ceil((ay-y)/10);
+	a.style.top=ay+"px";
+	a.style.left=ax+"px";
+	a.move=setTimeout("move('"+ID+"',"+x+","+y+","+time+")",10);
+	}
+</script>
+</head>
+<body>
+	<h1>web前端</h1>
+	<p>这些知识是必须知道的。</p>
+	<ol id="list">
+		<li><a href="1.html">结构层</a></li>
+    	<li><a href="2.html">表现层</a></li>
+    	<li><a href="3.html">行为层</a></li>
+	</ol>
+	<div id="pic"><img src="images/topics.gif" alt="网页设计" id="aa" /></div>
+</body>
+</html>

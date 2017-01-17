@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var h=document.getElementsByTagName("h2");
+	for(var i=0;i<h.length;i++){
+	var x=a(h[i].nextSibling);
+	addClass(x,"aa");
+	}
+	}
+function a(node){
+	if(node.nodeType==1){
+		return node;
+		}else{
+			if(node.nextSibling){
+				a(node.nextSibling);
+				return node.nextSibling;
+				}
+			}
+		return null;
+	}
+function addClass(a,b){
+	if(!a.className){
+	a.className=b;}else{
+		a.className+="";
+		a.className+=b;
+		}
+	}
+</script>
+</head>
+<body>
+<h2>啊啊啊</h2>
+<p>这是第一句话</p>
+<p>这是第二句话</p>
+<p>这是第三句话</p>
+<h2>哈哈哈</h2>
+<p>这是第四句话</p>
+<p>这是第五句话</p>
+</body>
+</html>

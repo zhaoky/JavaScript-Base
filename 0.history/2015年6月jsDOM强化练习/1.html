@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body {
+  font-family: "Helvetica","Arial",serif;
+  color: #333;
+  background-color: #ccc;
+  margin: 1em 10%;
+}
+h1 {
+  color: #333;
+  background-color: transparent;
+}
+a {
+  color: #c60;
+  background-color: transparent;
+  font-weight: bold;
+  text-decoration: none;
+}
+ul {
+  padding: 0;
+}
+li {
+  float: left;
+  padding: 1em;
+  list-style: none;
+}
+img {
+  display:block;
+  clear: both;
+}
+</style>
+<script>
+window.onload=function(){
+	var a=document.getElementsByTagName("a");
+	for(var i=0;i<a.length;i++)
+		a[i].onclick=function(){
+			var b=document.getElementById("pic");
+			b.setAttribute("src",this.href);
+			var txt=document.getElementById("text");
+			var title=this.title;
+			txt.firstChild.nodeValue=title;
+			return false;
+			}
+}
+</script>
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul>
+		<li><a href="images/fireworks.jpg" title="烟花">Fireworks</a></li>
+    	<li><a href="images/coffee.jpg" title="咖啡">Coffee</a></li>
+    	<li><a href="images/rose.jpg" title="玫瑰">Rose</a></li>
+    	<li><a href="images/bigben.jpg" title="大本钟">Big Ben</a></li>
+	</ul>
+	<img id="pic" src="images/placeholder.gif" alt="默认图片" />
+	<p id="text">改变图片</p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@charset "utf-8";
+article{
+	margin:5px auto;
+	padding:10px 5px;
+	background:#FCF;
+	width:800px;
+	
+}
+nav{
+	background:#F69;
+	margin:10px 15px;
+	font-size:10px;
+}
+ul li{
+	padding:5px;	
+}
+h1,h2{
+	font-size:18px;
+	text-align:center;	
+	letter-spacing:12px;
+}
+h2{
+	font-size:14px;
+}
+p{
+	clear:both;
+	font-size:10px;
+	text-indent:20px;
+}
+img{
+	float:left;
+	margin:5px auto 15px 10px;
+}
+

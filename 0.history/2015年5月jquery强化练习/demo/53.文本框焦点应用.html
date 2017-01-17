@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<style>
+input{
+	outline:none;
+}
+.focus{
+
+	background:#EEEEEE;
+}
+</style>
+<title>无标题文档</title>
+<script>
+$(function(){
+	$(":input").focus(function(){   //:input 选择所有的表单元素
+		$(this).addClass("focus");
+		if($(this).val()==this.defaultValue){
+			$(this).val("");
+			}
+		}).blur(function(){
+			$(this).removeClass("focus");
+			if($(this).val()==""){
+				$(this).val(this.defaultValue);
+				}
+			})
+})
+</script>
+</head>
+<body>
+	<form>
+    	<div>
+        	<label for="name">姓名</label>
+    		<input type="text" name="name" id="name" value="哈哈"/>
+        </div>
+        <div>
+        	<label for="password">密码</label>
+        	<input type="password" name="name" id="password" />
+        </div>
+        <div>
+        	<label for="text">输入信息：</label>
+        	<textarea></textarea>
+        </div>
+    </form>
+</body>
+</html>

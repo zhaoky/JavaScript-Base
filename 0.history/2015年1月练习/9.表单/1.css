@@ -1,0 +1,122 @@
+@charset "utf-8";
+body {
+	font: 100% Arial, sans-serif;
+}
+#wrapper {
+	width: 600px;
+}
+
+h2 {
+	background-color: #dedede;
+	border-bottom: 1px solid #d4d4d4;
+	border-top: 1px solid #d4d4d4;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #ccc;
+	color: #fff;
+	font-size: 1.1em;
+	margin: 12px;
+	padding: 0.3em 1em;
+	text-shadow: #9FBEB9 1px 1px 1px;
+	text-transform: uppercase;
+}
+.account { 
+	background-color: #0B5586; 
+}
+.address { 
+	background-color: #4494C9; 
+}
+.public-profile { 
+	background-color: #377D87;
+}		
+.fav { 
+	background-color: #717F88; 
+}
+fieldset {
+	background-color: #f1f1f1;
+	border: none;
+	border-radius: 2px;
+	margin-bottom: 12px;
+	overflow: hidden;
+	padding: 0 10px;
+}
+ul {
+	background-color: #fff;
+	border: 1px solid #eaeaea;
+	list-style: none;
+	margin: 12px;
+	padding: 12px;
+}
+li {
+	margin: 0.5em 0;
+}
+label {
+	display: inline-block;
+	padding: 3px 6px;
+	text-align: right;
+	width: 150px;
+	vertical-align: top;
+}
+input, select {
+	font: inherit;
+}
+
+.small {
+	width: 75px;
+}
+
+.screen {
+	width: 150px;
+}
+
+.large {
+	width: 250px;
+}
+
+textarea {
+	font: inherit;
+	width: 250px;
+}
+.ins {
+	font-size: 75%;
+	padding-left: 167px;
+	font-style: italic;
+}
+.sub {
+	background-color: #DA820A;
+	border: none;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px #333;
+	cursor: pointer;
+	color: #fff;
+	margin: 12px;
+	padding: 8px;
+	text-shadow: 1px 1px 0px #CCC;
+}
+.radios {
+	background: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+.radios ul {
+	border: none;
+	display: inline-block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.radios li {
+	margin: 0;
+	display: inline-block;
+}
+.radios label {
+	margin-right: 25px;
+	width: auto;
+}
+.radios input {
+	margin-top: 3px;
+}
+.checkbox label {
+	text-align: left;
+	width: 475px;
+}

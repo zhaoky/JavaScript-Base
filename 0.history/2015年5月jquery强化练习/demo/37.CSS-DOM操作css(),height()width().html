@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+.aa{
+	color:red;
+}
+p{
+	height:30px;
+}
+</style>
+<script>
+$(function(){
+	alert($(".aa").css("color"));  //获取
+	$(".aa").css("color","yellow"); //设置
+	$(".vv").css({"color":"red","font-size":"12px"}); //同时设置多个
+	alert($("p").height());  //快捷获取高度 width同理
+	$("p").height("100px");  //设置
+})
+</script>
+</head>
+<body>
+<p>你最喜欢的水果是？</p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li class="vv">香蕉</li>
+    <li class="aa">菠萝</li>
+</ul>
+</body>
+</html>

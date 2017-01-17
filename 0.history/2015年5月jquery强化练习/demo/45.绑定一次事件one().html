@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	width:50px;
+	height:20px;
+	border:1px #555 solid;
+}
+</style>
+<script>
+$(function(){
+	$("p").one("click",function(){
+		 alert("嘻嘻");
+		}).one("click",function(){
+			alert("哈哈");
+			})
+})
+
+</script>
+</head>
+<body>
+	<p>求点</p>
+    <button>点我移除事件</button>
+</body>
+</html>

@@ -1,0 +1,154 @@
+@charset "utf-8";
+*{
+	padding:0;
+	margin:0;
+	color:#1D3D76;
+}
+#container
+{
+	margin:20px auto;
+	width:800px;
+	background:#472315;
+	padding:30px 20px 0 0 ;
+}
+#page{
+	background:#fff;
+	padding:10px 5px 20px 0px;
+}
+header h1{
+	font:bold 36px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:400px;
+	float:left;
+}
+header h1 a{
+	text-decoration:none;
+}
+header h1 a:hover{
+	color:#597DBD;
+}
+header p{
+	font:italic 12px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding:5px 0 0 10px;
+	width:400px;
+	float:left;
+}
+#sea{
+	float:right;
+	margin:-50px -40px 0 0;
+}
+#ss{
+	margin:15px 0 10px 30px;
+}
+#sub{
+	width:25px;
+	height:20px;
+	font-size:10px;
+	position:relative;
+	top:-1px;
+	left:-1px;
+}
+#nav ul{
+	list-style:none;
+	padding:10px 40px 0 0;
+}
+#nav ul li{
+	float:left;
+	padding-left:30px;
+}
+#nav ul li+li a{
+	color:#597DBD;
+}
+#nav ul li a{
+	display:block;
+	padding:5px;
+	text-decoration:none;
+}
+#nav ul li a:hover{
+	background:#F3CFB6;
+}
+#pro{
+	clear:both;
+	margin-top:90px;
+	border-top:dashed 1px #1D3D76;
+}
+article,aside{
+	float:left;
+}
+article{
+	width:550px;
+}
+article section{
+	margin:10px 15px 10px 0;
+	padding-right:8px;
+	border-right:1px dashed #B74E07;
+	overflow:hidden;
+	clear:both;
+}
+h2,h3,h4,h5{
+	color:#B74E07;
+	clear:both;
+}
+h2{
+	margin:30px 0px 20px;
+}
+time{
+	float:right;
+	font:10px "Courier New", Courier, monospace;
+	margin:-20px 25px 0 0;
+}
+article img{
+	float:left;
+	margin-right:5px;
+}
+.more{
+	float:right;
+	font:italic 10px Verdana, Geneva, sans-serif;
+	margin:20px 10px 0 0;
+}
+.more a,aside ul a{
+	color:#597DBD;
+	text-decoration:none;
+}
+aside ul a:hover,.more a:hover{
+	background:#F3CFB6;
+	text-decoration:underline;
+}
+section p{
+	font:14px Arial, Helvetica, sans-serif;
+	clear:right;
+}
+aside{
+	width:230px;
+	background:#F5F8FA;
+	margin:40px 0 0 10px;
+}
+h4{
+	font: italic bold 14px Georgia, "Times New Roman", Times, serif;
+	margin:10px 0px 15px 5px;
+}
+aside p{
+	margin:10px 10px 10px 5px;
+	line-height:200%;
+	font: italic 12px Georgia, "Times New Roman", Times, serif;
+}
+aside ul{
+	margin:-10px 0 0 25px;
+	}
+aside ul li a{
+	font:10px Verdana, Geneva, sans-serif;
+}
+aside .more{
+	margin-bottom:10px;
+}
+footer{
+	border-top:dashed 1px #B74E07;
+	clear:both;
+}
+h5{
+	margin:10px 0;
+	font: bold 15px "Times New Roman", Times, serif;
+}
+footer p{
+	font-size:10px;
+	margin:10px 0;
+}

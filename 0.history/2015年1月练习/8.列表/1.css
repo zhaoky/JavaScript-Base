@@ -1,0 +1,120 @@
+@charset "utf-8";
+body{
+	font:100% Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 2em;	
+}
+sup{
+	font-size:70%;
+	line-height:0;
+	position:relative;
+	vertical-align:baseline;
+	top:-.75em;	
+}
+h1 sup{
+	font-size:35%;
+	top:-1.75em;
+}
+/*NAVVIGATION*/
+.nav,.nav ul{
+	background:#000;
+	list-style:none;
+	margin:0;
+	padding:0;	
+}
+.nav{
+	min-height:1.3em;
+	overflow:auto;
+	padding:10px 10px 10px 16px;
+	-webkit-border-radius:6px 6px 0 0;
+	-moz-border-radius:6px 6px 0 0;
+	border-radius:6px 6px 0 0;		
+	-moz-background-clip:padding;
+	-webkit-border-radius:padding-box;
+	background-clip:padding-box;
+}
+.nav a{
+	color:#eee;
+	display:block;
+	font-weight:bold;
+	text-decoration:none;	
+}
+.nav li{
+	float:left;
+	width:10em;	
+}
+.nav li a:hover:{
+	color:#aabadd;	
+}
+.nav ul{
+	margin-left:-10px;
+	padding:10px 10px 15px;
+	-webkit-border-radius:0 0 8px 8px;
+	-moz-border-radius:0 0 8px 8px;		
+	border-radius:0 0 8px 8px;	
+	-moz-border-radius:padding;
+	-webkit-border-radius:padding-box;
+	background-clip:padding-box;
+}
+.nav li ul{
+	left:-9999em;
+	position:absolute;
+	z-index:1000;	
+}
+.nav li:hover ul{
+	left:auto;
+	width:10em;	
+}
+.nav ul li{
+	float:none;
+	font-size:.875em;
+	margin-top:.5em;	
+	width:auto;
+}
+/*content*/
+div[role="main"]{
+	background:#eee;
+	border:1px solid #000;
+	clear:left;
+	margin-top:7px;
+	padding:1em;
+	-webkit-border-radius:0 0 8px 8px;
+	-moz-border-radius:0 0 8px 8px;		
+	border-radius:0 0 8px 8px;
+	-moz-background-clip:padding;
+	-webkit-background-clip:padding-box;
+	background-clip:padding-box;	
+}
+div[role="main"]p{
+	font-size:.8125em;	
+	line-height:1.4;
+}
+div[role="main"]p:frist-line{
+	font-size:1em;
+	font-weight:bold;
+}
+div[role="main"]h1{
+	margin:1em 0 0;
+	text-shadow:1px 1px 3px #888;	
+}
+.zky{
+	margin:0;	
+	padding:0;
+	list-style:none;
+}
+.zky li{
+	display:inline;
+	font-size:.75em;
+	font-weight:bold;
+	padding:5px 5px 0 0;	
+}
+.zky li a{
+	color:#648dc7;
+	padding-right:3px;	
+}
+.zky li:after{
+	content:">";	
+}
+.zky li last-child:after{
+	content:"";	
+}

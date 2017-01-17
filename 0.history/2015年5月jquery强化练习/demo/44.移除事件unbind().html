@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	width:50px;
+	height:20px;
+	border:1px #555 solid;
+}
+</style>
+<script>
+$(function(){
+	$("p").click(function(){
+		alert("啊啊");
+		}).click(a=function(){
+		alert("哦哦");
+		}).click(function(){
+		alert("嘻嘻");
+		})
+	$("button").click(function(){
+			//$("p").unbind();    //移除所有事件
+			//$("p").unbind("click"); //移除click事件
+			$("p").unbind("click",a); //移除特定的事件
+		})
+})
+
+</script>
+</head>
+<body>
+	<p>求点</p>
+    <button>点我移除事件</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>    
+document.oncontextmenu=function(){return false;};
+window.onload=function(e){    
+	var img = new Image();    
+	img.src = 'image/1.jpg';     
+	var canvas = document.querySelector('canvas');         
+	canvas.style.backgroundColor='transparent';         
+	canvas.style.position = 'absolute';  
+	var ctx;     
+	var offsetX = canvas.offsetLeft, offsetY = canvas.offsetTop;  
+	var flag = false;     
+	img.onload=function (e){  	
+		var w = img.width, h = img.height;                 
+		canvas.width=w;             
+		canvas.height=h;             
+		canvas.style.backgroundImage='url(image/1.jpg)';             
+		ctx=canvas.getContext('2d');             
+		ctx.fillStyle='gray';             
+		ctx.fillRect(0, 0, w, h);
+		ctx.globalCompositeOperation = 'destination-out';             
+		canvas.onmousedown=function (e){                 
+			flag=true;  
+			var x = e.clientX  - offsetX,                         
+				y = e.clientY - offsetY ;                                          
+					ctx.beginPath();                     
+					ctx.arc(x, y, 15, 0, Math.PI * 10);                         
+					ctx.fill();            
+		}   
+		canvas.onmouseup=function (){                          
+			flag=false;             
+		}               
+		canvas.onmousemove=function (e){                            
+			if(flag){                                 
+				var x = e.clientX  - offsetX,                         
+				y = e.clientY - offsetY ;                                        
+					ctx.beginPath();                     
+					ctx.arc(x, y, 15, 0, Math.PI * 10);                         
+					ctx.fill();                            
+			}             
+		}                                     
+	}    
+}
+</script>
+</head>
+<body>
+	<canvas></canvas>
+</body>
+</html>

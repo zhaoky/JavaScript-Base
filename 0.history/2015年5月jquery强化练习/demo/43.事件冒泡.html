@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+.a{
+	width:300px;
+	height:300px;
+	background:#CCC;
+}
+.b{
+	width:200px;
+	height:200px;
+	background:#999;
+}
+.c{
+	width:100px;
+	height:100px;
+	background:#666;
+}
+</style>
+<script>
+$(function(){
+	$(".a").click(function(){
+		alert("aa");
+		})
+	$(".b").click(function(event){
+		alert("bb");
+		event.stopPropagation();
+		})
+	$(".c").click(function(event){  //event:事件对象 简写：e
+		alert("cc");
+		event.stopPropagation();  //停止事件冒泡
+		event.preventDefault();   //阻止默认行为
+		//***这两句等价于return false; ***
+		})
+	//发生了事件冒泡
+})
+</script>
+</head>
+<body>
+<div class="a">
+	<div class="b"> 
+    	<div class="c"><a href="http://www.baidu.com">点我</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

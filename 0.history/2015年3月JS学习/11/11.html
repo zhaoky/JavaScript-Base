@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>aa</title>
+<script>
+window.onload=function(){
+	/*
+	var a=document.getElementsByTagName("p");
+	var nodeName=a[0].nodeName;
+	var nodeType=a[0].nodeType;
+	//元素节点的nodeValue返回的是null
+	var nodeValue=a[0].nodeValue;
+	alert("nodeName:"+nodeName+" nodeType:"+nodeType+" nodeValue:"+nodeValue);    
+}	 //P 1 null
+	*/
+	/*
+	//取得input元素属性名字nodeName,类型nodeType,nodeValue
+	var a=document.getElementById("aa");
+	var b=a.getAttributeNode("style");
+	var nodeName=b.nodeName;
+	var nodeType =b.nodeType;
+	var nodeValue=b.nodeValue;
+	alert("nodeName:"+nodeName+" nodeType:"+nodeType+" nodeValue:"+nodeValue);    
+}	//style 2 color:red	
+	*/
+	
+	var a=document.getElementById("aa");
+	alert(a.nodeName);
+	alert(a.style);
+	alert(typeof a.nodeName);
+	alert(typeof a.style);
+	alert(a.style.color);
+}	//P ,object CSSStyleDeclaration,string,obiect.
+	
+</script>
+</head>
+<body>
+<p id="aa" style="color:red;">你好啊<p>
+</body>
+</html>

@@ -1,0 +1,90 @@
+@charset "utf-8";
+h1{
+	text-align:center;
+	margin:20px auto;
+}
+fieldset{
+	margin:10px auto;
+	padding:0;
+	width:500px;
+	background:#F1F1F1;
+	border:none;
+	font-size:12px;
+}
+h2,ul{
+	margin:10px 20px;
+}
+h2{
+	font:bold 14px Georgia, "Times New Roman", Times, serif;
+	color:#fff;
+	padding:5px 10px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	box-shadow:3px 3px 5px #CECECE;
+}
+#infor h2{
+	background:#0B5586;
+}
+#address h2{
+	background:#4494C9;
+}
+#zuoping h2{
+	background:#377D87;
+}
+#far h2{
+	background:#717F88;
+}
+ul{
+	background:#fff;
+	list-style:none;
+	padding:20px;
+}
+label{
+	display:inline-block;
+	padding:8px 5px;
+	text-align:right;
+	width:90px;
+	letter-spacing:2px;
+}
+input{
+	height:15px;
+}
+.sex{
+	display:inline;
+	padding:0;
+	margin:0;
+}
+.sex li{
+	display:inline;
+}
+.sex label{
+	width:10px;
+}
+#picture{
+	height:20px;
+}
+p{
+	font:italic 9px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-left:105px;
+	margin-top:0px;
+}
+textarea{
+	vertical-align:top;
+	width:300px;
+	height:100px;
+}
+.far label{
+	position:relative;
+	top:-3px;
+	left:-40px;
+}
+#post input{
+	float:right;
+	margin:10px;
+	padding:7px;
+	height:auto;
+}
+
+

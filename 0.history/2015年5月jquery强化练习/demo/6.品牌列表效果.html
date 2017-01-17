@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+body{
+	margin:0 auto;
+	width:800px;
+}
+#box{
+	margin:50px auto;
+	width:600px;
+	height:100px;
+}
+a{
+	text-decoration:none;
+	font-size:12px;
+}
+a:visited{
+	color:#00f;	
+}
+a:hover{
+	color:#F00;
+	text-decoration:underline;
+}
+ul li{
+	list-style:none;
+	float:left;
+	margin:0 50px;
+	padding:5px 0;
+	width:75px;
+}
+#aa{
+	margin:0px auto;
+	clear:both;
+	text-align:center;
+	border:1px #555 solid;
+	width:90px;
+	padding:5px 0;
+	background-color:#eee;
+}
+.b a{
+	color:red;
+}
+</style>
+<script>
+$(function(){
+		var $a=$("#box li:gt(5):not(:last)");
+		$a.hide();
+		$("#aa").click(function(){
+		if($a.is(":hidden")){
+			$a.show();
+			$(this).find("a").text("点击收缩");
+			$(this).find("img").attr("src","../img/up.gif");
+			$("li:contains('佳能'),li:contains('尼康'),li:contains('奥林匹斯')").addClass("b");
+			}else{
+			$a.hide();
+			$(this).find("a").text("点击展开");
+			$(this).find("img").attr("src","../img/down.gif");	
+			$("li:contains('佳能'),li:contains('尼康'),li:contains('奥林匹斯')").removeClass("b");
+			}
+		})
+});
+</script>
+</head>
+<body>
+	<div id="box">
+    	<ul>
+        	<li><a href="#">佳能</a></li>
+            <li><a href="#">索尼</a></li>
+            <li><a href="#">三星</a></li>
+            <li><a href="#">尼康</a></li>
+            <li><a href="#">松下</a></li>
+            <li><a href="#">卡西欧</a></li>
+            <li><a href="#">富士</a></li>
+            <li><a href="#">可达鸭</a></li>
+            <li><a href="#">宾得</a></li>
+            <li><a href="#">理光</a></li>
+            <li><a href="#">奥林匹斯</a></li>
+            <li><a href="#">明基</a></li>
+            <li><a href="#">爱国者</a></li>
+            <li><a href="#">其他品牌相机</a></li>
+        </ul>
+    </div>
+    <div id="aa">
+    	<img src="../img/down.gif" /><a href="#">点击展开</a>
+    </div>
+</body>
+</html>

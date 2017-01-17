@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+div{
+	margin:50px 20px;
+}
+p{
+	width:200px;
+	line-height:30px;
+	font-size:12px;
+	color:#fff;
+	margin:0;
+}
+.a,.c{
+	background:#bbb;
+}
+.b,.d{
+	background:#555;
+	display:none;
+}
+</style>
+<script>
+$(function(){
+	$(".a").bind("mouseover",function(){   //click mouseout mouseover 这些可以简写；
+		$(this).next().show();
+		}).bind("mouseout",function(){
+			$(this).next().hide();
+			});
+			//请参照jquery事件集
+	$(".c").bind("mouseover mouseout",function(){
+		$(this).next().toggle();
+		})
+})
+</script>
+</head>
+<body>
+<div>
+	<p class="a">我们的目标是？</p>
+    <p class="b">没有蛀牙！</p>
+</div>
+<div>
+	<p class="c">我们的目标是？</p>
+    <p class="d">星辰大海！</p>
+</body>
+</html>

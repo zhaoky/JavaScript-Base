@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	$("li").wrapAll("<b></b>"); //相同的包一起，中间有其他的插后面
+})
+</script>
+</head>
+<body>
+<p>你最喜欢的水果是？</p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <p>啦啦啦</p>
+    <li title="bl">菠萝</li>
+</ul>
+</body>
+</html>

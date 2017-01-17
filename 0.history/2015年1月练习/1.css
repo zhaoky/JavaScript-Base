@@ -1,0 +1,28 @@
+ul{
+	margin:0;
+	padding:0;
+	width:130px;
+	list-style:none;
+	font-size:12px;
+	border-bottom:1px solid #ccc;
+}
+ul li{
+	position:relative;
+}
+li ul{
+	position:absolute;
+	left:129px;
+	top:0px;
+	display:none;
+}
+ul li a{
+	display:block;
+	padding:5px;
+	border:1px solid #ccc;
+	text-decoration:none;
+	color:#777;
+	border-bottom:0;
+}
+li:hover ul{
+	display:block;
+}

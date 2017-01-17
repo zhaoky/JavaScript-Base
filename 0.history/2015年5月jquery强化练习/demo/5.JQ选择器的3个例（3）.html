@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	$("#but").click(function(){
+			var a=$("input[name='a']:checked").length;	
+			$(this).parent().append(a);
+	})
+})
+</script>
+</head>
+<body>
+	<form id="aa">
+    	<input type="checkbox" value="1" name="a" checked="checked" />
+        <input type="checkbox" value="2" name="a" />
+        <input type="checkbox" value="3" name="a" checked="checked" />
+        <input type="checkbox" value="4" name="a" checked="checked" />
+        <input type="button" value="你选中的个数：" id="but" />
+    </form>
+</body>
+</html>

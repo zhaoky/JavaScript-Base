@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	var a=$("li:eq(2)").attr("title","aaa");
+	alert($("li:eq(3)").attr("title"));
+	alert($("li:eq(2)").attr("title"));
+	//获取和设置一起；还有html(),val(),text(),height(),width(),css()等方法。
+})
+</script>
+</head>
+<body>
+<p>你最喜欢的水果是？</p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <p>啦啦啦</p>
+    <li title="bl">菠萝</li>
+</ul>
+</body>
+</html>

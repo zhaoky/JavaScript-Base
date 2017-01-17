@@ -1,0 +1,43 @@
+@charset "utf-8";
+body{
+	background:#eef;
+	color:#909;
+	font:100% "Palatino Linotype", "Book Antiqua", Palatino, serif;	
+}
+h1,h2{
+	color:navy;
+	font:1.375em Arial, Helvetica, sans-serif;
+	letter-spacing:.4em;
+	text-align:center;
+}	
+h2{
+	font-size:.9375em;	
+}	
+p{
+	font-size:.875em;
+	line-height:1.6;
+	text-align:justify;
+	text-indent:1.5em;
+}
+em{
+	font-weight:bold;
+}	
+a:link{
+	color:#74269d;
+	font-weight:bold;
+}	
+a:visited{
+	color:#909;
+}	
+a:hover{
+	color:#c3f;
+	font-weight:bold;
+}	
+#top{
+	background:#ebc6f9;
+}	
+#top a{
+	font-size:.75em;
+}	
+	
+

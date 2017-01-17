@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	position:relative;
+	width:200px;
+	background:#555;
+	color:#eee;
+	font-size:14px;
+	border:1px #000 solid;
+}
+</style>
+<script>
+$(function(){
+	$(".a").click(function(){    //stop（） 停止当前的某个动画
+		$(this).next().next().animate({left:"500px",height:"300px"},3000,function(){
+			$(this).css("background","red")			
+			})
+			.delay(3000)    //delay() 延迟动画
+			.animate({top:"300px"},3000,function(){
+							$(this).fadeOut(1000);
+							});  
+									});
+	$(".b").click(function(){
+		$(this).next().stop(false,true);  //第一个是是否清空所有的动画，第二个是是否跳转末状态
+		})
+})
+</script>
+</head>
+<body>
+<button class="a">点我显示</button>
+<button class="b">点我停止</button>
+<p>我顶着大太阳，只想为你撑伞，你靠在我肩膀，深呼吸怕遗忘，鸡蛋糕和嘴角果酱我都想要尝，多希望话题不断园游会永不打烊~</p>
+</body>
+</html>

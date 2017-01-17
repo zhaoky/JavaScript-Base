@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+button{
+	display:block;
+	clear:both; 
+}
+div{
+	float:left;
+	margin-left:30px;
+}
+select{
+	height:150px;
+	width:100px;
+}
+</style>
+<script>
+$(function(){
+	$("#right").click(function(){
+		$("#xx option:selected").appendTo("#yy");
+		})
+	$("#all_right").click(function(){
+		$("#xx option").appendTo("#yy");
+		})
+	$("#left").click(function(){
+		$("#yy option:selected").appendTo("#xx");
+		})
+	$("#all_left").click(function(){
+		$("#yy option").appendTo("#xx");
+		})
+	$("#xx option").dblclick(function(){
+		$(this).appendTo("#yy");
+		})
+	$("#yy option").dblclick(function(){
+		$(this).appendTo("#xx");
+		})
+})		
+</script>
+</head>
+<body>
+<div>
+<select id="xx" multiple="multiple">
+	<option value="a">选项1</option>
+    <option value="b">选项2</option>
+    <option value="c">选项3</option>
+    <option value="d">选项4</option>
+    <option value="e">选项5</option>
+    <option value="f">选项6</option>
+    <option value="g">选项7</option>
+</select>
+<button id="right">去右边！</button>
+<button id="all_right">全部去右边！</button>
+</div>
+<div>
+<select id="yy" multiple="multiple">
+	<option value="a">选项1</option>
+    <option value="b">选项2</option>
+    <option value="c">选项3</option>
+    <option value="d">选项4</option>
+    <option value="e">选项5</option>
+    <option value="f">选项6</option>
+    <option value="g">选项7</option>
+</select>
+<button id="left">去左边！</button>
+<button id="all_left">全部去左边！</button>
+</div>
+</body>
+</html>

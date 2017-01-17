@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	width:200px;
+	background:#555;
+	color:#eee;
+	font-size:14px;
+	border:1px #000 solid;
+}
+</style>
+<script>
+$(function(){
+	$("button").click(function(){
+		$(this).prev().hide(1000);  //hide会记住之前display属性；
+		})
+	$("button").click(function(){
+		$(this).prev().show(1000);// show只作用于不可见的
+		})
+		//他们都是同时作用于高度，宽度，透明度
+		//可以用toggle()代替
+/*
+	$("button").click(function(){
+		$(this).prev().toggle(1000);
+		});
+*/
+
+})
+</script>
+</head>
+<body>
+<p>我顶着大太阳，只想为你撑伞，你靠在我肩膀，深呼吸怕遗忘，鸡蛋糕和嘴角果酱我都想要尝，多希望话题不断园游会永不打烊~</p>
+<button>点我显示</button>
+</body>
+</html>

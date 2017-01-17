@@ -1,0 +1,284 @@
+@charset "utf-8";
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,figure,figcaption,code,del,dfn,em,image,q,dl,dt,dd,ol,ul,li,fieldset,form,legend,table,tf,tr,th {
+	border: 0px;
+	padding: 0px; 
+	font-size: 100%; 	
+	margin: 0px; 
+	font-family: inherit; 
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-weight:normal;
+}
+body{
+	background-color:#000;
+	font-size: 12px;
+	font-family:"Lucida Sans Unicode","Lucida Grande", Tahoma,Arial, Helvetica, sans-serif;
+	width:996px;
+	margin:0 auto;
+}
+li{
+	list-style:none;
+}
+/* header */
+#head{
+	width:996px;
+	height:319px;
+	background:url(image/banner.jpg);
+}
+.head_a{
+	float:left;
+	margin:10px 0 0 330px;	
+	font:bold 16px Verdana, Geneva, sans-serif;	
+}
+.head_b{
+	height:25px;	
+	padding:10px 0 0 430px;		
+	font-style:italic;
+}
+.head_b a{
+	color:#333333;
+	text-decoration:none;
+}
+.head_b a:hover{
+	color:#0000EE;
+	text-decoration:underline;
+}
+.head_c{
+	margin-left:370px;
+	font:bold 14px Verdana, Geneva, sans-serif;		
+}
+/* nav */
+nav{
+	width:996px;
+	height:166px;
+	background:url(image/nav.jpg);
+}
+.nav {
+	padding-left:480px;
+}
+.nav li{
+	float:left;
+	margin: 0px 18px;
+	text-align: center;
+}
+.nav li a{
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+}
+.nav li a:hover p{
+	text-decoration: underline;
+	font-weight:bold;
+}
+/* content */
+#content{
+	width:996px;
+	height:780px;
+	background:url(image/content_bg.jpg);
+}
+h1{
+	font:bold 14px Verdana, Geneva, sans-serif;	
+}
+.more a{
+	float:right;
+	font-size:14px;
+	color:#949B9A;
+	margin:-17px 20px 0 0;
+	text-decoration:none;
+}
+.more a:hover{
+	text-decoration:underline;
+	color:#FF6600;
+}
+/* article */
+article{
+	width: 656px;
+	float:left;
+}
+.mood{
+	margin: -10px 145px;
+	width:505px;
+}
+.date time{
+	margin-right:2.5px;
+	padding-right:5px;
+	border-right:solid 2px #2E3235;
+	font-size:10px;	
+}
+.mood div{
+	font-size:14px;
+	line-height:25px;
+}
+.mood .md{
+	border-top:dotted 2px #949B9A;
+	margin-top:5px;
+	padding-top:10px;
+}
+.mood div:first-letter{
+	font:24px "仿宋";
+	color:#808040;
+}
+.mood ul{
+	padding-left:320px;
+}
+.mood ul li{
+	float:left;
+	margin:10px 15px;
+}
+.mood ul li img{
+	width:20px;
+	height:20px;
+}
+.photo{
+	clear:both;
+	margin:0px 0px 300px 145px;
+	width:505px;
+
+}
+.photo ul{
+	padding:10px 0 0 40px;
+}
+.photo ul li{
+	float:left;
+	width:120px;
+	height:120px;
+	margin:6px 8px;
+}
+.photo ul li img{
+	width:120px;
+	height:120px;
+	position: relative;
+	cursor: pointer;
+	border:none;
+	z-index:10;	
+}
+.photo ul li span{
+	width:120px;
+	height:30px;
+	text-align:center;
+	margin-top:-35px;
+	line-height:30px;
+	cursor: pointer;
+	display:block;
+}
+.photo li:hover span{
+	color: #FFFFFF;
+	background-color: #333333;
+	opacity:0.6;
+	font-weight:bold;
+	position:absolute;
+	z-index:100;
+}
+.message{
+	clear:both;
+	margin: -10px 145px;
+	width:505px;
+}
+.message p{
+	margin:10px 0 20px 0;
+	font: 13px "黑体";
+}
+form{
+	font-size:14px;
+	line-height:30px;
+}
+form ul li input{
+	height:10px;
+}
+textarea{
+	width:450px;
+	height:100px;
+}
+form div{
+	margin-top:-5px;
+}
+input[name="reset"]{
+	margin-left:340px;
+}
+input[name="submit"]{
+	margin-left:10px;
+}
+/* aside */
+aside{
+	float:right;
+	width:340px;
+    font:bolder 14px "仿宋_GB2312";
+	margin-top:-20px;
+}
+aside ul li a{
+	text-decoration:none;
+	color:#000000;
+}
+aside ul li a:hover{
+	text-decoration:underline;
+	color:#9900FF;
+}
+.title{
+	font:bold 14px "宋体";
+	margin:12px 0 12px 20px;
+}
+.title img{
+	width:14px;
+	height:14px;
+	margin-bottom:-2px;
+}
+.dangan span img{
+	margin:0 20px 20px;
+}
+.dangan span{
+	border-bottom:solid 2px #949B9A;
+	margin-left:20px;
+}
+.dangan ul{
+	margin:5px 140px 0 20px;
+	line-height:20px;
+}
+.fenlei ul{
+	margin:-5px 0 0 15px;
+	line-height:25px;
+}
+.lishi ul{
+	margin:0 0 85px 15px;	
+}
+.lishi ul li{
+	float:left;
+	margin-right:15px;
+}
+.lishi ul li a img{
+	text-align:center;
+}
+.lishi ul li a p{
+	text-align:center;
+	width:42px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+.tongji{
+	clear:both;
+}
+.tongji ul{
+	margin-left:15px;
+}
+.tongji ul li{
+	margin-bottom:5px;
+}
+/* footer */
+footer{
+	width:996px;
+	height:180px;
+	background:url(image/footer.jpg);
+	clear:both;
+	color:#C0C0C0;
+}
+footer p{
+	margin:0px 0 20px 430px;
+	padding-top:120px;
+	font:bold 14px "仿宋";
+}
+footer p a{
+	color:#C0C0C0;
+	text-decoration:none;
+}	
+footer p a:hover{
+	text-decoration:underline;
+}

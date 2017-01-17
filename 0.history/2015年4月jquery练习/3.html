@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM方式判断</title>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var $a=$("#a");
+		var a=$a[0];
+		$a.click(function(){
+			if(a.checked){
+				alert("谢谢你点我！！");
+				}
+		});
+    });
+</script>
+</head>
+<body>
+	<input type="checkbox" id="a" />
+    <label for="a">这是DOM的方式！来点我试试！</label>
+</body>
+</html>

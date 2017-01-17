@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	$("p").replaceWith("<i>你最讨厌的水果是？</i>"); //等价于$("<i>你最讨厌的水果是？</i>").replaceAll("p");
+	//替换之后绑定的事件也就消失
+})
+</script>
+</head>
+<body>
+<p>你最喜欢的水果是？</p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <li title="bl">菠萝</li>
+</ul>
+</body>
+</html>

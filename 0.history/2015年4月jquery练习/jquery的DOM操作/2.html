@@ -1,0 +1,30 @@
+<!--创建和插入节点-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../jquery-1.11.2.min.js"></script>
+<script>
+	$(function(){
+		var $a=$("<li title='香蕉'>香蕉</li>");	
+		var $b=$("<li title='雪梨'>雪梨</li>");	
+		var $c=$("<li title='其他'>其他</li>");
+		var $d=$("ul");
+		var $e=$("ul li:eq(1)");
+		$d.append($a);
+		$d.prepend($b);	
+		$e.after($c);
+	})
+</script>
+</head>
+<body>
+
+	<p title="选择你最喜欢的水果." >你最喜欢的水果是?</p>
+	<ul>
+		<li title='苹果果果果'>苹果</li>
+		<li title='橘子子子子'>橘子</li>
+		<li title='菠萝萝萝萝'>菠萝</li>
+	</ul>
+</body>
+</html>

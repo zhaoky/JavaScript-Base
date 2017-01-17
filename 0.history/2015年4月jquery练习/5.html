@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="style.css" />
+<script src="4月jquery练习/jquery-1.11.2.min.js"></script>
+<script>
+	$(function(){
+		var page=1;
+		var i=4;
+		$("span#xia").click(function(){
+			var $a=$(this).parents("#container");
+			var $b=$a.find("#video");	
+			var $v=$a.find("#v");
+			var width=$v.width();
+			var len=$b.find("li").length;
+			var count=Math.ceil(len/i);
+			if(!$b.is(":animated")){
+				if(page==count){
+					$b.animate({left:'0px'},"slow");	
+					page=1;
+				}else{
+					$b.animate({left:'-='+width},"slow");
+					page++;
+				}
+				$a.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+			}
+		});
+		$("span#shang").click(function(){
+			var $a=$(this).parents("#container");
+			var $b=$a.find("#video");
+			var $v=$a.find("#v");
+			var width=$v.width();
+			var len=$v.find("li").length;
+			var count=Math.ceil(len/i);
+			if(!$b.is(":animated")){
+				if(page==1){
+					$b.animate({left:'-='+width*(count-1)},"slow");	
+					page=count;
+				}else{
+					$b.animate({left:'+='+width},"slow");
+					page--;
+				}
+				$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+			}
+	});
+});
+</script>
+</head>
+<body>
+<div id="container">
+	<div id="head">
+		<h2 title="卡通动漫" id="cartoon">卡通动漫</h2>
+		<div id="dot">
+			<span class="current">1</span><span>2</span><span>3</span><span>4</span>
+		</div>
+		<div id="page">
+			<span id="shang">上一页</span>
+			<span id="xia">下一页</span>
+		</div>
+		<em><a href="#">更多>></a></em>
+	</div>
+    
+	<div id="v">
+		<div id="video">
+			<ul>
+				<li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a><h4><a href="#">海贼王</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				<li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				<li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				<li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a><h4><a href="#">哆啦A梦</a></h4><span>播放:<em>33,326</em></span></li>
+				<li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a><h4><a href="#">火影忍者</a></h4><span>播放:<em>28,276</em></span></li>
+				<li><a href="#"><img src="img/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				<li><a href="#"><img src="img/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				<li><a href="#"><img src="img/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+				<li><a href="#"><img src="img/04.jpg" alt="龙珠" /></a><h4><a href="#">龙珠</a></h4><span>播放 <em>57,865</em></span></li>
+		     </ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

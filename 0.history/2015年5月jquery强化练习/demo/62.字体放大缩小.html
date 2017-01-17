@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+span{
+	display:inline-block;
+	background:#eee;
+	padding:2px;
+	border:1px #000000 solid;
+	font-size:12px;
+	margin-right:10px;
+}
+div{
+	height:800px;
+	width:500px;
+}
+</style>
+<script>
+$(function(){
+	$("span").click(function(){
+		var txt=parseInt($("div").css("font-size"));   //取字符串前的数字
+		if(this.id=="big"&&txt<30){
+			$("div").css("font-size","+=2px");
+			}
+		if(this.id=="small"&&txt>10){
+			$("div").css("font-size","-=2px");
+			}
+		})
+})		
+</script>
+</head>
+<body>
+	<span id="big">放大</span><span id="small">缩小</span>
+    <div>
+    小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮小倩好漂亮
+    </div>
+</body>
+</html>

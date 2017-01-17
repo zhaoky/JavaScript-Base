@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+table{
+	font:12px Verdana, Geneva, sans-serif;
+	border-collapse:collapse;
+}
+thead{
+	border-bottom:1px #000 solid;
+	font-weight:bold;
+	text-align:left;
+	padding-bottom:5px;
+}
+th{
+	padding-bottom:5px;
+}
+td{
+	line-height:20px;
+	width:100px;
+}
+.even{
+	background:#FFF38F;	
+}
+.odd{
+	background:#FFFFEE;		
+}
+.checked{
+	background:#f00;
+}
+</style>
+<script>
+$(function(){
+	$("tbody tr:even").addClass("even");
+	$("tbody tr:odd").addClass("odd");
+	$("tbody tr").click(function(){
+	if($(this).hasClass("checked")){    //为什么一定要用$(this) 不能用$("tbody tr")   ,因为tr有很多个
+		$(this).removeClass("checked");
+		$(this).find("input").prop("checked",false);
+		}else{
+		$(this).addClass("checked");	
+		$(this).find("input").prop("checked",true);
+		}
+	})
+	$("tbody tr:has(':checked')").addClass("checked");
+})
+</script>
+</head>
+<body>
+</body>
+<table>
+	<thead>
+    	<tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+    </thead>
+	<tbody>
+    	<tr><td><input type="checkbox" name="a" value="zs" /></td><td>张山</td><td>男</td><td>浙江宁波</td></tr>
+        <tr><td><input type="checkbox" name="a" value="ls" /></td><td>李四</td><td>女</td><td>北京周口</td></tr>
+        <tr><td><input type="checkbox" name="a" value="ww" /></td><td>王五</td><td>男</td><td>湖南长沙</td></tr>
+        <tr><td><input type="checkbox" name="a" value="zl" checked="checked" /></td><td>赵六</td><td>男</td><td>浙江杭州</td></tr>
+        <tr><td><input type="checkbox" name="a" value="tq" /></td><td>田七</td><td>男</td><td>四川南充</td></tr>
+        <tr><td><input type="checkbox" name="a" value="tr" /></td><td>童锐</td><td>女</td><td>成都人兽</td></tr>
+    </tbody>
+</table>
+</html>

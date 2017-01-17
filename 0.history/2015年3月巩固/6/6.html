@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <title>表单</title>
+    <link rel="stylesheet" href="6.css" />
+</head>
+<body>
+	<h1>创建表单</h1>
+    <form method="post" action="show.php" enctype="multipart/form-data">
+    	<fieldset id="infor">
+        	<h2>基本信息</h2>
+            <ul>
+            	<li>
+                <label for="name">名字：</label>
+                <input type="text" id="name" placeholder="请输入你的名字" size="20px" required autofocus />
+                </li>
+                <li>
+                <label for="sex">性别：</label>
+                	<ul class="sex">
+                    	<li>
+               		<input type="radio" id="male" value="male" name="sex" checked="checked" />
+                    <label for="male">男</label>
+                    	</li>
+                        <li>
+                	<input type="radio" id="female" value="female" name="sex" />
+                	<label for="female">女</label>
+                    	</li>
+                    </ul>
+				</li>
+                <li>
+                <label for="email">邮箱：</label>
+                <input type="email" id="email"  size="20px" required />
+				</li>
+                <li>
+                <label for="password">密码：</label>
+                <input type="password" id="password"  size="20px" required />  
+				</li>
+                <li>
+                <label for="re_password">重复密码：</label>
+                <input type="password" id="re_password"  size="20px" required />                </li>                     
+            </ul>
+        </fieldset>
+    	<fieldset id="address">
+        	<h2>您的地址</h2>
+            <ul>
+            	<li>
+                <label for="addr">地址：</label>
+                <input type="text" id="addr" size="20px" required />
+				</li>
+                <li>
+                <label for="city">城市：</label>
+                <input type="text" id="city"  size="20px" required />
+				</li>
+                <li>
+                <label for="state">省会：</label>
+				<select id="state" >
+                	<option value="beijing" selected="selected">北京</option>
+                    <option value="shanghai">上海</option>
+                    <option value="chengdu">成都</option>
+                    <option value="lanzhou">兰州</option>
+                </select>
+                </li>
+                <li>
+                <label for="tel">固定电话：</label>
+                <input type="tel" id="tel" size="20px" required />                </li>                     
+            </ul>
+        </fieldset>    
+        <fieldset id="zuoping">
+        	<h2>个人作品</h2>
+            <ul>
+            	<li>
+                <label for="picture">个人作品：</label>
+                <input type="file" id="picture" size="5px" />
+                <p>大小不超过2MB</p>
+                </li>
+                <li>
+                <label for="ahievement">个人成就：</label>
+                <input type="text" id="ahievement" size="20px" required />
+                </li>
+                <li>
+                <label for="url">个人主页：</label>
+                <input type="url" id="url" value="http://" size="20px" required />
+                <p>如果你有个人地址请放在这</p>
+                </li>
+                <li>
+                <label for="textarea">自我评价：</label>
+                <textarea id="textarea"></textarea>
+                </li>
+            </ul>
+        </fieldset>    
+        <fieldset id="far">
+        	<h2>个人爱好</h2>
+            <ul class="far">
+            	<li>
+            		<input type="checkbox" id="sport" value="sport" />
+            		<label for="sport">运动</label>
+            	</li>
+                <li>
+            		<input type="checkbox" id="music" value="music" />
+            		<label for="music">音乐</label>
+        		</li>
+            </ul>
+        </fieldset>
+        <fieldset id="post">
+        	<input type="submit" value="提交" />
+            <input type="reset" value="重置" />
+        </fieldset>
+    </form>
+</body>
+</html>

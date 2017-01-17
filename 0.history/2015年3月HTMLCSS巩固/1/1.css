@@ -1,0 +1,31 @@
+@charset "utf-8";
+ul{
+	margin:0;
+	padding:0;
+	width:130px;
+	font-size:12px;
+	list-style:none;
+	border-bottom:1px solid #ccc;
+}
+ul li{
+	position:relative;
+}
+li ul{
+	position:absolute;
+	left:129px;
+	top:0px;	
+	display:none;
+}
+ul li a{
+	display:block;
+	padding:5px;
+	color:#777;
+	border:1px solid #ccc;
+	text-decoration:none;
+	border-bottom:none;
+}
+li:hover ul{
+	display:block;
+}
+
+

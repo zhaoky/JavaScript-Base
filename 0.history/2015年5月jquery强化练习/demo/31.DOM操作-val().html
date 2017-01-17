@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	alert($("option").val()); // 得到第一个；
+	alert($("option:eq(2)").val());
+	$("option:eq(2)").val("xxx");
+	$("select").val("tz");  //val的选中功能
+	$("input:radio").val(["nv"]); //val的选中功能，要加框   //等价于： $(":radio").val(["nv"]); $("[value=nv]:radio").attr("checked",true);
+	for(var i=0;i<$(":radio").length;i++)
+	alert($(":radio").eq(i).val());   // JQ对象用JQ方法
+})
+</script>
+</head>
+<body>
+<p class="aa bb cc">你最喜欢的水果是？</p>
+<form>
+	输入名字：<input type="text" value="name1" name="name" />
+    <select>
+    	<option value="xj" selected="selected">香蕉</option>
+        <option value="tz">桃子</option>
+        <option value="pg">苹果</option>
+        <option value="bl">菠萝</option>
+    </select>
+    <input type="radio" name="a" value="nan" />男
+    <input type="radio" name="a" value="nv" />女
+</form>
+</body>
+</html>

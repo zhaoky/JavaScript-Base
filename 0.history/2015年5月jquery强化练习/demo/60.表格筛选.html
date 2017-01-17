@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+table{
+	font:12px Verdana, Geneva, sans-serif;
+	border-collapse:collapse;
+}
+thead{
+	border-bottom:1px #000 solid;
+	font-weight:bold;
+	text-align:left;
+	padding-bottom:5px;
+}
+th{
+	padding-bottom:5px;
+	width:100px;
+}
+td{
+	line-height:20px;
+	width:100px;
+}
+</style>
+<script>
+$(function(){
+	$("#text").keyup(function(){
+		$("tbody tr").hide().filter(":contains('"+$(this).val()+"')").show();     //注意引号
+		})
+})
+</script>
+</head>
+<body>
+</body>
+<div>
+	<label for="text">请输入搜索结果：</label>
+	<input type="text" name="text" id="text" />
+</div>
+<table>
+	<thead>
+    	<tr><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+    </thead>
+	<tbody>
+    	<tr><td>张山</td><td>男</td><td>浙江宁波</td></tr>
+        <tr><td>李四</td><td>女</td><td>北京周口</td></tr>
+        <tr><td>李五</td><td>男</td><td>湖南长沙</td></tr>
+        <tr><td>赵六</td><td>男</td><td>浙江杭州</td></tr>
+        <tr><td>田七</td><td>男</td><td>四川南充</td></tr>
+        <tr><td>童锐</td><td>女</td><td>成都人兽</td></tr>
+    </tbody>
+</table>
+</html>

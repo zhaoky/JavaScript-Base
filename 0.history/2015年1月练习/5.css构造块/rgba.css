@@ -1,0 +1,15 @@
+@charset "utf-8";
+body{
+	background:url(1.jpg);
+	color:#ff0;
+}
+h1{
+	background:rgba(89,0,127,0.75);	
+}
+h2{
+	background:rgba(89,0,127,0.2);
+}
+h3{
+	background:rgb(89,0,127);	
+}
+

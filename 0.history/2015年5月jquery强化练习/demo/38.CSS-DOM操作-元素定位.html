@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+body,p{
+	margin:0;
+	padding:0;
+}
+</style>
+<script>
+$(function(){
+	var a=$("p").offset();     //即在页面中的绝对位置
+	var x=a.left;
+	var y=a.top;
+	alert(x+","+y);
+	var li=$("li").position();   //与父元素的相对位置
+	var li_x=li.left;
+	var li_y=li.top;
+	alert(li_x+","+li_y);
+	//scrollTop(),scrollLeft()分别获取元素的滚动条距顶端和左端的距离
+})
+</script>
+</head>
+<body>
+<p>你最喜欢的水果是？</p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <li>菠萝</li>
+</ul>
+</body>
+</html>

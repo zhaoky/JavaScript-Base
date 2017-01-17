@@ -1,0 +1,37 @@
+@charset "utf-8";
+body {
+	font: 100% arial, helvetica, serif;
+}
+table {
+	border-collapse: collapse;
+	box-shadow: 3px 3px 7px #055584;
+}
+caption {
+	color: #055584;
+	font-size: 1.25em;
+	font-weight: bold;
+	margin: 0 0 .5em;
+	text-shadow: 1px 1px 1px #c0e0f2;
+}
+td,
+th {
+	font-size: .8125em;
+	border: 1px solid #000;
+	padding: .75em;	
+}
+th {
+	background: #055584;
+	color: #c0e0f2;
+}
+td {
+	background: #c0e0f2;
+	width: 9em;
+}
+thead th:first-child {
+	background: #1a628c;
+}
+thead th {
+	border-bottom: 3px solid #000;
+	text-transform: uppercase;
+}
+

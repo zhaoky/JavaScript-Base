@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<style>
+ul,li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+ul{
+	border:1px solid #555;
+	margin: 10px;
+	padding:5px;
+	width:210px;
+	overflow: hidden;
+}
+li{
+	float:left;
+	width:14px;
+	height:14px;
+	margin-right:6px;
+	text-indent:-9999px;
+	background:url(../img/theme.gif) no-repeat 0 0;
+}
+#skin_1{
+	background:url(../img/theme.gif) no-repeat -20px 0;	
+}
+#skin_2{
+	background:url(../img/theme.gif) no-repeat -40px 0;	
+}
+#skin_3{
+	background:url(../img/theme.gif) no-repeat -60px 0;	
+}
+#skin_4{
+	background:url(../img/theme.gif) no-repeat -80px 0;	
+}
+#skin_5{
+	background:url(../img/theme.gif) no-repeat -100px 0;	
+}
+#skin_0.selected{
+	background:url(../img/theme.gif) no-repeat -0 -15px;	
+}
+#skin_1.selected{
+	background:url(../img/theme.gif) no-repeat -20px -15px;	
+}
+#skin_2.selected{
+	background:url(../img/theme.gif) no-repeat -40px -15px;	
+}
+#skin_3.selected{
+	background:url(../img/theme.gif) no-repeat -60px -15px;	
+}
+#skin_4.selected{
+	background:url(../img/theme.gif) no-repeat -80px -15px;	
+}
+#skin_5.selected{
+	background:url(../img/theme.gif) no-repeat -100px -15px;	
+}
+h1{
+	color:#fff;
+	float:left;
+	border:1px solid #555;
+	font-size:14px;
+	padding:10px;
+	margin:10px;
+
+}
+</style>
+<link rel="stylesheet" href="../style/skin_0.css" id="css"/>
+<title>无标题文档</title>
+<script>
+$(function(){
+	$("li").click(function(){
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$("#css").attr("href","../style/"+this.id+".css")
+		})
+})
+</script>
+</head>
+<body>
+	<div>
+    	<ul>
+        	<li title="灰" id="skin_0" class="selected">灰色</li>
+            <li title="绿" id="skin_1">绿色</li>
+            <li title="黄" id="skin_2">黄色</li>
+            <li title="蓝" id="skin_3">蓝色</li>
+            <li title="红" id="skin_4">红色</li>
+            <li title="紫" id="skin_5">紫色</li>        
+        </ul>
+    </div>
+    <h1>呵呵哒</h1>
+    <h1>擦擦哒</h1>
+</body>
+</html>

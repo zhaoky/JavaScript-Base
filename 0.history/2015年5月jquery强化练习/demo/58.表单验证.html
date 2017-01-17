@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+ul,li{
+	margin:15px 0;
+	padding:0;
+	list-style:none;
+	font: 12px/19px Arial, Helvetica, sans-serif;
+	color:#555;
+}
+label{
+	display:inline-block;
+	text-align:right;
+	width:80px;
+}
+strong{
+	color:red;
+	margin-left:5px;
+}
+input{
+	border:1px #ccc solid;
+}
+#submit{
+	margin-left:100px;
+}
+.message{
+	display:inline-block;
+	padding-left: 25px;
+}
+.right{
+	background:#FFE0E9 url(../img/reg4.gif) no-repeat 0 center;
+}
+.error{
+	background:#FFE0E9 url(../img/reg3.gif) no-repeat 0 center;
+}
+</style>
+<script>
+$(function(){
+	$(".required").after("<strong>*</strong>");
+	var x,y,z;
+	$("#name").blur(function(){
+		$(this).parent().find(".message").remove();
+		if(this.value==""||this.value.length<6){
+			$(this).parent().append("<span class='error message'>请输入不少于6个字符！</span>");	
+			x=false;
+		}else{
+			$(this).parent().append("<span class='right message'>输入正确 </span>");
+			x=true;	
+		}
+	}).focus(function(){
+		$(this).triggerHandler("blur");
+		}).keyup(function(){
+		$(this).triggerHandler("blur");
+		});
+	$("#email").blur(function(){
+		$(this).parent().find(".message").remove();
+		if(this.value==""||(this.value!="" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))){
+			$(this).parent().append("<div class='error message'><span>请输入正确的邮箱地址！</span></div>");	
+			y=false;
+		}else{
+			$(this).parent().append("<div class='right message'><span>输入正确 </span></div>");
+			y=true;
+			}
+		
+	}).focus(function(){
+		$(this).triggerHandler("blur");
+		}).keyup(function(){
+		$(this).triggerHandler("blur");
+		})
+	$("#submit").click(function(){
+		if($("#say").val()==""){
+			z=false;	
+		}else{
+			z=true;
+			}
+		if(x==false||y==false||z==false){
+		alert("还有没填好的！")
+		}else{
+		alert("注册成功,密码已发到你的邮箱,请查收.");	
+		}
+		return false;
+		})
+	$("#reset").click(function(){
+		$(".message").remove();
+		})
+})
+</script>
+</head>
+<body>
+	<form method="post" action="">
+    <ul>
+    	<li>
+    		<label for="name">姓名：</label>
+     		<input type="text" name="name" id="name" class="required"/>
+        </li>
+        <li>
+        	<label for="email">邮箱：</label>
+            <input type="text" name="email" id="email" class="required"/>
+        </li>
+        <li>
+        	<label for="say">我想说：</label>
+            <input type="text" name="say" id="say" />
+        </li>
+    </ul>
+    	<button type="submit" id="submit">提交</button>
+        <button type="reset" id="reset">重置</button>
+    </form>
+</body>
+</html>

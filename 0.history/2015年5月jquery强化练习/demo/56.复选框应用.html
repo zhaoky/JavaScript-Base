@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+
+</style>
+<script>
+$(function(){
+	$("#xx").click(function(){
+	$("input[name='a']").prop("checked",this.checked);
+	})
+	$("input[name='a']").click(function(){
+		var flag=true;
+		$("input[name='a']").each(function(){
+            if(!this.checked)
+			flag=false;
+        });
+		if(flag){
+			$("#xx").prop("checked",true);
+			}else{
+				$("#xx").prop("checked",false);
+				}
+						});
+	$("button").click(function(){
+		var str="你选中的是：\n";
+		$("input[name='a']:checked").each(function(){
+		str+=$(this).val()+"\n";
+        });
+		if($("input[name='a']:checked").length==0){
+			alert("你什么都没填！");
+			}else{
+		alert(str);
+			}
+		})
+})		
+</script>
+</head>
+<body>
+	<form>
+	<div>
+		<span>你最喜欢的运动是？</span>
+        <input type="checkbox" name="x" value="xx" id="xx" />
+        <label for="xx">全选</label>
+    </div>
+    	<input type="checkbox" name="a" value="篮球" id="lq" />
+        <label for="lq">篮球</label>
+        <input type="checkbox" name="a" value="足球" id="zq" />
+        <label for="zq">足球</label>
+        <input type="checkbox" name="a" value="游泳" id="yy" />
+        <label for="yy">游泳</label>
+        <input type="checkbox" name="a" value="跑步" id="pb" />
+        <label for="pby">跑步</label>
+    </form>
+    <button>提交</button>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>表单</title>
+<link rel="stylesheet" href="1.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<h1>创建表单</h1>
+		<form method="post" action="show.php" enctype="multipart/form-data">
+			<fieldset>
+				<h2 class="account">Account</h2>
+				<ul>
+					<li>
+						<label for="name">Name:</label>
+						<input type="text" id="name" name="name" class="large" required placeholder="请输入你的名字" autofocus />                     
+					</li>
+					<li>
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" class="large" />
+					</li>
+					<li>
+						<label for="password">Password:</label>
+						<input type="password" id="password" name="password" />
+					</li>
+					<li>
+						<label for="password">Re-enter password:</label>
+						<input type="password" id="password2" name="password2" />
+					</li>                    
+				</ul>
+			</fieldset>
+			<fieldset>
+				<h2 class="address">Address</h2>
+				<ul>
+					<li>
+						<label for="address">Address:</label>
+						<input type="text" id="address" name="address" class="large" />
+					</li>
+					<li>
+						<label for="city">City:</label>
+						<input type="text" id="city" name="city" class="large" />                    	
+					</li>    
+					<li>
+						<label for="state">State:</label>
+						<select id="state" name="state">
+							<option value="BJ">北京</option>
+							<option value="SH">上海</option>
+							<option value="CD">成都</option>      
+						</select>                          
+					</li>
+					<li>
+						<label for="zip-code">ZIP-code:</label>
+						<input type="text" id="zip-code" name="zip-code" class="small">
+					</li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<h2 class="public-profile">Public Profile</h2>
+				<ul>
+					<li>
+						<label for="picture">Picture:</label>
+						<input type="file" id="picture" name="picture" />
+						<p class="ins">最大大小不超过700k</p>
+					</li>
+					<li>
+						<label for="Screen_name">Screen name:</label>
+						<input type="text" id="Screen-name" class="screen" />
+					</li>
+					<li>
+						<label for="web">Web:</label>
+						<input type="text" url id="web" name="web" class="large" value="http://">
+						<p class="ins">如果你有个人地址请放在这</p>
+					</li>
+					<li>
+						<label for="bio">Bio:</label>
+						<textarea id="bio" name="bio" rows="8" cols="50"></textarea>
+					</li>
+					<li>
+						<label>Gender:</label>
+						<fieldset class="radios">
+						<ul>
+							<li>
+								<input type="radio" id="male" name="gender" value="male" />
+   								<label for="male">Male</label>
+							</li>
+							<li>
+								<input type="radio" id="female" name="gender" value="female" />
+								<label for="female">Female</label>
+							</li>
+						</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<h2 class="fav">favourite</h2>
+				<ul class="checkbox">
+					<li>
+						<input type="checkbox" id="sport" name="favourite" value="sport" />
+						<label for="sport">运动</label>
+					</li>
+					<li>
+						<input type="checkbox" id="music" name="favourite" value="music" />
+						<label for="music">音乐</label>
+					</li>
+				</ul>        
+			</fieldset>               
+			<fieldset>
+				<input type="submit" class="sub" value="提交" />
+			</fieldset> 
+		</form>
+	</div>                  
+</body>
+</html>

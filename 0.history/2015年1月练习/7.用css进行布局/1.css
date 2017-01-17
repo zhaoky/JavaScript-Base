@@ -1,0 +1,268 @@
+@charset "utf-8";
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ol, ul {
+	list-style: none;
+}
+/* GENERAL */
+body{
+	color:#1d3d76;
+	font:100% "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-bottom:20px;	
+}
+h1,h2,h3,h4,h5,h6,.logo{
+	color:#b74e07;
+	font-weight:bold;	
+}
+h1{
+	font-size:1.5em;
+	margin-bottom:.75em;
+	text-transform:lowercase;
+}
+h2{
+	font-size:1.375em;
+}
+p{
+	margin:0 0 .5em;
+	padding-right:10px;	
+}
+/* link states */
+a {
+	padding: .2em;
+}
+a:link {
+	text-decoration: none;
+	color: #597dbd;
+}
+a:visited {
+	text-decoration: none;
+	color: #597dbd;
+}
+a:focus,
+a:hover,
+a:active {
+	background: #f3cfb6;
+	text-decoration: underline;
+}
+.nav a:hover {
+	text-decoration: none;
+}
+a.current {
+	color: #1d3d76;
+}
+a:hover.current {
+	background: white;
+	cursor: default;
+}
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+/* contains */
+#container {
+	background: url(http://f.hiphotos.baidu.com/zhidao/pic/item/5fdf8db1cb1349545c8e943e544e9258d0094ad3.jpg) repeat-y;
+	margin: 20px auto;
+	max-width: 950px;
+	width: 90%;
+    padding: 30px 10px 0 0;
+}
+#page {
+	background: #fff;
+	padding: 10px 10px 10px 0;
+	max-width: 940px;
+	width: 97.9167%; /* 940px/960px */
+}
+#masthead {
+	padding-bottom: 20px;
+}
+#main {
+	float: left;
+	width: 71%;
+}
+#related {
+	margin-left: 72%;
+}
+#footer {
+	border-top: 2px dotted #b74e07;
+	clear: both;
+	margin-top: 10px;
+}
+/*masthead*/
+#masthead {
+	border-bottom: 2px dotted #1d3d76;
+	margin-bottom: 30px;
+}
+/* Logo */
+.logo {
+	float: left;
+	font-size: 2.5em; /* 40px/16px */
+	margin: 0;
+}
+.logo a {
+	color: #1d3d76;
+	padding: 0;
+}
+.logo a:hover {
+	background: transparent;
+	color: #597dbd;
+	text-decoration: none;
+}
+.logo span {
+	color: #1d3d76;
+	display: block;
+	font-size: 0.3em; /* 12px/40px */
+	font-style: italic;
+	font-weight: normal;
+	margin: 3px 0 0 1em;	
+}
+/* navigation and search form*/
+#masthead div {
+	float: right;
+	position: relative;
+}
+/* Search */
+#masthead form {
+	position: absolute;
+	top: 7px;
+	right: 0;
+}
+input,
+label,
+.xiazi .date,
+.continued ,
+.sidebar p,
+.qita2 ol  {
+	font-size: .75em; /* 12px/16px */
+}
+input[type="text"] {
+	padding: 2px 3px;
+	width: 150px;
+}
+input[type="submit"] {
+	vertical-align: top;
+}
+/* Site Nav */
+.nav {
+	margin-top: 45px;
+}
+.nav li {
+	float: left;
+	font-size: .75em; /* 12px/16px */  /* makes the bullets smaller */
+	padding: 0 25px 0 3px;
+}
+.nav li a {
+	font-size: 1.5em; /* 18px/12px */  /* makes the linked text larger than the bullets */
+}
+.nav li:first-child {
+	list-style: none;
+	padding-left: 0;
+}
+.nav li:last-child {
+	padding-right: 0;
+}
+/*content*/
+.xiazi {
+	border-right: 2px dashed #b74e07;
+	margin: 0 .5em 2em 0;
+}
+.xiazi h2 {
+	font-size: 1.25em; /* 20px/16px */
+    line-height: 1;
+}
+.continued,.xiazi .date {
+	text-align: right;
+}
+.xiazi .date {
+	line-height: 1;
+	margin: 0 1em 0 0;
+	padding: 0;
+	position: relative;
+	top: -1em;
+}
+.continued {
+	font-style: italic;
+	margin-top: -5px;
+}
+/* photos*/
+.intro {
+	margin: -5px 0 0 110px;
+}
+.photo {
+	float: left;
+	height: 75px;
+	width: 100px;
+}
+.photo a {
+	margin: 0;
+	padding: 0;
+}
+.photo a:focus,
+.photo a:hover,
+.photo a:active {
+	background: #fff;
+}
+/* sidebar*/
+.sidebar {
+	background: #f5f8fa;
+	padding: 10px;
+}
+aside h2 {
+	font-size: .9375em; /* 15px/16px */
+	margin-bottom: 3px;
+	text-transform: lowercase;
+}
+.qita {
+	font-style: italic;
+}
+/* qita */
+.qita2 ol {
+	list-style: disc; /* changes list items from numbers to bullets */
+	padding-left: 18px;
+}
+.qita2 .continued {
+	margin-top: 0;
+}
+/*footer*/
+#footer h1 {
+	font-size: 1em;
+	margin-bottom: .25em;
+	padding-top: .25em;
+}
+#footer p {
+	font-size: .6875em;
+}
+.thumbnails {
+	list-style: none;
+	padding-top: 4px;
+}
+.thumbnails li {
+	display: inline;
+}
+.thumbnails img {
+	vertical-align: middle;
+}

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+	font-size:12px;
+}
+ul{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color:#2A92CF;
+}
+a:hover{
+	text-decoration:underline;
+	color:#f00;
+}
+.main{
+	width:590px;
+	margin:50px 30px;
+	border:1px #E5E5E5 solid;
+	overflow: hidden;
+}
+.nav{
+	background:url(../img/52_a.gif) no-repeat 0 0;
+	height:35px;
+}
+.title{
+	float:left;
+	background:url(../img/52_a.gif) no-repeat 0 -100px;
+	text-indent:-9999px;
+	width:83px;
+	height:35px;
+}
+.nav ul{
+	float:left;
+	margin: 14px 20px;
+}
+.nav li{
+	float:left;
+	background:url(../img/52_a.gif) no-repeat 0 -320px;
+	text-indent:-9999px;
+}
+.page{
+	float:left;
+	background:url(../img/52_a.gif) no-repeat 0 -400px;
+	text-indent:-9999px;
+	height:25px;
+	width:62px;
+	margin-top:6px;
+}
+.page span{
+	float:left;
+	height:25px;
+	width:31px;
+}
+.more{
+	float:right;
+	font-style:italic;
+	margin:10px;
+}
+.video{
+	padding:20px 10px; 
+}
+.video ul{
+	position:relative;
+	width:2960px;
+	height:140px;
+}
+.video li{
+	float:left;
+	margin-right:20px;
+}
+.video li span,.video li em{
+	display:block;
+	line-height:20px;
+}
+li.select{
+	background:url(../img/52_a.gif) no-repeat 0 -220px;
+}
+</style>
+<script>
+$(function(){
+	var i=4;
+	var page=1;
+	var $a=$(".video ul");
+	var a=$a.width();	
+	var b=$(".video ul li").length;
+	var ban=Math.ceil(b/i);
+	$("#down").click(function(){
+		if(!$a.is(":animated")){
+			if(page==ban){
+				$a.animate({left:0},400);
+				page=1;}else{
+				$a.animate({left:"-="+a/ban},400);	
+				page++;
+				}
+				$(".nav li").eq(page-1).addClass("select").siblings().removeClass("select");
+		}
+	})
+	$("#up").click(function(){
+		if(!$a.is(":animated")){
+			if(page==1){
+				$a.animate({left:-a/ban*(ban-1)},400);
+				page=ban;
+				}else{
+				$a.animate({left:"+="+a/ban},400);
+				page--;	
+				}
+				$(".nav li").eq(page-1).addClass("select").siblings().removeClass("select");
+			}
+		})
+})
+</script>
+</head>
+<body>
+	<div class="main">
+    	<div class="nav">
+        	<p class="title">卡通动漫</p>
+            <ul>
+            	<li class="select"><a href="#">第1页</a></li>
+                <li><a href="#">第2页</a></li>
+                <li><a href="#">第3页</a></li>
+                <li><a href="#">第4页</a></li>
+                <li><a href="#">第5页</a></li>
+            </ul>
+            <div class="page">
+            	<span id="up">上一页</span>
+                <span id="down">下一页</span>
+            </div>
+            <a href="#" class="more">更多&gt;&gt;</a>
+        </div>
+        <div class="video">
+        	<ul>
+            	<li><a href="#"><img src="../img/52_01.jpg" /></a><span><a href="#">海贼王</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_01.jpg" /></a><span><a href="#">海贼王</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_01.jpg" /></a><span><a href="#">海贼王</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_01.jpg" /></a><span><a href="#">海贼王</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_02.jpg" /></a><span><a href="#">哆啦a梦</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_02.jpg" /></a><span><a href="#">哆啦a梦</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_02.jpg" /></a><span><a href="#">哆啦a梦</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_02.jpg" /></a><span><a href="#">哆啦a梦</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_03.jpg" /></a><span><a href="#">火影忍者</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_03.jpg" /></a><span><a href="#">火影忍者</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_03.jpg" /></a><span><a href="#">火影忍者</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_03.jpg" /></a><span><a href="#">火影忍者</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_04.jpg" /></a><span><a href="#">七龙珠</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_04.jpg" /></a><span><a href="#">七龙珠</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_04.jpg" /></a><span><a href="#">七龙珠</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_04.jpg" /></a><span><a href="#">七龙珠</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_05.jpg" /></a><span><a href="#">犬夜叉</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_05.jpg" /></a><span><a href="#">犬夜叉</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_05.jpg" /></a><span><a href="#">犬夜叉</a></span><em>播放：28353</em></li>
+                <li><a href="#"><img src="../img/52_05.jpg" /></a><span><a href="#">犬夜叉</a></span><em>播放：28353</em></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	position:relative;
+	width:200px;
+	background:#555;
+	color:#eee;
+	font-size:14px;
+	border:1px #000 solid;
+}
+</style>
+<script>
+$(function(){
+	$("button").click(function(){
+		$(this).prev().animate({left:"+=500px",height:"300px"},3000,function(){
+			$(this).css("background","red")			
+			}).animate({top:"300px"},3000,function(){
+							$(this).fadeOut(1000);
+							}).css("color","blue");   //最后一句不会加入动画队列，只有靠回调函数。
+
+		});
+})
+</script>
+</head>
+<body>
+<p>我顶着大太阳，只想为你撑伞，你靠在我肩膀，深呼吸怕遗忘，鸡蛋糕和嘴角果酱我都想要尝，多希望话题不断园游会永不打烊~</p>
+<button>点我显示</button>
+</body>
+</html>

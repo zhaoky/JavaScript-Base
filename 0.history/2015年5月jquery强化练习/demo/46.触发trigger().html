@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<style>
+p{
+	width:50px;
+	height:20px;
+	border:1px #555 solid;
+}
+</style>
+<script>
+$(function(){
+	$("button").click(function(){
+		alert("真点我啊");
+		})
+	$("button").trigger("click");   //触发了click  	简写：$("button").click(); 
+	//如果只想触发绑定的事件而不触发默认的，用triggerHandler();
+	$("button").bind("hahaha",function(a,b,c){
+			alert("这是我自定义的!"+b+c);
+		}).trigger("hahaha",["我晕","a"]);     //触发了自定义事件,还可以传递参数；用来区别这个事件是代码触发还是人
+})
+
+</script>
+</head>
+<body>
+
+    <button>点我移除事件</button>
+</body>
+</html>

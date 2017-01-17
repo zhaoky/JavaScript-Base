@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	 var $a=$("body").children();   //只考虑子元素，不考虑子子元素
+	for(var i=0;i<$a.length;i++)
+	{alert($a.eq(i).html());}  //alert($a[i].innerHTML); JQ对象成数组了就是DOM对象
+	var $b=$("body").find("li").addClass("aa");   //考虑所有后代元素
+})
+</script>
+</head>
+<body>
+<p><i>你最喜欢的水果是？</i></p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <li title="bl">菠萝</li>
+</ul>
+</body>
+</html>

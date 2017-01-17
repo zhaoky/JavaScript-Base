@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body {
+  font-family: "Helvetica","Arial",serif;
+  color: #333;
+  background-color: #ccc;
+  margin: 1em 10%;
+}
+h1 {
+  color: #333;
+  background-color: transparent;
+}
+a {
+  color: #c60;
+  background-color: transparent;
+  font-weight: bold;
+  text-decoration: none;
+}
+ul {
+  padding: 0;
+}
+li {
+  float: left;
+  padding: 1em;
+  list-style: none;
+}
+#list {
+  list-style: none;
+}
+
+#list li {
+  display: inline;
+}
+
+#list li a img {
+  border: 0;
+}
+</style>
+<script>
+function insertAfter(newElement,oldElement){
+	var parent=oldElement.parentNode;
+	if(parent.lastChild==oldElement){
+		parent.appendChild(newElement);
+		}else{
+			parent.insertBefore(newElement,oldElement.nextSibling);
+			}
+	}
+function a(){
+	if(!document.getElementById) return false;
+	if(!document.getElementsByTagName) return false;
+	if(!document.getElementById("list")) return false;
+	var list=document.getElementById("list");
+	var a=list.getElementsByTagName("a");
+	for(var i=0;i<a.length;i++){
+		a[i].onclick=function(){
+		var a_title=this.title;
+		var a_href=this.href;
+		var pic=document.getElementById("pic");
+		pic.setAttribute("src",a_href);
+		var txt=document.getElementById("txt");
+		if(txt.firstChild.nodeType==3)
+		txt.firstChild.nodeValue=a_title;
+		return false;		
+		}
+		a[i].onkeypress=a[i].onclick;
+	}
+}
+function b(){
+	if(!document.createAttribute) return false;
+	if(!document.createTextNode) return false;
+	var img=document.createElement("img");
+	//document.body.appendChild(img);
+	img.setAttribute("src","images/placeholder.gif");
+	img.setAttribute("id","pic");
+	var p=document.createElement("p");
+	p.setAttribute("id","txt");
+	//document.body.appendChild(p);
+	var txt=document.createTextNode("切换图片");
+	p.appendChild(txt);
+	var list=document.getElementById("list");
+	//list.parentNode.insertBefore(img,list);
+	//list.parentNode.insertBefore(p,list);     目标元素的父节点--要插入在目标元素前面的元素，目标元素。
+	insertAfter(img,list);
+	insertAfter(p,img);
+	}
+function addLoadEvent(func){
+	var oldonload=window.onload;
+	if(typeof window.onload!="function"){
+		window.onload=func;
+		}else{
+			window.onload=function(){
+				oldonload();
+				func();
+					}
+			}
+	}
+addLoadEvent(a);
+addLoadEvent(b);
+</script>
+</head>
+<body>
+  <h1>Snapshots</h1>
+  <ul id="list">
+    <li><a href="images/fireworks.jpg" title="烟花"><img src="images/thumbnail_fireworks.jpg" alt="烟花" /></a></li>
+    <li><a href="images/coffee.jpg" title="咖啡" ><img src="images/thumbnail_coffee.jpg" alt="咖啡" /></a></li>
+    <li><a href="images/rose.jpg" title="玫瑰"><img src="images/thumbnail_rose.jpg" alt="玫瑰" /></a></li>
+    <li><a href="images/bigben.jpg" title="大本钟"><img src="images/thumbnail_bigben.jpg" alt="大本钟" /></a></li>
+  </ul>
+</body>
+</html>

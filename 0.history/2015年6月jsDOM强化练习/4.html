@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body {
+  font-family: "Helvetica","Arial",sans-serif;
+  font-size: 10pt;
+}
+abbr {
+  text-decoration: none;
+  border: 0;
+  font-style: normal;
+}
+</style>
+<script>
+function a(){
+	if (!document.getElementsByTagName || !document.createElement || !document.createTextNode) return false;
+	var abbr=document.getElementsByTagName("abbr");
+	var a=new Array();
+	for(var i=0;i<abbr.length;i++){
+	if(abbr[i].childNodes.length<1) continue;
+	var title=abbr[i].getAttribute("title");
+	var txt=abbr[i].lastChild.nodeValue;
+	a[title]=txt;
+	}
+	var dl=document.createElement("dl");
+	for(b in a)
+	{
+		c=a[b];
+		var dt=document.createElement("dt");
+		var dd=document.createElement("dd");
+		var dt_txt=document.createTextNode(c);
+		var dd_txt=document.createTextNode(b);
+		dt.appendChild(dt_txt);
+		dd.appendChild(dd_txt);
+		dl.appendChild(dt);
+		dl.appendChild(dd);	
+	}
+	if(dl.childNodes.length<1) return false;
+	document.body.appendChild(dl);
+	var h2=document.createElement("h2");
+	var h2_txt=document.createTextNode("缩略语解释：");
+	h2.appendChild(h2_txt);
+	dl.parentNode.insertBefore(h2,dl);
+}
+function b(){
+	if (!document.getElementsByTagName || !document.createElement || !document.createTextNode) return false;
+	var p0=document.getElementsByTagName("p")[0];
+	var cite=p0.getAttribute("cite");
+	var a=document.createElement("a");
+	a.setAttribute("href",cite);
+	var a_txt=document.createTextNode("点此了解更多");
+	a.appendChild(a_txt);
+	p0.appendChild(a);
+}
+function AddLoadEvent(func){
+	var a=window.onload;
+	if(typeof window.onload!="function"){
+		window.onload=func;
+		}else{
+		window.onload=function(){
+			func();
+			a();
+			}	
+		}
+}
+AddLoadEvent(a);
+AddLoadEvent(b);
+</script>
+</head>
+<body>
+	<h1>打野英雄盲僧到底有多强？</h1>
+    <p cite="http://www.baidu.com">主要强就强在他的机动性。</p>
+    <p>一个<abbr title="天音波/回音击">Q</abbr>到地方人群中去，插眼<abbr title="金钟罩/铁布衫">W</abbr>后，一个<abbr title="天雷破/摧筋断骨">E</abbr>减速，再一个<abbr title="猛龙摆尾">R</abbr>将敌方核心人物踢出来。</p>
+</body>
+</html>

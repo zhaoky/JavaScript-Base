@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="../jquery-1.11.2.min.js"></script>
+<title>无标题文档</title>
+<script>
+$(function(){
+	alert($("ul").next().html()); //后面紧邻的同辈元素
+})
+</script>
+</head>
+<body>
+<p><i>你最喜欢的水果是？</i></p>
+<ul>
+	<li>苹果</li>
+    <li>梨子</li>
+    <li>香蕉</li>
+    <li title="bl">菠萝</li>
+</ul>
+<P>LALALA</p>
+</body>
+</html>
